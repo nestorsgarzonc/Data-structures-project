@@ -24,7 +24,7 @@ class ButtonsLogin extends StatelessWidget {
       child: ElasticInLeft(
         delay: const Duration(milliseconds: 1000),
         child: RaisedButton(
-          elevation: 10,
+          elevation: 4,
           color: buttonColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),

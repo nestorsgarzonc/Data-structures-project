@@ -3,7 +3,12 @@ import 'package:flutter/material.dart';
 class BackgroundImageWidget extends StatelessWidget {
   final Widget child;
   final String imagePath;
-  const BackgroundImageWidget({@required this.child, @required this.imagePath});
+  final double opacity;
+  const BackgroundImageWidget({
+    @required this.child,
+    @required this.imagePath,
+    this.opacity = 0.15,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +22,7 @@ class BackgroundImageWidget extends StatelessWidget {
       child: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(color: Colors.black.withOpacity(0.15)),
+        decoration: BoxDecoration(color: Colors.black.withOpacity(opacity)),
         child: child,
       ),
     );

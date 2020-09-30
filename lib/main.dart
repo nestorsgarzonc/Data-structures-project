@@ -1,3 +1,4 @@
+import 'package:ed_project/screens/login_page.dart';
 import 'package:flutter/material.dart';
 import 'screens/home_page.dart';
 
@@ -12,8 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light().copyWith(
         primaryColor: const Color(0xFFE94832),
         buttonColor: const Color(0xFFE94832),
+        
       ),
-      home: HomePage(),
+      home: LoginPage(),
     );
   }
 }

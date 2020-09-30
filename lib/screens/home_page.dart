@@ -1,6 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:ed_project/widgets/icon_button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../widgets/background_image_widget.dart';
 import '../widgets/buttons_login_widget.dart';
@@ -60,17 +60,7 @@ class _TitleHeading extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(left: 15),
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-            ),
-            child: const FaIcon(FontAwesomeIcons.mountain, size: 30),
-          ),
+          const IconButtonWidget(),
           const SizedBox(height: 15),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
