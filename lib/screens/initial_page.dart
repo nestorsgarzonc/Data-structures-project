@@ -1,22 +1,26 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:ed_project/widgets/icon_button_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/background_image_widget.dart';
 import '../widgets/buttons_login_widget.dart';
+import '../widgets/icon_button_widget.dart';
+import './authentication/login_page.dart';
+import './authentication/register_page.dart';
 
-class HomePage extends StatelessWidget {
+class InitialPage extends StatelessWidget {
+  static const String route = 'initialPage';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BackgroundImageWidget(
         imagePath: 'assets/img/login.jpg',
+        opacity: 0.1,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: const [
             _TitleHeading(),
             SizedBox(),
-            _HomeButtons(),
+            _InitialButtons(),
           ],
         ),
       ),
@@ -24,8 +28,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _HomeButtons extends StatelessWidget {
-  const _HomeButtons({Key key}) : super(key: key);
+class _InitialButtons extends StatelessWidget {
+  const _InitialButtons({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +37,14 @@ class _HomeButtons extends StatelessWidget {
       children: [
         ButtonsLogin(
           buttonColor: Theme.of(context).primaryColor,
-          onPressed: () {},
+          onPressed: () => Navigator.of(context).pushNamed(LoginPage.route),
           text: 'Inicia sesion',
           textColor: Colors.white,
         ),
         const SizedBox(height: 30),
         ButtonsLogin(
           textColor: Theme.of(context).primaryColor,
-          onPressed: () {},
+          onPressed: () => Navigator.of(context).pushNamed(RegisterPage.route),
           text: 'Registrate',
           buttonColor: Colors.white,
         ),

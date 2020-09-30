@@ -22,7 +22,7 @@ class ButtonsLogin extends StatelessWidget {
       width: size.width * 0.8,
       height: 50,
       child: ElasticInLeft(
-        delay: const Duration(milliseconds: 1000),
+        delay: const Duration(milliseconds: 100),
         child: RaisedButton(
           elevation: 4,
           color: buttonColor,
