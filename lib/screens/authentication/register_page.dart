@@ -1,3 +1,4 @@
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -61,13 +62,14 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
   String _username = '';
   String _password = '';
 
-  void handleSubmit() {
+  Future<void> handleSubmit() async {
     // ignore: avoid_print
     print(_email);
     // ignore: avoid_print
     print(_username);
     // ignore: avoid_print
     print(_password);
+    await FirebaseAnalytics().logSignUp(signUpMethod: null);
   }
 
   @override
