@@ -16,25 +16,30 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<FirebaseApp>(
-        future: _initialization,
-        builder: (context, snapshot) {
-          return snapshot.hasData
-              ? MaterialApp(
-                  title: 'Material App',
-                  debugShowCheckedModeBanner: false,
-                  theme: ThemeData.light().copyWith(
-                    primaryColor: const Color(0xFFE94832),
-                    buttonColor: const Color(0xFFE94832),
+      future: _initialization,
+      builder: (context, snapshot) {
+        return snapshot.hasData
+            ? MaterialApp(
+                title: 'Material App',
+                debugShowCheckedModeBanner: false,
+                theme: ThemeData.light().copyWith(
+                  primaryColor: const Color(0xFFE94832),
+                  buttonColor: const Color(0xFFE94832),
+                  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+                    elevation: 10,
+                    selectedIconTheme: IconThemeData(size: 30)
                   ),
-                  initialRoute: InitialPage.route,
-                  routes: {
-                    InitialPage.route: (ctx) => InitialPage(),
-                    RegisterPage.route: (ctx) => RegisterPage(),
-                    LoginPage.route: (ctx) => LoginPage(),
-                    HomePage.route: (ctx) => HomePage(),
-                  },
-                )
-              : const CircularProgressIndicator();
-        });
+                ),
+                initialRoute: InitialPage.route,
+                routes: {
+                  InitialPage.route: (ctx) => InitialPage(),
+                  RegisterPage.route: (ctx) => RegisterPage(),
+                  LoginPage.route: (ctx) => LoginPage(),
+                  HomePage.route: (ctx) => HomePage(),
+                },
+              )
+            : const CircularProgressIndicator();
+      },
+    );
   }
 }
