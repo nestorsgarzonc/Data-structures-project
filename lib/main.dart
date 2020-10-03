@@ -1,18 +1,17 @@
-import 'package:ed_project/providers/index_homepage_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './screens/authentication/login_page.dart';
-import './screens/authentication/register_page.dart';
-import './screens/home/main_page.dart';
-import 'screens/initial_page.dart';
+import './consts/routes.dart';
+import './consts/theme_data.dart';
+import './providers/index_homepage_provider.dart';
+import './screens/initial_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
-        create: (_) => IndexHomePage(),
+        create: (_) => IndexHomePageProvider(),
       )
     ],
     child: MyApp(),
@@ -29,27 +28,11 @@ class MyApp extends StatelessWidget {
       builder: (context, snapshot) {
         return snapshot.hasData
             ? MaterialApp(
-                title: 'Material App',
+                title: 'Waffly',
                 debugShowCheckedModeBanner: false,
-                theme: ThemeData.light().copyWith(
-                  primaryColor: const Color(0xFFE94832),
-                  buttonColor: const Color(0xFFE94832),
-                  floatingActionButtonTheme:
-                      const FloatingActionButtonThemeData(
-                    backgroundColor: Color(0xFFE94832),
-                    elevation: 5,
-                  ),
-                  bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-                      elevation: 10,
-                      selectedIconTheme: IconThemeData(size: 30)),
-                ),
+                theme: lightTheme,
                 initialRoute: InitialPage.route,
-                routes: {
-                  InitialPage.route: (ctx) => InitialPage(),
-                  RegisterPage.route: (ctx) => RegisterPage(),
-                  LoginPage.route: (ctx) => LoginPage(),
-                  MainPage.route: (ctx) => MainPage(),
-                },
+                routes: constRoutes,
               )
             : const CircularProgressIndicator();
       },

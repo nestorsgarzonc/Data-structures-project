@@ -1,5 +1,6 @@
 import 'package:ed_project/providers/index_homepage_provider.dart';
 import 'package:ed_project/screens/home/home_page.dart';
+import 'package:ed_project/screens/home/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class MainPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
           child: IndexedStack(
-            index: Provider.of<IndexHomePage>(context).index,
+            index: Provider.of<IndexHomePageProvider>(context).index,
             children: [
               HomePage(),
               const Text('Ordenes'),
@@ -35,7 +36,7 @@ class _CustomFloatingActionButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
-      onPressed: () {},
+      onPressed: () => Navigator.of(context).pushNamed(SearchPage.route),
       child: const Icon(Icons.search),
     );
   }
@@ -47,9 +48,10 @@ class _CustomNavigationBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: Provider.of<IndexHomePage>(context).index,
+      currentIndex: Provider.of<IndexHomePageProvider>(context).index,
       onTap: (value) =>
-          Provider.of<IndexHomePage>(context, listen: false).index = value,
+          Provider.of<IndexHomePageProvider>(context, listen: false).index =
+              value,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home_filled),

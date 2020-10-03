@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import '../../screens/home/search_page.dart';
 import '../../widgets/categories_card_widget.dart';
 import '../../widgets/freelancer_miniphoto_widget.dart';
 import '../../widgets/popular_task_card_widget.dart';
@@ -14,37 +15,8 @@ class HomePage extends StatelessWidget {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text(
-                'Dashboard',
-                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
-              ),
-              CircleAvatar(
-                radius: 28,
-                child: Text('S', style: TextStyle(fontSize: 25)),
-              ),
-            ],
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 25, left: 5, right: 7),
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: const [
-                BoxShadow(
-                  blurRadius: 5,
-                  offset: Offset(2, 3),
-                  color: Colors.grey,
-                )
-              ],
-            ),
-            child: Row(
-              children: const [Icon(Icons.search), Text('   ¿Que necesitas?')],
-            ),
-          ),
+          const _CustomAppBar(),
+          const _CustomSearchButton(),
           const SizedBox(height: 20),
           TitleCategoriesWidget(title: 'Tareas populares', onPress: () {}),
           Container(
@@ -95,6 +67,56 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CustomSearchButton extends StatelessWidget {
+  const _CustomSearchButton({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => Navigator.of(context).pushNamed(SearchPage.route),
+      child: Container(
+        margin: const EdgeInsets.only(top: 25, left: 5, right: 7),
+        padding: const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: const [
+            BoxShadow(
+              blurRadius: 5,
+              offset: Offset(2, 3),
+              color: Colors.grey,
+            )
+          ],
+        ),
+        child: Row(
+          children: const [Icon(Icons.search), Text('   ¿Que necesitas?')],
+        ),
+      ),
+    );
+  }
+}
+
+class _CustomAppBar extends StatelessWidget {
+  const _CustomAppBar({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: const [
+        Text(
+          'Dashboard',
+          style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
+        ),
+        CircleAvatar(
+          radius: 28,
+          child: Text('S', style: TextStyle(fontSize: 25)),
+        ),
+      ],
     );
   }
 }
