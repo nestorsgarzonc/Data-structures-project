@@ -1,7 +1,7 @@
-import 'package:ed_project/screens/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../screens/home/main_page.dart';
 import '../../widgets/background_image_widget.dart';
 import '../../widgets/buttons_login_widget.dart';
 import '../../widgets/icon_button_widget.dart';
@@ -66,7 +66,7 @@ class __LoginBodyWodgetState extends State<_LoginBodyWodget> {
     print(_email);
     // ignore: avoid_print
     print(_password);
-    Navigator.of(context).pushReplacementNamed(HomePage.route);
+    Navigator.of(context).pushReplacementNamed(MainPage.route);
   }
 
   @override

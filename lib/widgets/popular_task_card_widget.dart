@@ -25,7 +25,6 @@ class PopularTaskWidget extends StatelessWidget {
             colors: [
               color.withOpacity(0.9),
               color.withOpacity(0.7),
-              color.withOpacity(0.6),
             ],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
