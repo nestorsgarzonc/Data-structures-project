@@ -1,10 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import '../../screens/home/search_page.dart';
 import '../../widgets/categories_card_widget.dart';
 import '../../widgets/freelancer_miniphoto_widget.dart';
 import '../../widgets/popular_task_card_widget.dart';
 import '../../widgets/title_categories_widget.dart';
+import '../home/search_page.dart';
+import '../profile/user_profile_page.dart';
 
 class HomePage extends StatelessWidget {
   final random = Random();
@@ -107,14 +108,17 @@ class _CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Text(
+      children: [
+        const Text(
           'Dashboard',
           style: TextStyle(fontWeight: FontWeight.w800, fontSize: 30),
         ),
-        CircleAvatar(
-          radius: 28,
-          child: Text('S', style: TextStyle(fontSize: 25)),
+        InkWell(
+          onTap: () => Navigator.of(context).pushNamed(UserProfilePage.route),
+          child: const CircleAvatar(
+            radius: 28,
+            child: Text('S', style: TextStyle(fontSize: 25)),
+          ),
         ),
       ],
     );
