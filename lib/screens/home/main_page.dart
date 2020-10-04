@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../providers/index_homepage_provider.dart';
-import '..//home/home_page.dart';
-import '..//home/my_orders_page.dart';
-import '..//home/search_page.dart';
+import '../home/home_page.dart';
+import '../home/my_orders_page.dart';
+import '../home/search_page.dart';
 
 class MainPage extends StatelessWidget {
   static const String route = 'mainPage';
