@@ -5,6 +5,7 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         children: [
@@ -25,11 +26,11 @@ class UserProfilePage extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const CircleAvatar(
-                      radius: 70,
+                    CircleAvatar(
+                      radius: size.width * 0.15,
                       backgroundColor: Colors.white,
                     ),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 20),
                     const Text(
                       'Sebastian Garzon',
                       style: TextStyle(
@@ -147,7 +148,7 @@ class UserProfileWallpaperWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Container(
-      height: size.height * 0.38,
+      height: size.height * 0.4,
       width: double.infinity,
       decoration: const BoxDecoration(
         borderRadius: _borderRadius,
