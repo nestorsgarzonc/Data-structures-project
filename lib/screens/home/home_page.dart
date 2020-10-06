@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import '../../screens/tasks/task_description.dart';
+import '../../screens/tasks/tasks_list.dart';
 import '../../widgets/categories_card_widget.dart';
 import '../../widgets/freelancer_miniphoto_widget.dart';
 import '../../widgets/popular_task_card_widget.dart';
@@ -17,9 +19,12 @@ class HomePage extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         children: [
           const _CustomAppBar(),
-          const _CustomSearchButton(),
+          const CustomSearchButton(),
           const SizedBox(height: 20),
-          TitleCategoriesWidget(title: 'Tareas populares', onPress: () {}),
+          TitleCategoriesWidget(
+            title: 'Tareas populares',
+            onPress: () => Navigator.of(context).pushNamed(TasksListPage.route),
+          ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
             height: 160,
@@ -28,7 +33,7 @@ class HomePage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: 20,
               itemBuilder: (context, index) => PopularTaskWidget(
-                onTap: () {},
+                onTap: () => Navigator.of(context).pushNamed(TaskPage.route),
                 text: 'Item #$index',
                 color: Color.fromRGBO(
                   random.nextInt(255),
@@ -72,8 +77,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _CustomSearchButton extends StatelessWidget {
-  const _CustomSearchButton({Key key}) : super(key: key);
+class CustomSearchButton extends StatelessWidget {
+  const CustomSearchButton({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
