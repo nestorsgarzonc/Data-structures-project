@@ -1,5 +1,4 @@
 import 'package:ed_project/collections/linked_list.dart';
-import 'package:ed_project/collections/node.dart';
 
 class Queue {
   LinkedList _cola;
@@ -28,6 +27,10 @@ class Queue {
 
   void makeEmpty() {
     _cola.makeEmpty();
+  }
+
+  int size() {
+    return _cola.size();
   }
 
   @override
