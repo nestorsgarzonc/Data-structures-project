@@ -25,14 +25,14 @@ class LinkedList {
 
   dynamic topFront() {
     if (_size == 0) {
-      throw Exception("The LinkedList is empty");
+      throw Exception("The collection is empty");
     }
     return _head.value;
   }
 
   void popFront() {
     if (_size == 0) {
-      throw Exception("The LinkedList is empty");
+      throw Exception("The collection is empty");
     }
     _head = _head.nextValue;
     _size--;
@@ -51,14 +51,14 @@ class LinkedList {
 
   dynamic topBack() {
     if (_size == 0) {
-      throw Exception("The LinkedList is empty");
+      throw Exception("The collection is empty");
     }
     return _tail.value;
   }
 
   void popBack() {
     if (_size == 0) {
-      throw Exception("The LinkedList is empty");
+      throw Exception("The collection is empty");
     }
     if (_size == 1) {
       _head = null;
@@ -89,7 +89,7 @@ class LinkedList {
 
   void erase(dynamic key) {
     if (_size == 0) {
-      throw Exception("The LinkedList is empty");
+      throw Exception("The collection is empty");
     }
     Node n = _head;
     if (n.value == key) {
@@ -103,7 +103,7 @@ class LinkedList {
         return;
       }
     }
-    throw Exception("Value isn't in the Linked-List");
+    throw Exception("Value isn't in the collection");
   }
 
   bool isEmpty() {
@@ -140,7 +140,7 @@ class LinkedList {
     if (ans < _size && _size > 0) {
       return ans;
     } else {
-      throw Exception("Value isn't in the Linked-List");
+      throw Exception("Value isn't in the collection");
     }
   }
 
@@ -178,6 +178,12 @@ class LinkedList {
     } else {
       throw Exception("Index out of bounds");
     }
+  }
+
+  void makeEmpty() {
+    _head = null;
+    _tail = null;
+    _size = 0;
   }
 
   @override
