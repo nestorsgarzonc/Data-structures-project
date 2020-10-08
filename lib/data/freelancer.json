@@ -1,0 +1,28 @@
+[
+    {
+        "name": "Luisa Maria",
+        "last_name": "Garzon Bernal",
+        "username": "luisagarzon",
+        "location": "Bogota, Colombia",
+        "gender": "female",
+        "avatar_url": "https://randomuser.me/api/portraits/women/43.jpg",
+        "services": [
+            {
+                "service_name": "Cerrajeria",
+                "date": "2020-10-08T22:33:09.961Z",
+                "category": "Mantenimiento",
+                "image_url": "https://images.unsplash.com/",
+                "numberStars": 5,
+                "price": 15000
+            },
+            {
+                "service_name": "Revision electricos",
+                "date": "2020-10-08T22:33:09.961Z",
+                "category": "Mantenimiento",
+                "image_url": "https://images.unsplash.com/",
+                "numberStars": 4,
+                "price": 10000
+            }
+        ]
+    }
+]
