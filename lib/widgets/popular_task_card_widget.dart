@@ -14,7 +14,7 @@ class PopularTaskWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => onTap(),
       child: Container(
         padding: const EdgeInsets.all(20),
         width: 160,

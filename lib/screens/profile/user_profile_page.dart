@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../widgets/background_image_rounded.dart';
 
 class UserProfilePage extends StatelessWidget {
   static const String route = 'profilePage';
@@ -8,7 +9,7 @@ class UserProfilePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          UserProfileWallpaperWidget(
+          BackgroundImageRoundedWidget(
             child: Stack(
               children: [
                 Positioned(
@@ -126,41 +127,6 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class UserProfileWallpaperWidget extends StatelessWidget {
-  final Widget child;
-  static const _borderRadius = BorderRadius.only(
-    bottomLeft: Radius.circular(30),
-    bottomRight: Radius.circular(30),
-  );
-
-  const UserProfileWallpaperWidget({
-    Key key,
-    @required this.child,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height * 0.38,
-      width: double.infinity,
-      decoration: const BoxDecoration(
-        borderRadius: _borderRadius,
-        image: DecorationImage(
-            image: AssetImage('assets/img/user_profile_wallpaper.jpg'),
-            fit: BoxFit.cover),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.2),
-          borderRadius: _borderRadius,
-        ),
-        child: child,
       ),
     );
   }

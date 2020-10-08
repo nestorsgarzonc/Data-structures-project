@@ -6,6 +6,8 @@ import '../screens/home/main_page.dart';
 import '../screens/home/search_page.dart';
 import '../screens/initial_page.dart';
 import '../screens/profile/user_profile_page.dart';
+import '../screens/tasks/task_description.dart';
+import '../screens/tasks/tasks_list.dart';
 
 final Map<String, Widget Function(BuildContext)> constRoutes = {
   InitialPage.route: (ctx) => InitialPage(),
@@ -14,4 +16,6 @@ final Map<String, Widget Function(BuildContext)> constRoutes = {
   MainPage.route: (ctx) => MainPage(),
   SearchPage.route: (ctx) => SearchPage(),
   UserProfilePage.route: (ctx) => UserProfilePage(),
+  TasksListPage.route: (ctx) => TasksListPage(),
+  TaskPage.route: (ctx) => TaskPage(),
 };
