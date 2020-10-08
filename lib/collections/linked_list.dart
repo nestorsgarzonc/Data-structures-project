@@ -91,7 +91,7 @@ class LinkedList {
     if (_size == 0) {
       throw Exception("The collection is empty");
     }
-    Node n = _head;
+    final Node n = _head;
     if (n.value == key) {
       popFront();
       return;
@@ -115,11 +115,12 @@ class LinkedList {
   }
 
   dynamic getIndex(int i) {
-    if (i >= 0 && i < _size) {
+    int tempI = i;
+    if (tempI >= 0 && tempI < _size) {
       Node n = _head;
       while (i > 0) {
         n = n.nextValue;
-        i--;
+        tempI--;
       }
       return n.value;
     } else {
@@ -145,13 +146,14 @@ class LinkedList {
   }
 
   dynamic remove(int i) {
-    if (i >= 0 && i < _size) {
+    int tempI = i;
+    if (tempI >= 0 && tempI < _size) {
       Node n = _head;
-      while (i > 1) {
+      while (tempI > 1) {
         n = n.nextValue;
-        i--;
+        tempI--;
       }
-      dynamic ans = n.nextValue.value;
+      final dynamic ans = n.nextValue.value;
       n.nextValue = n.nextValue.nextValue;
       _size--;
       return ans;
@@ -161,17 +163,18 @@ class LinkedList {
   }
 
   void add(int i, dynamic key) {
-    if (i >= 0 && i < _size) {
+    int tempI = i;
+    if (tempI >= 0 && tempI < _size) {
       Node n = _head;
-      if (i == 0) {
+      if (tempI == 0) {
         pushFront(key);
         return;
       }
-      while (i > 1) {
+      while (tempI > 1) {
         n = n.nextValue;
-        i--;
+        tempI--;
       }
-      Node ins = Node(key);
+      final Node ins = Node(key);
       ins.nextValue = n.nextValue;
       n.nextValue = ins;
       _size++;

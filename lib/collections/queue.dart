@@ -12,7 +12,7 @@ class Queue {
   }
 
   dynamic dequeue() {
-    dynamic n = _cola.topFront();
+    final n = _cola.topFront();
     _cola.popFront();
     return n;
   }

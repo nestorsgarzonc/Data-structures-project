@@ -12,7 +12,7 @@ class Stack {
   }
 
   dynamic pop() {
-    dynamic r = _pila.topFront();
+    final r = _pila.topFront();
     _pila.popFront();
     return r;
   }

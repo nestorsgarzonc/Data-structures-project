@@ -1,0 +1,36 @@
+[
+    {
+        "name": "Luis Alejandro",
+        "last_name": "Garzon Bernal",
+        "username": "luisgarzon",
+        "location": "Bogota, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/women/43.jpg",
+        "last_transactions": [
+            {
+                "freelancer": "Jose Rodriguez",
+                "service_name": "Limpieza domestica",
+                "date": "2020-10-08T22:33:09.961Z",
+                "category": "Clean",
+                "price": 20000
+            }
+        ]
+    },
+    {
+        "name": "Luis Alejandro",
+        "last_name": "Garzon Bernal",
+        "username": "luisgarzon",
+        "location": "Bogota, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/women/74.jpg",
+        "last_transactions": [
+            {
+                "freelancer": "Jose Rodriguez",
+                "service_name": "Limpieza domestica",
+                "date": "2020-10-08T22:33:09.961Z",
+                "category": "Clean",
+                "price": 20000
+            }
+        ]
+    }
+]
