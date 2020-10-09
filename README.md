@@ -1,16 +1,9 @@
-# ed_project
+# Waffly
 
-A new Flutter project.
+Waffly es una app multiplataforma construida en flutter en la que puedes solicitar servicios al estilo en que pides un Uber o un Rappi, puedes pedir servicios desde que alguien te arregle el jardin hasta desarrollo de software
 
-## Getting Started
+## Construida en Flutter 
 
-This project is a starting point for a Flutter application.
+## Screnshots:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Login](https://github.com/nestorsgarzonc/Data-structures-project/blob/master/screenshots/Screenshot_2020-10-08-18-32-30-378_com.example.ed_project.jpg?raw=true)
