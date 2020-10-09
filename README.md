@@ -29,7 +29,7 @@ Si deseas debuggear la app en Android necesitas configurar el repositorio con Fi
 <img src="https://github.com/nestorsgarzonc/Data-structures-project/blob/master/screenshots/Screenshot_2020-10-08-18-32-37-263_com.example.ed_project.jpg?raw=true" width="350" />
 
 ### Tareas populares
-<img src='https://github.com/nestorsgarzonc/Data-structures-project/blob/master/screenshots/Screenshot_2020-10-08-18-32-37-263_com.example.ed_project.jpg?raw=true' width='350'/>
+<img src='https://github.com/nestorsgarzonc/Data-structures-project/blob/master/screenshots/Screenshot_2020-10-08-18-32-43-846_com.example.ed_project.jpg?raw=true' width='350'/>
 
 ### Descripcion tarea
 <img src='https://github.com/nestorsgarzonc/Data-structures-project/blob/master/screenshots/Screenshot_2020-10-08-18-33-48-416_com.example.ed_project.jpg?raw=true' width='350'/>
