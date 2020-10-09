@@ -2,7 +2,10 @@
 
 Waffly es una app multiplataforma construida en flutter en la que puedes solicitar servicios al estilo en que pides un Uber o un Rappi, puedes pedir servicios desde que alguien te arregle el jardin hasta desarrollo de software
 
-## Construida en Flutter 
+## Construida en Flutter 💙
+APK **PROXIMAMENTE**
+URL **PROXIMAMENTE**
+Si deseas debuggear la app en Android necesitas configurar el repositorio con Firebase
 
 ## Screnshots:
 
