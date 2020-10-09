@@ -8,7 +8,9 @@ APK **PROXIMAMENTE**
 URL **PROXIMAMENTE**
 
 Si deseas debuggear la app en Android necesitas configurar el repositorio con Firebase debes seguir las siguientes instrucciones:
+
   -Instalar [Flutter](https://flutter.dev/?gclid=Cj0KCQjw8fr7BRDSARIsAK0Qqr6hUQT8bSSJ_FK0fooh0mC0Zbt-6yCGBHFJRDAyh4LUoQMwIYid8tUaAhUOEALw_wcB&gclsrc=aw.ds)
+  
   -[FlutterFire](https://firebase.flutter.dev/)
 
 ## Screnshots:
