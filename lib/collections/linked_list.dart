@@ -91,7 +91,7 @@ class LinkedList {
     if (_size == 0) {
       throw Exception("The collection is empty");
     }
-    final Node n = _head;
+    Node n = _head;
     if (n.value == key) {
       popFront();
       return;
@@ -102,6 +102,7 @@ class LinkedList {
         _size--;
         return;
       }
+      n = n.nextValue;
     }
     throw Exception("Value isn't in the collection");
   }
@@ -114,11 +115,11 @@ class LinkedList {
     return _size;
   }
 
-  dynamic getIndex(int i) {
+  dynamic getValue(int i) {
     int tempI = i;
     if (tempI >= 0 && tempI < _size) {
       Node n = _head;
-      while (i > 0) {
+      while (tempI > 0) {
         n = n.nextValue;
         tempI--;
       }
