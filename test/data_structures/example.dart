@@ -33,5 +33,5 @@ void main() {
 }
 
 int counter(int val) {
-  return val + 1;
+  return val + 2;
 }
