@@ -2,7 +2,7 @@ import 'package:ed_project/collections/linked_list.dart';
 import 'package:test/test.dart';
 
 void main() {
-  LinkedList lista = LinkedList();
+  final LinkedList lista = LinkedList();
   for (int i = 0; i < 100000000; i++) {
     lista.pushBack(i);
   }

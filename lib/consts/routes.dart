@@ -1,3 +1,5 @@
+import 'package:ed_project/screens/categories/categories_list.dart';
+import 'package:ed_project/screens/payment/payment.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/authentication/login_page.dart';
@@ -18,4 +20,6 @@ final Map<String, Widget Function(BuildContext)> constRoutes = {
   UserProfilePage.route: (ctx) => UserProfilePage(),
   TasksListPage.route: (ctx) => TasksListPage(),
   TaskPage.route: (ctx) => TaskPage(),
+  PaymentPage.route: (ctx) => PaymentPage(),
+  CategoriesListPage.route: (ctx) => CategoriesListPage(),
 };

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:ed_project/screens/categories/categories_list.dart';
 import 'package:flutter/material.dart';
 import '../../screens/tasks/task_description.dart';
 import '../../screens/tasks/tasks_list.dart';
@@ -21,8 +22,9 @@ class HomePage extends StatelessWidget {
           const CustomSearchButton(),
           const SizedBox(height: 20),
           TitleCategoriesWidget(
-            title: 'Tareas populares',
-            onPress: () => Navigator.of(context).pushNamed(TasksListPage.route),
+            title: 'Categorias',
+            onPress: () =>
+                Navigator.of(context).pushNamed(CategoriesListPage.route),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
@@ -32,7 +34,7 @@ class HomePage extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemCount: 20,
               itemBuilder: (context, index) => PopularTaskWidget(
-                onTap: () => Navigator.of(context).pushNamed(TaskPage.route),
+                onTap: () {},
                 text: 'Item #$index',
                 color: Color.fromRGBO(
                   random.nextInt(255),
@@ -43,7 +45,10 @@ class HomePage extends StatelessWidget {
               ),
             ),
           ),
-          TitleCategoriesWidget(title: 'Categorias', onPress: () {}),
+          TitleCategoriesWidget(
+            title: 'Tareas populares',
+            onPress: () => Navigator.of(context).pushNamed(TasksListPage.route),
+          ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 20),
             height: 240,
@@ -54,7 +59,7 @@ class HomePage extends StatelessWidget {
               itemBuilder: (context, index) => CategoriesWidget(
                 frelancersCounter: 20,
                 name: 'House cleaning',
-                onTap: () {},
+                onTap: () => Navigator.of(context).pushNamed(TaskPage.route),
               ),
             ),
           ),
