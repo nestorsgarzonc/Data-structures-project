@@ -1,3 +1,5 @@
+import 'package:ed_project/screens/payment/payment.dart';
+import 'package:ed_project/widgets/back_button_appbar_widget.dart';
 import 'package:flutter/material.dart';
 
 class TaskPage extends StatelessWidget {
@@ -20,23 +22,10 @@ class TaskPage extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 60,
               left: 30,
-              child: InkWell(
-                onTap: () => Navigator.of(context).pop(),
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(200),
-                  ),
-                  padding: const EdgeInsets.all(5),
-                  alignment: Alignment.center,
-                  child: const Icon(Icons.arrow_back_ios_outlined),
-                ),
-              ),
+              child: BackButtonAppBarWidget(),
             ),
             Positioned(
               top: 60,
@@ -139,7 +128,8 @@ class TaskPage extends StatelessWidget {
                         horizontal: 35,
                         vertical: 15,
                       ),
-                      onPressed: () {},
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed(PaymentPage.route),
                       color: Theme.of(context).primaryColor,
                       elevation: 2,
                       shape: RoundedRectangleBorder(
