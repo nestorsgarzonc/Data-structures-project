@@ -1,6 +1,7 @@
 import 'dart:math';
-import 'package:ed_project/widgets/popular_task_card_widget.dart';
 import 'package:flutter/material.dart';
+import '../../screens/tasks/tasks_list.dart';
+import '../../widgets/popular_task_card_widget.dart';
 
 class CategoriesListPage extends StatelessWidget {
   static const route = 'categories_list_page';
@@ -30,12 +31,13 @@ class CategoriesListPage extends StatelessWidget {
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  childAspectRatio: 1.2,
+                  childAspectRatio: 1.3,
                   mainAxisSpacing: 20,
                 ),
                 itemCount: 25,
                 itemBuilder: (context, index) => PopularTaskWidget(
-                  onTap: () {},
+                  onTap: () =>
+                      Navigator.of(context).pushNamed(TasksListPage.route),
                   text: 'Item #$index',
                   color: Color.fromRGBO(
                     random.nextInt(255),
