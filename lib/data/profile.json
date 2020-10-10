@@ -12,6 +12,7 @@
             {
                 "freelancer": "Jose Rodriguez",
                 "service_name": "Limpieza domestica",
+                "description": "lorem",
                 "date": "2020-10-08T22:33:09.961Z",
                 "category": "Clean",
                 "price": 20000
@@ -31,6 +32,7 @@
             {
                 "freelancer": "Jose Rodriguez",
                 "service_name": "Cuidado de niños",
+                "description": "lorem",
                 "category": "Cuidados",
                 "date": "2020-10-08T22:33:09.961Z",
                 "price": 10000
