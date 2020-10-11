@@ -38,5 +38,207 @@
                 "price": 10000
             }
         ]
-    }
+    },
+    {
+        "name": "Santiago ",
+        "last_name": "Alarcón",
+        "username": "santigo345",
+        "email": "santiagoalarcon@gmail.com",
+        "password": "Zwa7982",
+        "location": "Bogotá, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/men/42.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Camilo Gonzalez",
+                "service_name": "Cuidado de mascotas",
+                "description": "Cuido a tu mascota en aquellos momentos donde no puedes estar",
+                "date": "2020-01-11 14:13:56",
+                "category": "Mascotas",
+                "price": 25000
+          }
+        ]
+},
+{
+        "name": "Camila ",
+        "last_name": "Español",
+        "username": "camiespañol11",
+        "email": "camilaaa15@hotmail.com",
+        "password": "cZz6CT4",
+        "location": "Medellín, Colombia",
+        "gender": "female",
+        "avatar_url": "https://randomuser.me/api/portraits/women/13.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Alejandro Beltrán",
+                "service_name": "Aseo general",
+                "description": "Deja las molestias, arreglamos y limpiamos la casa por ti",
+                "date": "2020-02-24 17:25:03",
+                "category": "Limpieza",
+                "price": 50000
+          }
+        ]
+},
+{
+        "name": "Valentina ",
+        "last_name": "Aguilar",
+        "username": "valenAgui",
+        "email": "lauvalen289@gmail.com",
+        "password": "Wer44NT",
+        "location": "Bogotá, Colombia",
+        "gender": "female",
+        "avatar_url": "https://randomuser.me/api/portraits/women/80.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Roger Castellanos",
+                "service_name": "Reparación de celulares",
+                "description": "Se le da nueva vida a tu teléfono, se desmonta el terminal y se hace un chequeo y respectiva reparación",
+                "date": "2020-01-26 18:57:33",
+                "category": "Reparación",
+                "price": 100000
+          }
+        ]
+},
+{
+        "name": "Juan",
+        "last_name": "León",
+        "username": "juancho347",
+        "email": "juanferle@hotmail.com",
+        "password": "eC9THQA",
+        "location": "Cali, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/men/43.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Juan David Sánchez",
+                "service_name": "Cambio de guardas",
+                "description": "Dale más seguridad a tu hogar, oficina o cualquier ambiente que quieras, cambio de guardas realizado por un profesional certificado",
+                "date": "2020-03-05 11:03:43",
+                "category": "Cerrajería",
+                "price": 80000
+          }
+        ]
+},
+{
+        "name": "Salomón",
+        "last_name": "Lenis",
+        "username": "salomonismo",
+        "email": "salolenis@yahoo.es",
+        "password": "L6FMker",
+        "location": "Bogotá, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/men/77.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Steven Moreno",
+                "service_name": "Reparación de lavadoras",
+                "description": "Chequeo, evaluación y correcto mantenimiento de lavadoras",
+                "date": "2020-04-18 21:31:47",
+                "category": "Reparación",
+                "price": 100000
+          }
+        ]
+},
+{
+        "name": "Juan ",
+        "last_name": "Moreno",
+        "username": "juanmoreno1",
+        "email": "jmoreno1@gmail.com",
+        "password": "n4SbDnJ",
+        "location": "Barranquilla, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/men/9.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "José Villada",
+                "service_name": "Clases de matemáticas",
+                "description": "Clase virtual por una hora de todo tema de matemáticas que se solicite",
+                "date": "2020-05-18 10:57:29",
+                "category": "Educación",
+                "price": 50000
+          }
+        ]
+},
+{
+        "name": "Sebastian",
+        "last_name": "Tabares",
+        "username": "juansetabares02",
+        "email": "juanstabares@outlook.com",
+        "password": "p9fW2Kg",
+        "location": "Bucaramanga, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/men/57.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Tatiana Figeroa",
+                "service_name": "Terapia Psicológica",
+                "description": "Servicio de asistencia psicológica a domicilio",
+                "date": "2020-06-12 07:00:36",
+                "category": "Salud",
+                "price": 120000
+          }
+        ]
+},
+{
+        "name": "Pablo",
+        "last_name": "Espinosa",
+        "username": "pabloegranados",
+        "email": "pablito73@hotmail.com",
+        "password": "Yw2E3GU",
+        "location": "Santa Marta, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/men/22.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Camilo Rivera",
+                "service_name": "Mantenimiento Nevera",
+                "description": "Chequeo, evaluación y correcto mantenimiento de tu nevera",
+                "date": "2020-07-02 04:10:56",
+                "category": "Reparación",
+                "price": 50000
+          }
+        ]
+},
+{
+        "name": "Rocío",
+        "last_name": "Lizarazo",
+        "username": "rochilizarazo1",
+        "email": "rociolizarazo111@gmail.com",
+        "password": "qcSjA9c",
+        "location": "Bogotá, Colombia",
+        "gender": "female",
+        "avatar_url": "https://randomuser.me/api/portraits/women/79.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Mario Ardila",
+                "service_name": "Cena a domicilio",
+                "description": "Cocinar muchas veces puede ser tedioso, se ofrece un servicio de cocina a domicilio con un chef profesional capaz de preparar todo tipo de plato",
+                "date": "2020-07-08 17:59:41",
+                "category": "Comida",
+                "price": 150000
+          }
+        ]
+},
+{
+        "name": "Alex ",
+        "last_name": "Triana",
+        "username": "alextrianacrack",
+        "email": "alexandertri@outlook.com",
+        "password": "8y7bJUE",
+        "location": "Pereira, Colombia",
+        "gender": "male",
+        "avatar_url": "https://randomuser.me/api/portraits/men/89.jpg",
+        "last_transactions": [
+          {
+                "freelancer": "Carlos Restrepo",
+                "service_name": "Clases de guitarra",
+                "description": "Te brindamos la oportunidad de aprender algo nuevo, se ofrece una clase totalmente personalizada de guitarra para que aprendas a dominar el instrumento como un verdadero profesional",
+                "date": "2020-07-22 22:42:00",
+                "category": "Música",
+                "price": 45000
+          }
+        ]
+}
+   
+    
 ]
