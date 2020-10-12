@@ -1,6 +1,6 @@
-import 'package:ed_project/models/profile_model.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+import './../models/profile_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
   List<ProfileModel> profilesData = [];

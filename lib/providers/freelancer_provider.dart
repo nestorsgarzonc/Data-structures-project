@@ -1,6 +1,6 @@
-import 'package:ed_project/models/freelancer_model.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+import '../models/freelancer_model.dart';
 
 class FreelancerProvider extends ChangeNotifier {
   List<FreelancerModel> freelancerData = [];

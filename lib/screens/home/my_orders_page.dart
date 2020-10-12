@@ -1,9 +1,8 @@
-import 'package:ed_project/models/profile_model.dart';
 import 'package:intl/intl.dart';
-
-import '../../providers/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../models/profile_model.dart';
+import '../../providers/profile_provider.dart';
 
 class MyOrdersPage extends StatelessWidget {
   @override
