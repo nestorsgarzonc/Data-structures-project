@@ -1,9 +1,15 @@
+import 'package:ed_project/models/profile_model.dart';
+import 'package:intl/intl.dart';
+
+import '../../providers/profile_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyOrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final userProviderView = Provider.of<ProfileProvider>(context).getUser;
     return Column(
       children: [
         Container(
@@ -17,8 +23,10 @@ class MyOrdersPage extends StatelessWidget {
         Expanded(
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
-            itemCount: 20,
-            itemBuilder: (context, index) => _CustomCardItem(index: index),
+            itemCount: userProviderView.lastTransactions.length,
+            itemBuilder: (context, i) => _CustomCardItem(
+              transaction: userProviderView.lastTransactions[i],
+            ),
           ),
         )
       ],
@@ -27,8 +35,9 @@ class MyOrdersPage extends StatelessWidget {
 }
 
 class _CustomCardItem extends StatefulWidget {
-  final int index;
-  const _CustomCardItem({Key key, @required this.index}) : super(key: key);
+  final LastTransaction transaction;
+  const _CustomCardItem({Key key, @required this.transaction})
+      : super(key: key);
 
   @override
   __CustomCardItemState createState() => __CustomCardItemState();
@@ -39,6 +48,9 @@ class __CustomCardItemState extends State<_CustomCardItem> {
 
   @override
   Widget build(BuildContext context) {
+    final dateFormat = DateFormat('yyyy-MM-dd – kk:mm');
+    final date = dateFormat.format(widget.transaction.date);
+    final Size size = MediaQuery.of(context).size;
     return Card(
       elevation: 2,
       margin: const EdgeInsets.symmetric(vertical: 8),
@@ -46,14 +58,14 @@ class __CustomCardItemState extends State<_CustomCardItem> {
         contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         leading: const CircleAvatar(radius: 25, child: Text('LG')),
         title: Text(
-          'Servicio #${widget.index}',
+          '${widget.transaction.serviceName}',
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 8),
-            const Text('20/05/2020'),
+            Text('$date'),
             if (isTouched)
               SizedBox(
                 height: 60,
@@ -65,7 +77,7 @@ class __CustomCardItemState extends State<_CustomCardItem> {
                       textColor: Theme.of(context).primaryColor,
                       backgroundColor: Colors.white,
                       text: 'Detalles',
-                      onTap: () {},
+                      onTap: () => handleDialog(context, date, size),
                     ),
                     _ButtomListOrders(
                       backgroundColor: Theme.of(context).primaryColor,
@@ -79,8 +91,67 @@ class __CustomCardItemState extends State<_CustomCardItem> {
           ],
         ),
         onTap: () => setState(() => isTouched = !isTouched),
-        trailing: const Icon(Icons.arrow_back_ios),
+        trailing: Icon(!isTouched
+            ? Icons.arrow_downward_outlined
+            : Icons.arrow_upward_outlined),
       ),
+    );
+  }
+
+  Future handleDialog(BuildContext context, String date, Size size) {
+    return showDialog(
+      context: context,
+      builder: (ctx) {
+        final titleTextStyle = TextStyle(
+          fontWeight: FontWeight.bold,
+        );
+        final items = [
+          {
+            'title': 'Nombre del servicio',
+            'content': widget.transaction.serviceName
+          },
+          {'title': 'Categoria', 'content': widget.transaction.category},
+          {
+            'title': 'Descripcion del servicio',
+            'content': widget.transaction.description
+          },
+          {'title': 'Freelancer', 'content': widget.transaction.freelancer},
+          {'title': 'Fecha', 'content': date},
+          {'title': 'Precio', 'content': widget.transaction.serviceName},
+        ];
+        return AlertDialog(
+          title: Text('Descripcion de la orden:'),
+          content: SizedBox(
+            height: 200,
+            width: size.width * 0.8,
+            child: ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (context, i) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('${items[i]["title"]}: ', style: titleTextStyle),
+                    Expanded(child: Text('${items[i]["content"]}')),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          actions: [
+            RaisedButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text('Salir', style: TextStyle(color: Colors.white)),
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              color: Theme.of(context).primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            )
+          ],
+        );
+      },
     );
   }
 }
