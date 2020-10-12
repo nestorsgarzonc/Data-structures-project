@@ -1,5 +1,7 @@
+import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../screens/home/main_page.dart';
 import '../../widgets/background_image_widget.dart';
@@ -57,20 +59,22 @@ class _LoginBodyWodget extends StatefulWidget {
 
 class __LoginBodyWodgetState extends State<_LoginBodyWodget> {
   final _formKey = GlobalKey<FormState>();
-
   String _email = '';
   String _password = '';
 
-  void handleSubmit() {
-    // ignore: avoid_print
-    print(_email);
-    // ignore: avoid_print
-    print(_password);
-    Navigator.of(context).pushReplacementNamed(MainPage.route);
-  }
-
   @override
   Widget build(BuildContext context) {
+    void handleSubmit() {
+      bool res = Provider.of<ProfileProvider>(context, listen: false)
+          .login(_email, _password);
+      if (!res) {
+        Scaffold.of(context)
+            .showSnackBar(SnackBar(content: Text('Credenciales incorrectas')));
+      } else {
+        Navigator.of(context).pushReplacementNamed(MainPage.route);
+      }
+    }
+
     return ListView(
       children: [
         const Text(
@@ -79,6 +83,7 @@ class __LoginBodyWodgetState extends State<_LoginBodyWodget> {
         ),
         const SizedBox(height: 25),
         Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           key: _formKey,
           child: Column(
             children: [

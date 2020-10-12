@@ -1,5 +1,7 @@
 import 'dart:math';
+import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../screens/categories/categories_list.dart';
 import '../../screens/tasks/task_description.dart';
 import '../../screens/tasks/tasks_list.dart';
@@ -123,6 +125,7 @@ class _CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProviderView = Provider.of<ProfileProvider>(context).getUser;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -132,10 +135,9 @@ class _CustomAppBar extends StatelessWidget {
         ),
         InkWell(
           onTap: () => Navigator.of(context).pushNamed(UserProfilePage.route),
-          child: const CircleAvatar(
-            radius: 28,
-            child: Text('S', style: TextStyle(fontSize: 25)),
-          ),
+          child: CircleAvatar(
+              radius: 28,
+              backgroundImage: NetworkImage(userProviderView.avatarUrl)),
         ),
       ],
     );

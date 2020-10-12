@@ -1,4 +1,6 @@
+import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../widgets/background_image_rounded.dart';
 
 class UserProfilePage extends StatelessWidget {
@@ -6,6 +8,7 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProviderView = Provider.of<ProfileProvider>(context).getUser;
     return Scaffold(
       body: Column(
         children: [
@@ -26,13 +29,13 @@ class UserProfilePage extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 70,
-                      backgroundColor: Colors.white,
+                      backgroundImage: NetworkImage(userProviderView.avatarUrl),
                     ),
                     const SizedBox(height: 25),
-                    const Text(
-                      'Sebastian Garzon',
+                    Text(
+                      '${userProviderView.name.split(" ")[0]} ${userProviderView.lastName.split(" ")[0]}',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -42,14 +45,14 @@ class UserProfilePage extends StatelessWidget {
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
+                      children: [
+                        const Icon(
                           Icons.location_on,
                           color: Colors.white,
                           size: 30,
                         ),
                         Text(
-                          ' Bogota, Colombia',
+                          '${userProviderView.location}',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -100,9 +103,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
     },
   ];
 
-  const _ListItemsUserProfileWidget({
-    Key key,
-  }) : super(key: key);
+  const _ListItemsUserProfileWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
