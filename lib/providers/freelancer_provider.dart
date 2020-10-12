@@ -3,10 +3,11 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 
 class FreelancerProvider extends ChangeNotifier {
-  var freelancerData = [];
-  Future<void> chargeData() async {
+  List<FreelancerModel> freelancerData = [];
+
+  Future<void> loadData() async {
     final data = await rootBundle.loadString('assets/data/freelancer.json');
     freelancerData = freelancerModelFromJson(data);
-    print(freelancerData);
+    print('Frelancer data loaded');
   }
 }

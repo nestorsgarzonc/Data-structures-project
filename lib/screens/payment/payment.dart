@@ -1,5 +1,3 @@
-import 'package:ed_project/providers/profile_provider.dart';
-import 'package:ed_project/providers/freelancer_provider.dart';
 import 'package:flutter/material.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -64,10 +62,7 @@ class PaymentPage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             RaisedButton(
-              onPressed: () {
-                ProfileProvider().chargeData();
-                FreelancerProvider().chargeData();
-              },
+              onPressed: () {},
               padding: const EdgeInsets.symmetric(vertical: 20),
               color: Theme.of(context).primaryColor,
               child: const Text(

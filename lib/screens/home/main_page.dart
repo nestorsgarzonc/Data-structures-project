@@ -54,11 +54,11 @@ class _CustomNavigationBarWidget extends StatelessWidget {
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          title: Text('Inicio'),
+          label: 'Inicio',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.receipt),
-          title: Text('Mis ordenes'),
+          label: 'Mis ordenes',
         ),
       ],
     );
