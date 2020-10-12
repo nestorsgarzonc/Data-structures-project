@@ -79,7 +79,7 @@ class __CustomCardItemState extends State<_CustomCardItem> {
           ],
         ),
         onTap: () => setState(() => isTouched = !isTouched),
-        trailing: const Icon(Icons.arrow_downward_sharp),
+        trailing: const Icon(Icons.arrow_back_ios),
       ),
     );
   }

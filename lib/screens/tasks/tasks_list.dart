@@ -40,7 +40,7 @@ class TasksListPage extends StatelessWidget {
 class _TaskCard extends StatelessWidget {
   final borderStars = List.generate(
     1,
-    (index) => const Icon(Icons.star_border_outlined),
+    (index) => const Icon(Icons.star_border),
   );
 
   @override
@@ -114,7 +114,7 @@ class _LocationWIdget extends StatelessWidget {
       ),
       child: Row(
         children: const [
-          Icon(Icons.location_on_outlined),
+          Icon(Icons.location_on),
           Text('Bogota, Colombia'),
         ],
       ),
@@ -143,7 +143,7 @@ class __HeartIconState extends State<_HeartIcon> {
           boxShadow: const [BoxShadow(blurRadius: 1, color: Colors.grey)],
         ),
         child: Icon(
-          _isTouched ? Icons.favorite : Icons.favorite_border_outlined,
+          _isTouched ? Icons.favorite : Icons.favorite_border,
           color: Colors.red,
         ),
       ),
@@ -158,10 +158,8 @@ class _BottomContentTaskCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final filledStars = List.generate(
         4, (_) => Icon(Icons.star, color: Theme.of(context).primaryColor));
-    final outlineStars = List.generate(
-        1,
-        (_) => Icon(Icons.star_border_outlined,
-            color: Theme.of(context).primaryColor));
+    final outlineStars = List.generate(1,
+        (_) => Icon(Icons.star_border, color: Theme.of(context).primaryColor));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

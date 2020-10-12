@@ -13,7 +13,7 @@ class SearchPage extends StatelessWidget {
             children: [
               FlatButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: const Icon(Icons.arrow_back_ios_rounded),
+                child: const Icon(Icons.arrow_back_ios),
               ),
               Expanded(
                 child: Container(

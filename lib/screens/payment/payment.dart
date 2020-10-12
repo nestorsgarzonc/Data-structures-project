@@ -1,3 +1,5 @@
+import 'package:ed_project/providers/profile_provider.dart';
+import 'package:ed_project/providers/freelancer_provider.dart';
 import 'package:flutter/material.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -30,7 +32,7 @@ class PaymentPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Card(
-              color: Theme.of(context).primaryColor,
+              color: Colors.blueAccent,
               elevation: 5,
               child: Padding(
                 padding: const EdgeInsets.all(25),
@@ -62,7 +64,10 @@ class PaymentPage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                ProfileProvider().chargeData();
+                FreelancerProvider().chargeData();
+              },
               padding: const EdgeInsets.symmetric(vertical: 20),
               color: Theme.of(context).primaryColor,
               child: const Text(

@@ -51,14 +51,14 @@ class _CustomNavigationBarWidget extends StatelessWidget {
       onTap: (value) =>
           Provider.of<IndexHomePageProvider>(context, listen: false).index =
               value,
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home_filled),
-          label: 'Inicio',
+          icon: Icon(Icons.home),
+          title: Text('Inicio'),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.receipt_long_rounded),
-          label: 'Mis ordenes',
+          icon: Icon(Icons.receipt),
+          title: Text('Mis ordenes'),
         ),
       ],
     );

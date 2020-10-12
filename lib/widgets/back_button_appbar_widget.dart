@@ -16,7 +16,7 @@ class BackButtonAppBarWidget extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(5),
         alignment: Alignment.center,
-        child: const Icon(Icons.arrow_back_ios_outlined),
+        child: const Icon(Icons.arrow_back_ios),
       ),
     );
   }

@@ -40,7 +40,7 @@ class TaskPage extends StatelessWidget {
                 padding: const EdgeInsets.all(5),
                 alignment: Alignment.center,
                 child: const Icon(
-                  Icons.favorite_border_outlined,
+                  Icons.favorite,
                   color: Colors.red,
                 ),
               ),
@@ -74,7 +74,7 @@ class TaskPage extends StatelessWidget {
                             const SizedBox(height: 5),
                             Row(
                               children: const [
-                                Icon(Icons.location_on_outlined),
+                                Icon(Icons.location_on),
                                 Text(' Bogota, Colombia'),
                               ],
                             ),

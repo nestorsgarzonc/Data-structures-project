@@ -81,22 +81,22 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
     {
       'title': 'Medios de pago',
       'route': '',
-      'icon': Icons.credit_card_outlined,
+      'icon': Icons.credit_card,
     },
     {
       'title': 'Cupones',
       'route': '',
-      'icon': Icons.countertops_outlined,
+      'icon': Icons.attach_money,
     },
     {
       'title': 'Ayuda',
       'route': '',
-      'icon': Icons.contact_support_outlined,
+      'icon': Icons.help_outline,
     },
     {
       'title': 'Cerrar sesion',
       'route': '',
-      'icon': Icons.logout,
+      'icon': Icons.outlined_flag,
     },
   ];
 
