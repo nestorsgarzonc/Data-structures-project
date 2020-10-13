@@ -80,7 +80,7 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
         ),
         Form(
           key: _formKey,
-          autovalidateMode: AutovalidateMode.always,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
               const SizedBox(height: 10),
@@ -88,6 +88,11 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 keyboardType: TextInputType.emailAddress,
                 cursorColor: Theme.of(context).primaryColor,
                 onChanged: (value) => _email = value,
+                validator: (email) =>
+                    RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(email)
+                        ? null
+                        : 'Ingresa un correo valido',
                 decoration: const InputDecoration(
                   labelText: 'Correo electronico',
                   prefixIcon: Icon(Icons.email),
@@ -98,6 +103,9 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 cursorColor: Theme.of(context).primaryColor,
                 keyboardType: TextInputType.name,
                 onChanged: (value) => _username = value,
+                validator: (value) => value.length > 6
+                    ? null
+                    : 'El nombre de usuario debe tener mas de 6 caracteres',
                 decoration: const InputDecoration(
                   labelText: 'Usuario',
                   prefixIcon: Icon(Icons.account_circle),
@@ -108,6 +116,9 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 onChanged: (value) => _password = value,
+                validator: (value) => value.length > 8
+                    ? null
+                    : 'La contraseña debe tener mas de 8 caracteres',
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: const InputDecoration(
                   labelText: 'Contraseña',
