@@ -25,4 +25,27 @@ class ProfileProvider extends ChangeNotifier {
       return false;
     }
   }
+
+  bool singUp(String email, String username, String password) {
+    try {
+      profilesData.firstWhere((e) => e.email == email);
+      return false;
+    } catch (e) {
+      profilesData.add(
+        ProfileModel(
+          email: email,
+          username: username,
+          password: password,
+          lastTransactions: [],
+          avatarUrl:
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Logotipo_de_la_Universidad_Nacional_de_Colombia.svg/1200px-Logotipo_de_la_Universidad_Nacional_de_Colombia.svg.png',
+          gender: Gender.MALE,
+          lastName: '',
+          location: '',
+          name: '',
+        ),
+      );
+      return true;
+    }
+  }
 }

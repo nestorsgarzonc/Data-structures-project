@@ -80,6 +80,7 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
         ),
         Form(
           key: _formKey,
+          autovalidateMode: AutovalidateMode.always,
           child: Column(
             children: [
               const SizedBox(height: 10),
