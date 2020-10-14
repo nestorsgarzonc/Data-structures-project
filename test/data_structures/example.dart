@@ -17,7 +17,7 @@ void main() {
       value = counter(value);
       value = counter(value);
       //Espero
-      expect( value, 2);
+      expect(value, 2);
     });
     test('contador 2', () {
       //Dado

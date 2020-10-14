@@ -1,3 +1,5 @@
+import 'package:ed_project/screens/initial_page.dart';
+import 'package:ed_project/screens/profile/edit_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/profile_provider.dart';
@@ -75,38 +77,38 @@ class UserProfilePage extends StatelessWidget {
 }
 
 class _ListItemsUserProfileWidget extends StatelessWidget {
-  static const _listItems = [
-    {
-      'title': 'Editar perfil',
-      'route': '',
-      'icon': Icons.person,
-    },
-    {
-      'title': 'Medios de pago',
-      'route': '',
-      'icon': Icons.credit_card,
-    },
-    {
-      'title': 'Cupones',
-      'route': '',
-      'icon': Icons.attach_money,
-    },
-    {
-      'title': 'Ayuda',
-      'route': '',
-      'icon': Icons.help_outline,
-    },
-    {
-      'title': 'Cerrar sesion',
-      'route': '',
-      'icon': Icons.outlined_flag,
-    },
-  ];
-
   const _ListItemsUserProfileWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, Object>> _listItems = [
+      {
+        'title': 'Editar perfil',
+        'onTap': () => Navigator.of(context).pushNamed(EditProfilePage.route),
+        'icon': Icons.person,
+      },
+      {
+        'title': 'Medios de pago',
+        'onTap': () {},
+        'icon': Icons.credit_card,
+      },
+      {
+        'title': 'Cupones',
+        'onTap': () {},
+        'icon': Icons.attach_money,
+      },
+      {
+        'title': 'Ayuda',
+        'onTap': () {},
+        'icon': Icons.help_outline,
+      },
+      {
+        'title': 'Cerrar sesion',
+        'onTap': () =>
+            Navigator.of(context).pushReplacementNamed(InitialPage.route),
+        'icon': Icons.outlined_flag,
+      },
+    ];
     return Expanded(
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -117,7 +119,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
           child: ListTile(
             title: Text('${_listItems[i]['title']}'),
             leading: Icon(_listItems[i]['icon'] as IconData),
-            onTap: () {},
+            onTap: _listItems[i]['onTap'],
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 10,

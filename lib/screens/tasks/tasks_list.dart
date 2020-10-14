@@ -1,3 +1,4 @@
+import 'package:ed_project/widgets/appbar_with_backbutton_widget.dart';
 import 'package:flutter/material.dart';
 import './task_description.dart';
 
@@ -11,18 +12,7 @@ class TasksListPage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: 10),
-            Row(
-              children: [
-                FlatButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Icon(Icons.arrow_back_ios),
-                ),
-                const Text(
-                  'Tareas populares',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                )
-              ],
-            ),
+            const AppBarWithBackButtonWidget(text: 'Tareas populares'),
             const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(

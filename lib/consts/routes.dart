@@ -1,7 +1,7 @@
-import 'package:ed_project/screens/categories/categories_list.dart';
-import 'package:ed_project/screens/payment/payment.dart';
 import 'package:flutter/material.dart';
-
+import '../screens/categories/categories_list.dart';
+import '../screens/payment/payment.dart';
+import '../screens/profile/edit_profile_page.dart';
 import '../screens/authentication/login_page.dart';
 import '../screens/authentication/register_page.dart';
 import '../screens/home/main_page.dart';
@@ -22,4 +22,5 @@ final Map<String, Widget Function(BuildContext)> constRoutes = {
   TaskPage.route: (ctx) => TaskPage(),
   PaymentPage.route: (ctx) => PaymentPage(),
   CategoriesListPage.route: (ctx) => CategoriesListPage(),
+  EditProfilePage.route: (ctx) => EditProfilePage(),
 };
