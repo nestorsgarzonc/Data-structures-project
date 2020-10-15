@@ -5,12 +5,15 @@ class CategoriesWidget extends StatelessWidget {
   final String name;
   final int frelancersCounter;
   final String imageUrl;
+  final bool isExternal;
+
   const CategoriesWidget({
     Key key,
     @required this.onTap,
     @required this.name,
     @required this.frelancersCounter,
     this.imageUrl = 'assets/img/categories_cleaning.jpg',
+    this.isExternal = false,
   }) : super(key: key);
 
   @override
@@ -31,13 +34,21 @@ class CategoriesWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                imageUrl,
-                fit: BoxFit.cover,
-                alignment: Alignment.topCenter,
-                height: 160,
-                width: 300,
-              ),
+              isExternal
+                  ? Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.center,
+                      height: 160,
+                      width: 300,
+                    )
+                  : Image.asset(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      alignment: Alignment.topCenter,
+                      height: 160,
+                      width: 300,
+                    ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 alignment: Alignment.centerLeft,

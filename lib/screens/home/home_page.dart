@@ -64,10 +64,12 @@ class HomePage extends StatelessWidget {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
-                    itemCount: 20,
-                    itemBuilder: (context, index) => CategoriesWidget(
+                    itemCount: freelaProv.length,
+                    itemBuilder: (context, i) => CategoriesWidget(
                       frelancersCounter: 20,
-                      name: 'House cleaning',
+                      isExternal: true,
+                      imageUrl: freelaProv[i].services[0].imageUrl,
+                      name: freelaProv[i].services[0].serviceName,
                       onTap: () =>
                           Navigator.of(context).pushNamed(TaskPage.route),
                     ),
