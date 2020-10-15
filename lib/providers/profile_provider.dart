@@ -48,4 +48,33 @@ class ProfileProvider extends ChangeNotifier {
       return true;
     }
   }
+
+  bool deleteUser() {
+    if (_user == null) {
+      return false;
+    }
+    try {
+      profilesData.removeWhere((element) => element == _user);
+      _user = null;
+      //notifyListeners();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  bool updateUser(ProfileModel user) {
+    if (_user == null || user == null) {
+      return false;
+    }
+    try {
+      profilesData.removeWhere((element) => element == _user);
+      profilesData.add(user);
+      _user = user;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
