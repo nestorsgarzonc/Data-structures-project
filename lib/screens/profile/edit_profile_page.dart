@@ -16,8 +16,32 @@ class EditProfilePage extends StatefulWidget {
 class _EditProfilePageState extends State<EditProfilePage> {
   @override
   Widget build(BuildContext context) {
-    final userP = Provider.of<ProfileProvider>(context, listen: false).getUser;
+    final userProv = Provider.of<ProfileProvider>(context, listen: false);
+    final userP = userProv.getUser;
+    ProfileModel user = userP;
     var gender = Gender.FEMALE;
+
+    void handleDelete() {
+      final res = userProv.deleteUser();
+      if (!res) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('Opps hubo un problema al eliminar el perfil'),
+        ));
+      } else {
+        Navigator.of(context).pushReplacementNamed(InitialPage.route);
+      }
+    }
+
+    void handleUpdate() {
+      if (userProv.updateUser(user)) {
+        Navigator.of(context).pop();
+      } else {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('Opps hubo un problema al actualizar el perfil'),
+        ));
+      }
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -33,38 +57,38 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       icon: Icons.person,
                       label: 'Nombres',
                       initialValue: userP.name,
-                      valueCallback: (value) => print(value),
+                      valueCallback: (value) => user.name = value,
                     ),
                     _CustomInputText(
                       icon: Icons.person,
                       label: 'Apellidos',
                       initialValue: userP.lastName,
-                      valueCallback: (value) => print(value),
+                      valueCallback: (value) => user.lastName = value,
                     ),
                     _CustomInputText(
                       icon: Icons.room_preferences_rounded,
                       label: 'Nombre de usuario',
-                      valueCallback: (value) => print(value),
                       initialValue: userP.username,
+                      valueCallback: (value) => user.username = value,
                     ),
                     _CustomInputText(
                       icon: Icons.email,
                       label: 'Correo electronico',
                       initialValue: userP.email,
-                      valueCallback: (value) => print(value),
+                      valueCallback: (value) => user.email = value,
                     ),
                     _CustomInputText(
                       icon: Icons.vpn_key,
                       label: 'Contraseña',
                       initialValue: userP.password,
-                      valueCallback: (value) => print(value),
+                      valueCallback: (value) => user.password = value,
                       showText: false,
                     ),
                     _CustomInputText(
                       icon: Icons.location_on,
                       label: 'Ubicacion',
                       initialValue: userP.location,
-                      valueCallback: (value) => print(value),
+                      valueCallback: (value) => user.location = value,
                     ),
                     Row(
                       children: [
@@ -91,13 +115,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       icon: Icons.photo_filter,
                       label: 'Link foto perfil',
                       initialValue: userP.avatarUrl,
-                      valueCallback: (value) => print(value),
+                      valueCallback: (value) => user.avatarUrl = value,
                     ),
                   ],
                 ),
               ),
             ),
-            const _ButtonsEditProfile(),
+            _ButtonsEditProfile(
+              handleDelete: handleDelete,
+              handleUpdate: handleUpdate,
+            ),
             const SizedBox(height: 10),
           ],
         ),
@@ -143,32 +170,23 @@ class _CustomInputText extends StatelessWidget {
 }
 
 class _ButtonsEditProfile extends StatelessWidget {
-  const _ButtonsEditProfile({Key key}) : super(key: key);
+  final Function handleDelete;
+  final Function handleUpdate;
+  const _ButtonsEditProfile({
+    Key key,
+    @required this.handleDelete,
+    @required this.handleUpdate,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    void handleDelete() {
-      final res =
-          Provider.of<ProfileProvider>(context, listen: false).deleteUser();
-      if (!res) {
-        Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text('Opps hubo un problema al eliminar el perfil'),
-        ));
-      } else {
-        Navigator.of(context).pushReplacementNamed(InitialPage.route);
-      }
-    }
-
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         RaisedButton(
           onPressed: () => handleDelete(),
-          child: Text(
-            'Eliminar perfil',
-            style: TextStyle(fontSize: 16),
-          ),
+          child: Text('Eliminar perfil', style: TextStyle(fontSize: 16)),
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           color: Colors.redAccent,
           textColor: Colors.white,
@@ -178,12 +196,8 @@ class _ButtonsEditProfile extends StatelessWidget {
         ),
         SizedBox(width: 10),
         RaisedButton(
-          //TODO: implement update profile
-          onPressed: () {},
-          child: Text(
-            'Guardar cambios',
-            style: TextStyle(fontSize: 18),
-          ),
+          onPressed: () => handleDelete(),
+          child: Text('Guardar cambios', style: TextStyle(fontSize: 18)),
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           color: Colors.blueAccent,
           textColor: Colors.white,
