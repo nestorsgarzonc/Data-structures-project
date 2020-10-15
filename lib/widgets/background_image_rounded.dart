@@ -5,6 +5,7 @@ class BackgroundImageRoundedWidget extends StatelessWidget {
   final String imgRoute;
   final double opacity;
   final double percentHigh;
+  final bool isExternalImage;
   static const _borderRadius = BorderRadius.only(
     bottomLeft: Radius.circular(30),
     bottomRight: Radius.circular(30),
@@ -16,6 +17,7 @@ class BackgroundImageRoundedWidget extends StatelessWidget {
     this.imgRoute = 'assets/img/user_profile_wallpaper.jpg',
     this.opacity = 0.2,
     this.percentHigh = 0.38,
+    this.isExternalImage = false,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,11 @@ class BackgroundImageRoundedWidget extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: _borderRadius,
-        image: DecorationImage(image: AssetImage(imgRoute), fit: BoxFit.cover),
+        image: DecorationImage(
+          image:
+              isExternalImage ? NetworkImage(imgRoute) : AssetImage(imgRoute),
+          fit: BoxFit.cover,
+        ),
       ),
       child: Container(
         decoration: BoxDecoration(

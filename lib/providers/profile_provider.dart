@@ -38,7 +38,7 @@ class ProfileProvider extends ChangeNotifier {
           password: password,
           lastTransactions: [],
           avatarUrl:
-              'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Logotipo_de_la_Universidad_Nacional_de_Colombia.svg/1200px-Logotipo_de_la_Universidad_Nacional_de_Colombia.svg.png',
+              'https://lh3.googleusercontent.com/proxy/v_vgYZzi7lI22rfnbMCRG2zoAXYGkpk8PGld0DHBLNjHCU3TjhDljOQPNtYA9PvDsG3vOhfDhK4Yn-b8zQil5K6rQATYkDeVQFOSHr0yJShURLZQn6PtuxZoSQmWpA4dChL5--Rv-LfAURMB9tDrdL84xGocR5maLoO4jfWcZOz7UtG5KBVLfF0ZiUb4qdP7FtCITWLz4NI1oG6qK5Ir4kDw2wMn9vH2QLk-1A',
           gender: Gender.MALE,
           lastName: '',
           location: '',

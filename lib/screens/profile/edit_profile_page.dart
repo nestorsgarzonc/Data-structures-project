@@ -196,7 +196,7 @@ class _ButtonsEditProfile extends StatelessWidget {
         ),
         SizedBox(width: 10),
         RaisedButton(
-          onPressed: () => handleDelete(),
+          onPressed: () => handleUpdate(),
           child: Text('Guardar cambios', style: TextStyle(fontSize: 18)),
           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           color: Colors.blueAccent,

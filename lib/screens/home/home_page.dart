@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:ed_project/providers/freelancer_provider.dart';
 import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +18,12 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final freelaProv = Provider.of<FreelancerProvider>(context).getFreelancers;
     return Scaffold(
       body: Column(
         children: [
           const _CustomAppBar(),
+          const SizedBox(height: 10),
           Expanded(
             child: ListView(
               children: [
@@ -72,16 +75,19 @@ class HomePage extends StatelessWidget {
                 ),
                 TitleCategoriesWidget(title: 'Freelancers', onPress: () {}),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 20),
-                  height: 100,
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  height: 150,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
-                    itemCount: 20,
-                    itemBuilder: (context, index) =>
-                        const FreelancerMiniPhotoWidget(),
+                    itemCount: freelaProv.length,
+                    itemBuilder: (context, i) => FreelancerMiniPhotoWidget(
+                      freelancerName: freelaProv[i].name,
+                      freelancerUrlImage: freelaProv[i].avatarUrl,
+                    ),
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),
