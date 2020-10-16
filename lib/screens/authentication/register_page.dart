@@ -69,17 +69,18 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
     Future<void> handleSubmit() async {
       final userProvider = Provider.of<ProfileProvider>(context, listen: false);
       if (_formKey.currentState.validate()) {
-        bool canSingUp = userProvider.singUp(_email, _username, _password);
+        final bool canSingUp =
+            userProvider.singUp(_email, _username, _password);
         if (canSingUp) {
           Navigator.of(context).pushNamed(InitialPage.route);
         } else {
-          Scaffold.of(context).showSnackBar(SnackBar(
+          Scaffold.of(context).showSnackBar(const SnackBar(
             content:
                 Text('Opps, este correo esta asociado a una cuenta existente'),
           ));
         }
       } else {
-        Scaffold.of(context).showSnackBar(SnackBar(
+        Scaffold.of(context).showSnackBar(const SnackBar(
           content: Text('Opps, verifica los datos ingresados'),
         ));
       }

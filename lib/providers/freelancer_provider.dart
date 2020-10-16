@@ -4,11 +4,11 @@ import '../models/freelancer_model.dart';
 
 class FreelancerProvider extends ChangeNotifier {
   List<FreelancerModel> _freelancerData = [];
-  FreelancerModel _freelancerSelected = null;
+  FreelancerModel _freelancerSelected;
 
-  get freelancer => _freelancerSelected;
+  FreelancerModel get freelancer => _freelancerSelected;
 
-  set freelancer(freelancer) {
+  set freelancer(FreelancerModel freelancer) {
     _freelancerSelected = freelancer;
     notifyListeners();
   }

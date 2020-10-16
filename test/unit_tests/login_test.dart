@@ -1,7 +1,7 @@
 import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-main() {
+void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   group('Login testing', () {
     test('Login with correct email', () async {

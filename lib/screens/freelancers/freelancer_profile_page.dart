@@ -49,17 +49,17 @@ class _HeaderCardProfile extends StatelessWidget {
           const SizedBox(height: 10),
           Text(
             freel.name,
-            style: TextStyle(color: Colors.white, fontSize: 28),
+            style: const TextStyle(color: Colors.white, fontSize: 28),
           ),
           const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.location_on, color: Colors.white),
+              const Icon(Icons.location_on, color: Colors.white),
               const SizedBox(width: 8),
               Text(
                 freel.location,
-                style: TextStyle(color: Colors.white, fontSize: 18),
+                style: const TextStyle(color: Colors.white, fontSize: 18),
               ),
             ],
           ),

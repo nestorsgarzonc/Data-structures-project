@@ -1,7 +1,7 @@
 import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-main() {
+void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   group('Unit tests about sign up', () {
     test('sign up with new user', () async {
@@ -18,29 +18,29 @@ main() {
       expect(res, false);
     });
     test('test regex with valid email', () async {
-      final email = "tony@starkindustries.com";
-      bool emailValid = RegExp(
+      const email = "tony@starkindustries.com";
+      final bool emailValid = RegExp(
               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(email);
       expect(emailValid, true);
     });
     test('test regex with invalid email', () async {
-      final email = "tony@starkindustriem";
-      bool emailValid = RegExp(
+      const email = "tony@starkindustriem";
+      final bool emailValid = RegExp(
               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(email);
       expect(emailValid, false);
     });
     test('test regex with invalid email', () async {
-      final email = "tonystarkindustriem";
-      bool emailValid = RegExp(
+      const email = "tonystarkindustriem";
+      final bool emailValid = RegExp(
               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(email);
       expect(emailValid, false);
     });
     test('test regex with invalid email', () async {
-      final email = "tony@starkindustriem";
-      bool emailValid = RegExp(
+      const email = "tony@starkindustriem";
+      final bool emailValid = RegExp(
               r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
           .hasMatch(email);
       expect(emailValid, false);

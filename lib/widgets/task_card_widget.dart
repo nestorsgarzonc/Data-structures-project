@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 class TaskCard extends StatelessWidget {
   final FreelancerModel freelancer;
-  final service;
+  final Service service;
+
   TaskCard({
     Key key,
     @required this.freelancer,
@@ -115,7 +116,7 @@ class __HeartIconState extends State<_HeartIcon> {
 
 class _BottomContentTaskCard extends StatelessWidget {
   final FreelancerModel freelancerInfo;
-  final service;
+  final Service service;
   _BottomContentTaskCard({
     Key key,
     @required this.freelancerInfo,

@@ -51,44 +51,44 @@ class _EditProfilePageState extends State<EditProfilePage> {
             Expanded(
               child: Form(
                 child: ListView(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   children: [
                     _CustomInputText(
                       icon: Icons.person,
                       label: 'Nombres',
                       initialValue: userP.name,
-                      valueCallback: (value) => user.name = value,
+                      valueCallback: (String value) => user.name = value,
                     ),
                     _CustomInputText(
                       icon: Icons.person,
                       label: 'Apellidos',
                       initialValue: userP.lastName,
-                      valueCallback: (value) => user.lastName = value,
+                      valueCallback: (String value) => user.lastName = value,
                     ),
                     _CustomInputText(
                       icon: Icons.room_preferences_rounded,
                       label: 'Nombre de usuario',
                       initialValue: userP.username,
-                      valueCallback: (value) => user.username = value,
+                      valueCallback: (String value) => user.username = value,
                     ),
                     _CustomInputText(
                       icon: Icons.email,
                       label: 'Correo electronico',
                       initialValue: userP.email,
-                      valueCallback: (value) => user.email = value,
+                      valueCallback: (String value) => user.email = value,
                     ),
                     _CustomInputText(
                       icon: Icons.vpn_key,
                       label: 'Contraseña',
                       initialValue: userP.password,
-                      valueCallback: (value) => user.password = value,
+                      valueCallback: (String value) => user.password = value,
                       showText: false,
                     ),
                     _CustomInputText(
                       icon: Icons.location_on,
                       label: 'Ubicacion',
                       initialValue: userP.location,
-                      valueCallback: (value) => user.location = value,
+                      valueCallback: (String value) => user.location = value,
                     ),
                     Row(
                       children: [
@@ -194,16 +194,16 @@ class _ButtonsEditProfile extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         RaisedButton(
           onPressed: () => handleUpdate(),
-          child: Text('Guardar cambios', style: TextStyle(fontSize: 18)),
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           color: Colors.blueAccent,
           textColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
+          child: const Text('Guardar cambios', style: TextStyle(fontSize: 18)),
         ),
       ],
     );

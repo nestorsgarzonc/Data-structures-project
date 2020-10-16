@@ -4,7 +4,7 @@ import './../models/profile_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
   List<ProfileModel> profilesData = [];
-  ProfileModel _user = null;
+  ProfileModel _user;
 
   ProfileModel get getUser => _user;
 
