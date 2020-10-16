@@ -6,34 +6,43 @@ void main() {
   for (int i = 0; i < 100000000; i++) {
     lista.pushBack(i);
   }
-  group('description', () {
-    test('insert a value', () {
+  group('Testeo de la linkedlist', () {
+    //Se obtiene el ultimo elemento luego de agregar los numeros del 0 a 99999999
+    test('topback inicial', () {
       expect(lista.topBack(), 100000000 - 1);
     });
-    test('insert a value', () {
+    //Se obtiene el primer elemento luego de agregar los numeros del 0 a 99999999
+    test('topfront inicial', () {
       expect(lista.topFront(), 0);
     });
-    test('insert a value', () {
+    //Se obtiene el tamaño luego de agregar los numeros del 0 a 99999999
+    test('size inicial', () {
       expect(lista.size(), 100000000);
     });
-    test('insert a value', () {
+    //Se obtiene el elemento en la posicion 50000000
+    test('valor indice 50M', () {
       expect(lista.getValue(50000000), 50000000);
     });
-    test('insert a value', () {
+    //Se elimina el primer elemento y se obtiene el nuevo primer elemento para probar la correcta eliminacion
+    test('popFront y topFront para comprobar', () {
       lista.popFront();
       expect(lista.topFront(), 1);
     });
-    test('insert a value', () {
+    //Se elimina el ultimo elemento y se obtiene el nuevo ultimo elemento para probar la correcta eliminacion
+    test('popback y topback para comprobar', () {
       lista.popBack();
       expect(lista.topBack(), 100000000 - 2);
     });
-    test('insert a value', () {
+    //Se obtiene el nuevo elemento en la posicion 50000000
+    test('valor actual indice 50M', () {
       expect(lista.getValue(50000000), 50000000 + 1);
     });
-    test('insert a value', () {
+    //Se obtiene el tamaño actual
+    test('actual size', () {
       expect(lista.size(), 100000000 - 2);
     });
-    test('insert a value', () {
+    //Se remueve el elemento de la posicion 10000000
+    test('remove posicion 10000000', () {
       expect(lista.remove(10000000), 10000000 + 1);
     });
     test('insert a value', () {
