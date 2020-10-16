@@ -1,4 +1,8 @@
+import 'package:ed_project/screens/initial_page.dart';
+import 'package:ed_project/screens/profile/edit_profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/profile_provider.dart';
 import '../../widgets/background_image_rounded.dart';
 
 class UserProfilePage extends StatelessWidget {
@@ -6,6 +10,7 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProviderView = Provider.of<ProfileProvider>(context).getUser;
     return Scaffold(
       body: Column(
         children: [
@@ -26,13 +31,13 @@ class UserProfilePage extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const CircleAvatar(
+                    CircleAvatar(
                       radius: 70,
-                      backgroundColor: Colors.white,
+                      backgroundImage: NetworkImage(userProviderView.avatarUrl),
                     ),
                     const SizedBox(height: 25),
-                    const Text(
-                      'Sebastian Garzon',
+                    Text(
+                      '${userProviderView.name.split(" ")[0]} ${userProviderView.lastName.split(" ")[0]}',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -42,14 +47,14 @@ class UserProfilePage extends StatelessWidget {
                     const SizedBox(height: 10),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
+                      children: [
+                        const Icon(
                           Icons.location_on,
                           color: Colors.white,
                           size: 30,
                         ),
                         Text(
-                          ' Bogota, Colombia',
+                          '${userProviderView.location}',
                           style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -72,40 +77,38 @@ class UserProfilePage extends StatelessWidget {
 }
 
 class _ListItemsUserProfileWidget extends StatelessWidget {
-  static const _listItems = [
-    {
-      'title': 'Editar perfil',
-      'route': '',
-      'icon': Icons.person,
-    },
-    {
-      'title': 'Medios de pago',
-      'route': '',
-      'icon': Icons.credit_card_outlined,
-    },
-    {
-      'title': 'Cupones',
-      'route': '',
-      'icon': Icons.countertops_outlined,
-    },
-    {
-      'title': 'Ayuda',
-      'route': '',
-      'icon': Icons.contact_support_outlined,
-    },
-    {
-      'title': 'Cerrar sesion',
-      'route': '',
-      'icon': Icons.logout,
-    },
-  ];
-
-  const _ListItemsUserProfileWidget({
-    Key key,
-  }) : super(key: key);
+  const _ListItemsUserProfileWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, Object>> _listItems = [
+      {
+        'title': 'Editar perfil',
+        'onTap': () => Navigator.of(context).pushNamed(EditProfilePage.route),
+        'icon': Icons.person,
+      },
+      {
+        'title': 'Medios de pago',
+        'onTap': () {},
+        'icon': Icons.credit_card,
+      },
+      {
+        'title': 'Cupones',
+        'onTap': () {},
+        'icon': Icons.attach_money,
+      },
+      {
+        'title': 'Ayuda',
+        'onTap': () {},
+        'icon': Icons.help_outline,
+      },
+      {
+        'title': 'Cerrar sesion',
+        'onTap': () =>
+            Navigator.of(context).pushReplacementNamed(InitialPage.route),
+        'icon': Icons.outlined_flag,
+      },
+    ];
     return Expanded(
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -116,7 +119,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
           child: ListTile(
             title: Text('${_listItems[i]['title']}'),
             leading: Icon(_listItems[i]['icon'] as IconData),
-            onTap: () {},
+            onTap: _listItems[i]['onTap'],
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 10,

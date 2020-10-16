@@ -1,5 +1,9 @@
 import 'dart:math';
+import 'package:ed_project/providers/freelancer_provider.dart';
+import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../screens/categories/categories_list.dart';
 import '../../screens/tasks/task_description.dart';
 import '../../screens/tasks/tasks_list.dart';
 import '../../widgets/categories_card_widget.dart';
@@ -14,60 +18,79 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final freelaProv = Provider.of<FreelancerProvider>(context).getFreelancers;
     return Scaffold(
-      body: ListView(
+      body: Column(
         children: [
           const _CustomAppBar(),
-          const CustomSearchButton(),
-          const SizedBox(height: 20),
-          TitleCategoriesWidget(
-            title: 'Tareas populares',
-            onPress: () => Navigator.of(context).pushNamed(TasksListPage.route),
-          ),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            height: 160,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: 20,
-              itemBuilder: (context, index) => PopularTaskWidget(
-                onTap: () => Navigator.of(context).pushNamed(TaskPage.route),
-                text: 'Item #$index',
-                color: Color.fromRGBO(
-                  random.nextInt(255),
-                  random.nextInt(255),
-                  random.nextInt(255),
-                  1,
+          const SizedBox(height: 10),
+          Expanded(
+            child: ListView(
+              children: [
+                const CustomSearchButton(),
+                const SizedBox(height: 20),
+                TitleCategoriesWidget(
+                  title: 'Categorias',
+                  onPress: () =>
+                      Navigator.of(context).pushNamed(CategoriesListPage.route),
                 ),
-              ),
-            ),
-          ),
-          TitleCategoriesWidget(title: 'Categorias', onPress: () {}),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            height: 240,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: 20,
-              itemBuilder: (context, index) => CategoriesWidget(
-                frelancersCounter: 20,
-                name: 'House cleaning',
-                onTap: () {},
-              ),
-            ),
-          ),
-          TitleCategoriesWidget(title: 'Freelancers', onPress: () {}),
-          Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            height: 100,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              itemCount: 20,
-              itemBuilder: (context, index) =>
-                  const FreelancerMiniPhotoWidget(),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  height: 160,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: 20,
+                    itemBuilder: (context, index) => PopularTaskWidget(
+                      onTap: () {},
+                      text: 'Item #$index',
+                      color: Color.fromRGBO(
+                        random.nextInt(255),
+                        random.nextInt(255),
+                        random.nextInt(255),
+                        1,
+                      ),
+                    ),
+                  ),
+                ),
+                TitleCategoriesWidget(
+                  title: 'Tareas populares',
+                  onPress: () =>
+                      Navigator.of(context).pushNamed(TasksListPage.route),
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  height: 240,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: freelaProv.length,
+                    itemBuilder: (context, i) => CategoriesWidget(
+                      frelancersCounter: 20,
+                      isExternal: true,
+                      imageUrl: freelaProv[i].services[0].imageUrl,
+                      name: freelaProv[i].services[0].serviceName,
+                      onTap: () =>
+                          Navigator.of(context).pushNamed(TaskPage.route),
+                    ),
+                  ),
+                ),
+                TitleCategoriesWidget(title: 'Freelancers', onPress: () {}),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  height: 150,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: freelaProv.length,
+                    itemBuilder: (context, i) => FreelancerMiniPhotoWidget(
+                      freelancerName: freelaProv[i].name,
+                      freelancerUrlImage: freelaProv[i].avatarUrl,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+              ],
             ),
           ),
         ],
@@ -110,6 +133,7 @@ class _CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProviderView = Provider.of<ProfileProvider>(context).getUser;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -119,10 +143,9 @@ class _CustomAppBar extends StatelessWidget {
         ),
         InkWell(
           onTap: () => Navigator.of(context).pushNamed(UserProfilePage.route),
-          child: const CircleAvatar(
-            radius: 28,
-            child: Text('S', style: TextStyle(fontSize: 25)),
-          ),
+          child: CircleAvatar(
+              radius: 28,
+              backgroundImage: NetworkImage(userProviderView.avatarUrl)),
         ),
       ],
     );

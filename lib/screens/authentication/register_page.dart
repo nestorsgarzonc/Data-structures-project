@@ -1,5 +1,8 @@
+import 'package:ed_project/providers/profile_provider.dart';
+import 'package:ed_project/screens/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 import '../../widgets/background_image_widget.dart';
 import '../../widgets/buttons_login_widget.dart';
@@ -61,17 +64,27 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
   String _username = '';
   String _password = '';
 
-  Future<void> handleSubmit() async {
-    // ignore: avoid_print
-    print(_email);
-    // ignore: avoid_print
-    print(_username);
-    // ignore: avoid_print
-    print(_password);
-  }
-
   @override
   Widget build(BuildContext context) {
+    Future<void> handleSubmit() async {
+      final userProvider = Provider.of<ProfileProvider>(context, listen: false);
+      if (_formKey.currentState.validate()) {
+        bool canSingUp = userProvider.singUp(_email, _username, _password);
+        if (canSingUp) {
+          Navigator.of(context).pushNamed(InitialPage.route);
+        } else {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content:
+                Text('Opps, este correo esta asociado a una cuenta existente'),
+          ));
+        }
+      } else {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('Opps, verifica los datos ingresados'),
+        ));
+      }
+    }
+
     return ListView(
       children: [
         const Text(
@@ -80,6 +93,7 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
         ),
         Form(
           key: _formKey,
+          autovalidateMode: AutovalidateMode.always,
           child: Column(
             children: [
               const SizedBox(height: 10),
@@ -87,6 +101,11 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 keyboardType: TextInputType.emailAddress,
                 cursorColor: Theme.of(context).primaryColor,
                 onChanged: (value) => _email = value,
+                validator: (email) =>
+                    RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                            .hasMatch(email)
+                        ? null
+                        : 'Ingresa un correo valido',
                 decoration: const InputDecoration(
                   labelText: 'Correo electronico',
                   prefixIcon: Icon(Icons.email),
@@ -97,6 +116,9 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 cursorColor: Theme.of(context).primaryColor,
                 keyboardType: TextInputType.name,
                 onChanged: (value) => _username = value,
+                validator: (value) => value.length > 6
+                    ? null
+                    : 'El nombre de usuario debe tener mas de 6 caracteres',
                 decoration: const InputDecoration(
                   labelText: 'Usuario',
                   prefixIcon: Icon(Icons.account_circle),
@@ -107,6 +129,9 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 onChanged: (value) => _password = value,
+                validator: (value) => value.length > 8
+                    ? null
+                    : 'La contraseña debe tener mas de 8 caracteres',
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: const InputDecoration(
                   labelText: 'Contraseña',

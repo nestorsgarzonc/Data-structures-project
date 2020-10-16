@@ -1,4 +1,8 @@
+import 'package:ed_project/models/freelancer_model.dart';
+import 'package:ed_project/providers/freelancer_provider.dart';
+import 'package:ed_project/widgets/appbar_with_backbutton_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import './task_description.dart';
 
 class TasksListPage extends StatelessWidget {
@@ -6,28 +10,21 @@ class TasksListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final freelaProv = Provider.of<FreelancerProvider>(context).getFreelancers;
+
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
             const SizedBox(height: 10),
-            Row(
-              children: [
-                FlatButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Icon(Icons.arrow_back_ios),
-                ),
-                const Text(
-                  'Tareas populares',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                )
-              ],
-            ),
+            const AppBarWithBackButtonWidget(text: 'Tareas populares'),
             const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
-                itemCount: 25,
-                itemBuilder: (context, index) => _TaskCard(),
+                itemCount: freelaProv.length,
+                itemBuilder: (context, i) => _TaskCard(
+                  freelancer: freelaProv[i],
+                ),
               ),
             )
           ],
@@ -38,27 +35,22 @@ class TasksListPage extends StatelessWidget {
 }
 
 class _TaskCard extends StatelessWidget {
-  final borderStars = List.generate(
-    1,
-    (index) => const Icon(Icons.star_border_outlined),
-  );
+  final FreelancerModel freelancer;
+  _TaskCard({Key key, this.freelancer}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final service = freelancer.services[0];
+
     return InkWell(
       onTap: () => Navigator.of(context).pushNamed(TaskPage.route),
       child: Container(
-        margin: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 10,
-        ),
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
-          boxShadow: const [
-            BoxShadow(blurRadius: 2, color: Colors.grey),
-          ],
+          boxShadow: const [BoxShadow(blurRadius: 2, color: Colors.grey)],
           borderRadius: BorderRadius.circular(20),
-          image: const DecorationImage(
-            image: AssetImage('assets/img/task_list_wallpaper.jpg'),
+          image: DecorationImage(
+            image: NetworkImage(service.imageUrl),
             fit: BoxFit.cover,
           ),
         ),
@@ -80,7 +72,7 @@ class _TaskCard extends StatelessWidget {
                   horizontal: 20,
                   vertical: 10,
                 ),
-                child: const _BottomContentTaskCard(),
+                child: _BottomContentTaskCard(freelancerInfo: freelancer),
               ),
             ),
             const Positioned(
@@ -88,10 +80,10 @@ class _TaskCard extends StatelessWidget {
               right: 40,
               child: _HeartIcon(),
             ),
-            const Positioned(
+            Positioned(
               top: 20,
               left: 20,
-              child: _LocationWIdget(),
+              child: _LocationWIdget(location: freelancer.location),
             ),
           ],
         ),
@@ -101,7 +93,8 @@ class _TaskCard extends StatelessWidget {
 }
 
 class _LocationWIdget extends StatelessWidget {
-  const _LocationWIdget({Key key}) : super(key: key);
+  final String location;
+  _LocationWIdget({Key key, this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,12 +105,7 @@ class _LocationWIdget extends StatelessWidget {
         boxShadow: const [BoxShadow(blurRadius: 2, color: Colors.grey)],
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Row(
-        children: const [
-          Icon(Icons.location_on_outlined),
-          Text('Bogota, Colombia'),
-        ],
-      ),
+      child: Row(children: [Icon(Icons.location_on), Text(location)]),
     );
   }
 }
@@ -143,7 +131,7 @@ class __HeartIconState extends State<_HeartIcon> {
           boxShadow: const [BoxShadow(blurRadius: 1, color: Colors.grey)],
         ),
         child: Icon(
-          _isTouched ? Icons.favorite : Icons.favorite_border_outlined,
+          _isTouched ? Icons.favorite : Icons.favorite_border,
           color: Colors.red,
         ),
       ),
@@ -152,16 +140,17 @@ class __HeartIconState extends State<_HeartIcon> {
 }
 
 class _BottomContentTaskCard extends StatelessWidget {
-  const _BottomContentTaskCard({Key key}) : super(key: key);
+  final FreelancerModel freelancerInfo;
+  _BottomContentTaskCard({Key key, @required this.freelancerInfo})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final filledStars = List.generate(
-        4, (_) => Icon(Icons.star, color: Theme.of(context).primaryColor));
-    final outlineStars = List.generate(
-        1,
-        (_) => Icon(Icons.star_border_outlined,
-            color: Theme.of(context).primaryColor));
+    final service = freelancerInfo.services[0];
+    final filledStars = List.generate(service.numberStars,
+        (_) => Icon(Icons.star, color: Theme.of(context).primaryColor));
+    final outlineStars = List.generate((5 - service.numberStars).abs(),
+        (_) => Icon(Icons.star_border, color: Theme.of(context).primaryColor));
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,17 +159,19 @@ class _BottomContentTaskCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text(
-                'Limpieza general hogar',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 20,
-                ),
+              Text(
+                service.serviceName,
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
               ),
               Row(
-                children: const [
-                  CircleAvatar(child: Text('JT')),
-                  Text('  Jose Torres', style: TextStyle(fontSize: 16)),
+                children: [
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(freelancerInfo.avatarUrl),
+                  ),
+                  Text(
+                    '  ${freelancerInfo.name}',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ],
               ),
               Row(
@@ -194,8 +185,8 @@ class _BottomContentTaskCard extends StatelessWidget {
                 ],
               ),
             ]),
-        const Text(
-          '\$20.000',
+        Text(
+          '\$${service.price}',
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 22,

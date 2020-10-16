@@ -5,14 +5,16 @@ import './consts/routes.dart';
 import './consts/theme_data.dart';
 import './providers/index_homepage_provider.dart';
 import './screens/initial_page.dart';
+import './providers/profile_provider.dart';
+import './providers/freelancer_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
-      ChangeNotifierProvider(
-        create: (_) => IndexHomePageProvider(),
-      )
+      ChangeNotifierProvider(create: (_) => IndexHomePageProvider()),
+      ChangeNotifierProvider(create: (_) => ProfileProvider()),
+      ChangeNotifierProvider(create: (_) => FreelancerProvider()),
     ],
     child: MyApp(),
   ));
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<ProfileProvider>(context).loadData();
+    Provider.of<FreelancerProvider>(context).loadData();
     return FutureBuilder<FirebaseApp>(
       future: _initialization,
       builder: (context, snapshot) {
