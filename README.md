@@ -35,4 +35,4 @@ Si deseas debuggear la app en Android necesitas configurar el repositorio con Fi
 <img src='https://github.com/nestorsgarzonc/Data-structures-project/blob/master/screenshots/Screenshot_2020-10-08-18-33-48-416_com.example.ed_project.jpg?raw=true' width='350'/>
 
 ### Perfil Freelancer
-<img src='https://github.com/nestorsgarzonc/Data-structures-project/blob/master/screenshots/Screenshot_1602824241.jpg?raw=true' width='350'/>
+<img src='https://github.com/nestorsgarzonc/Waffly/blob/master/screenshots/Screenshot_1602824241.png?raw=true' width='350'/>
