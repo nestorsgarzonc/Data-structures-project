@@ -116,7 +116,7 @@ class __CustomCardItemState extends State<_CustomCardItem> {
           },
           {'title': 'Freelancer', 'content': widget.transaction.freelancer},
           {'title': 'Fecha', 'content': date},
-          {'title': 'Precio', 'content': widget.transaction.serviceName},
+          {'title': 'Precio', 'content': widget.transaction.price},
         ];
         return AlertDialog(
           title: Text('Descripcion de la orden:'),

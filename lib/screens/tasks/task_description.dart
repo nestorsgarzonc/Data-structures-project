@@ -1,11 +1,16 @@
+import 'package:ed_project/providers/profile_provider.dart';
 import 'package:ed_project/screens/payment/payment.dart';
 import 'package:ed_project/widgets/back_button_appbar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TaskPage extends StatelessWidget {
   static const String route = 'taskPage';
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ProfileProvider>(context);
+    final service = provider.getSelectedService;
+    final freelancer = provider.getSelectedFreelancer;
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SizedBox(
@@ -15,9 +20,9 @@ class TaskPage extends StatelessWidget {
           children: [
             Container(
               height: size.height * 0.49,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/img/task_list_wallpaper.jpg'),
+                  image: NetworkImage(service.imageUrl),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -66,21 +71,27 @@ class TaskPage extends StatelessWidget {
                       children: [
                         Column(
                           children: [
-                            const Text(
-                              'Limpieza de hogar',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 25),
+                            SizedBox(
+                              width: size.width*0.5,
+                              child: Text(
+                                service.serviceName,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 25),
+                              ),
                             ),
                             const SizedBox(height: 5),
                             Row(
-                              children: const [
-                                Icon(Icons.location_on),
-                                Text(' Bogota, Colombia'),
+                              children: [
+                                const Icon(Icons.location_on),
+                                Text(' ${freelancer.location}'),
                               ],
                             ),
                           ],
                         ),
-                        const CircleAvatar(radius: 40),
+                        CircleAvatar(
+                          radius: 40,
+                          backgroundImage: NetworkImage(freelancer.avatarUrl),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 10),
@@ -116,8 +127,8 @@ class TaskPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Text(
-                      '\$20.000',
+                    Text(
+                      '\$${service.price}',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w500,

@@ -1,4 +1,5 @@
 import 'package:ed_project/collections/linked_list.dart';
+import 'package:ed_project/models/freelancer_model.dart' as freelancer;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import './../models/profile_model.dart';
@@ -8,6 +9,33 @@ class ProfileProvider extends ChangeNotifier {
   ProfileModel _user = null;
 
   ProfileModel get getUser => _user;
+  freelancer.Service _selectedService;
+  freelancer.FreelancerModel _selectedFreelancer;
+
+  freelancer.Service get getSelectedService => _selectedService;
+  freelancer.FreelancerModel get getSelectedFreelancer => _selectedFreelancer;
+
+  void setSelectedService(selectedService) {
+    _selectedService = selectedService;
+    notifyListeners();
+  }
+
+  void setSelectedFreelancer(selectedFreelancer) {
+    _selectedFreelancer = selectedFreelancer;
+    notifyListeners();
+  }
+
+  void addNewService(fName, serviceName, categoria, price) {
+    _user.lastTransactions.add(LastTransaction(
+      category: categoria,
+      date: DateTime.now(),
+      description: 'Lorem',
+      freelancer: fName,
+      price: price,
+      serviceName: serviceName,
+    ));
+    notifyListeners();
+  }
 
   Future<void> loadData() async {
     final data = await rootBundle.loadString('assets/data/profile.json');

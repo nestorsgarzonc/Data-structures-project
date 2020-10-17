@@ -1,9 +1,15 @@
+import 'package:ed_project/providers/profile_provider.dart';
+import 'package:ed_project/screens/home/main_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PaymentPage extends StatelessWidget {
   static const String route = 'paymentPage';
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<ProfileProvider>(context);
+    final service = provider.getSelectedService;
+    final freelancer = provider.getSelectedFreelancer;
     const titleTextStyle = TextStyle(color: Colors.white, fontSize: 24);
     const contentTextStyle = TextStyle(
       color: Colors.white,
@@ -30,39 +36,67 @@ class PaymentPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Card(
-              color: Colors.blueAccent,
+              color: Colors.blueAccent.withOpacity(0.7),
               elevation: 5,
               child: Padding(
                 padding: const EdgeInsets.all(25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SizedBox(height: 20),
-                    Text('Tienes que pagar:', style: titleTextStyle),
-                    SizedBox(height: 10),
-                    Text('\$20000', style: contentTextStyle),
-                    SizedBox(height: 20),
-                    Divider(color: Colors.white, thickness: 2),
-                    SizedBox(height: 20),
-                    Text('Nombre servicio:', style: titleTextStyle),
-                    SizedBox(height: 10),
-                    Text('Limpieza', style: contentTextStyle),
-                    SizedBox(height: 20),
-                    Text('Freelancer:', style: titleTextStyle),
-                    SizedBox(height: 10),
-                    Text('Luis Gonzalez', style: contentTextStyle),
-                    SizedBox(height: 20),
-                    Text('Telefono:', style: titleTextStyle),
-                    SizedBox(height: 10),
-                    Text('322 5846354', style: contentTextStyle),
-                    SizedBox(height: 20),
+                  children: [
+                    const SizedBox(height: 20),
+                    const Text('Tienes que pagar:', style: titleTextStyle),
+                    const SizedBox(height: 10),
+                    Text('\$${service.price}', style: contentTextStyle),
+                    const SizedBox(height: 20),
+                    const Divider(color: Colors.white, thickness: 2),
+                    const SizedBox(height: 20),
+                    const Text('Nombre servicio:', style: titleTextStyle),
+                    const SizedBox(height: 10),
+                    Text(service.serviceName, style: contentTextStyle),
+                    const SizedBox(height: 20),
+                    const Text('Freelancer:', style: titleTextStyle),
+                    const SizedBox(height: 10),
+                    Text(freelancer.name, style: contentTextStyle),
+                    const SizedBox(height: 20),
+                    const Text('Telefono:', style: titleTextStyle),
+                    const SizedBox(height: 10),
+                    const Text('322 5846354', style: contentTextStyle),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 30),
             RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                provider.addNewService(
+                  freelancer.name,
+                  service.serviceName,
+                  service.category,
+                  service.price,
+                );
+                showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                    actions: [
+                      RaisedButton(
+                        onPressed: () =>
+                            Navigator.of(context).pushNamed(MainPage.route),
+                        child: Text(
+                          'OK',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        color: Theme.of(context).primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      )
+                    ],
+                    content: Text('Transferencia creada correctamente'),
+                  ),
+                  barrierDismissible: false,
+                );
+              },
               padding: const EdgeInsets.symmetric(vertical: 20),
               color: Theme.of(context).primaryColor,
               child: const Text(

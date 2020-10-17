@@ -1,6 +1,8 @@
 import 'package:ed_project/models/freelancer_model.dart';
+import 'package:ed_project/providers/profile_provider.dart';
 import 'package:ed_project/screens/tasks/task_description.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TaskCard extends StatelessWidget {
   final FreelancerModel freelancer;
@@ -15,7 +17,12 @@ class TaskCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.of(context).pushNamed(TaskPage.route),
+      onTap: () {
+        final provider = Provider.of<ProfileProvider>(context, listen: false);
+        provider.setSelectedService(service);
+        provider.setSelectedFreelancer(freelancer);
+        Navigator.of(context).pushNamed(TaskPage.route);
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
