@@ -4,7 +4,7 @@ import './../models/profile_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
   List<ProfileModel> profilesData = [];
-  ProfileModel _user = null;
+  ProfileModel _user;
 
   ProfileModel get getUser => _user;
 
@@ -38,7 +38,7 @@ class ProfileProvider extends ChangeNotifier {
           password: password,
           lastTransactions: [],
           avatarUrl:
-              'https://lh3.googleusercontent.com/proxy/v_vgYZzi7lI22rfnbMCRG2zoAXYGkpk8PGld0DHBLNjHCU3TjhDljOQPNtYA9PvDsG3vOhfDhK4Yn-b8zQil5K6rQATYkDeVQFOSHr0yJShURLZQn6PtuxZoSQmWpA4dChL5--Rv-LfAURMB9tDrdL84xGocR5maLoO4jfWcZOz7UtG5KBVLfF0ZiUb4qdP7FtCITWLz4NI1oG6qK5Ir4kDw2wMn9vH2QLk-1A',
+              'https://images.unsplash.com/photo-1602696221981-75511960e2b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
           gender: Gender.MALE,
           lastName: '',
           location: '',

@@ -1,14 +1,14 @@
 import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-main() {
+void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   group('Test for delete user', () {
     test('Delete an existing user', () async {
-      var uProv = ProfileProvider();
+      final  uProv = ProfileProvider();
       await uProv.loadData();
       uProv.login('gabymartinez@gmail.com', 'sdfdsg');
-      bool response = uProv.deleteUser();
+      final bool response = uProv.deleteUser();
       expect(response, true);
     });
 

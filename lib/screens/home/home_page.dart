@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:ed_project/providers/freelancer_provider.dart';
 import 'package:ed_project/providers/profile_provider.dart';
+import 'package:ed_project/screens/freelancers/freelancer_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../screens/categories/categories_list.dart';
@@ -86,6 +87,9 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, i) => FreelancerMiniPhotoWidget(
                       freelancerName: freelaProv[i].name,
                       freelancerUrlImage: freelaProv[i].avatarUrl,
+                      onTap: () => Navigator.of(context).pushNamed(
+                          FreelancerProfilePage.route,
+                          arguments: freelaProv[i]),
                     ),
                   ),
                 ),

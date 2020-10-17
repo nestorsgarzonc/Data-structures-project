@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './consts/routes.dart';
 import './consts/theme_data.dart';
-import './providers/index_homepage_provider.dart';
-import './screens/initial_page.dart';
-import './providers/profile_provider.dart';
 import './providers/freelancer_provider.dart';
+import './providers/index_homepage_provider.dart';
+import './providers/profile_provider.dart';
+import './screens/initial_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
