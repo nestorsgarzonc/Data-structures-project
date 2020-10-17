@@ -65,11 +65,11 @@ class __LoginBodyWodgetState extends State<_LoginBodyWodget> {
   @override
   Widget build(BuildContext context) {
     void handleSubmit() {
-      bool res = Provider.of<ProfileProvider>(context, listen: false)
+      final bool res = Provider.of<ProfileProvider>(context, listen: false)
           .login(_email, _password);
       if (!res) {
-        Scaffold.of(context)
-            .showSnackBar(SnackBar(content: Text('Credenciales incorrectas')));
+        Scaffold.of(context).showSnackBar(
+            const SnackBar(content: Text('Credenciales incorrectas')));
       } else {
         Navigator.of(context).pushReplacementNamed(MainPage.route);
       }

@@ -54,8 +54,8 @@ class UserProfilePage extends StatelessWidget {
                           size: 30,
                         ),
                         Text(
-                          '${userProviderView.location}',
-                          style: TextStyle(
+                          userProviderView.location,
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
@@ -119,7 +119,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
           child: ListTile(
             title: Text('${_listItems[i]['title']}'),
             leading: Icon(_listItems[i]['icon'] as IconData),
-            onTap: _listItems[i]['onTap'],
+            onTap: () => _listItems[i]['onTap'],
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 10,
