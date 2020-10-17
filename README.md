@@ -5,7 +5,7 @@ Waffly es una app multiplataforma construida en flutter en la que puedes solicit
 ## Construida en Flutter 💙
 APK **PROXIMAMENTE**
 
-URL **PROXIMAMENTE**
+URL: [WAFFLY_WEB](https://unlearn-148a3.web.app/) **NOTA** BETA: El diseño esta optimizado para dispositivos moviles asi que se recomienda abrir desde un telefono movil o con el navegador con un tamaño similar a un telefono o screenshots
 
 Si deseas debuggear la app en Android necesitas configurar el repositorio con Firebase debes seguir las siguientes instrucciones:
 
