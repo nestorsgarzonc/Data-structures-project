@@ -1,0 +1,4 @@
+#Sat Oct 17 00:30:33 COT 2020
+base.0=C\:\\Users\\nesto\\Desktop\\UNAL\\ED\\ed_project\\build\\app\\intermediates\\transforms\\r8\\release\\0\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

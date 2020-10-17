@@ -1,0 +1,6 @@
+# Referenced at C:\Users\nesto\Desktop\UNAL\ED\ed_project\build\app\intermediates\merged_manifests\release\arm64-v8a\AndroidManifest.xml:17
+-keep class androidx.core.app.CoreComponentFactory { <init>(); }
+# Referenced at C:\Users\nesto\Desktop\UNAL\ED\ed_project\build\app\intermediates\merged_manifests\release\arm64-v8a\AndroidManifest.xml:22
+-keep class com.example.ed_project.MainActivity { <init>(); }
+# Referenced at C:\Users\nesto\Desktop\UNAL\ED\ed_project\build\app\intermediates\merged_manifests\release\arm64-v8a\AndroidManifest.xml:17
+-keep class io.flutter.app.FlutterApplication { <init>(); }
