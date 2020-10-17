@@ -1,16 +1,17 @@
+import 'package:ed_project/collections/linked_list.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import './../models/profile_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
-  List<ProfileModel> profilesData = [];
+  LinkedList profilesData = LinkedList();
   ProfileModel _user = null;
 
   ProfileModel get getUser => _user;
 
   Future<void> loadData() async {
     final data = await rootBundle.loadString('assets/data/profile.json');
-    profilesData = profileModelFromJson(data);
+    profilesData = LinkedList.fromList(profileModelFromJson(data));
     print('Profile data loaded');
   }
 
@@ -31,7 +32,7 @@ class ProfileProvider extends ChangeNotifier {
       profilesData.firstWhere((e) => e.email == email);
       return false;
     } catch (e) {
-      profilesData.add(
+      profilesData.pushBack(
         ProfileModel(
           email: email,
           username: username,
@@ -69,7 +70,7 @@ class ProfileProvider extends ChangeNotifier {
     }
     try {
       profilesData.removeWhere((element) => element == _user);
-      profilesData.add(user);
+      profilesData.pushBack(user);
       _user = user;
       notifyListeners();
       return true;
