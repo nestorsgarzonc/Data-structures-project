@@ -31,7 +31,7 @@ class PaymentPage extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           children: [
             const Text(
-              'Has el pago y muy pronto podras disfrutar de los beneficios',
+              'Haz el pago y muy pronto podrás disfrutar de los beneficios',
               style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
             ),
             const SizedBox(height: 20),
