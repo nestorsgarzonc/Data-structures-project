@@ -35,3 +35,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+//TODO: Al volverse freelancer tiene que volver a iniciar sesion
