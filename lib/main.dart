@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './consts/routes.dart';
@@ -21,25 +20,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  //final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   @override
   Widget build(BuildContext context) {
     Provider.of<ProfileProvider>(context).loadData();
     Provider.of<FreelancerProvider>(context).loadData();
-    return FutureBuilder<FirebaseApp>(
-      future: _initialization,
-      builder: (context, snapshot) {
-        return snapshot.hasData
-            ? MaterialApp(
-                title: 'Waffly',
-                debugShowCheckedModeBanner: false,
-                theme: lightTheme,
-                initialRoute: InitialPage.route,
-                routes: constRoutes,
-              )
-            : const CircularProgressIndicator();
-      },
+    return MaterialApp(
+      title: 'Waffly',
+      debugShowCheckedModeBanner: false,
+      theme: lightTheme,
+      initialRoute: InitialPage.route,
+      routes: constRoutes,
     );
   }
 }
+//TODO: Al volverse freelancer tiene que volver a iniciar sesion

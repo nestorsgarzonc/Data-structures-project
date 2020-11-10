@@ -11,6 +11,13 @@ class LinkedList {
     _tail = null;
   }
 
+  LinkedList.fromList(List lista) {
+    makeEmpty();
+    for (dynamic i in lista) {
+      pushBack(i);
+    }
+  }
+
   void pushFront(dynamic key) {
     if (_head == null) {
       _head = Node(key);
@@ -165,7 +172,7 @@ class LinkedList {
 
   void add(int i, dynamic key) {
     int tempI = i;
-    if (tempI >= 0 && tempI < _size) {
+    if (tempI >= 0 && tempI <= _size) {
       Node n = _head;
       if (tempI == 0) {
         pushFront(key);
@@ -188,6 +195,30 @@ class LinkedList {
     _head = null;
     _tail = null;
     _size = 0;
+  }
+
+  dynamic firstWhere(bool test(dynamic element), {dynamic Function() orElse}) {
+    Node n = _head;
+    while (n != null) {
+      if (test(n.value)) return n.value;
+      n = n.nextValue;
+    }
+    if (orElse != null) return orElse();
+    throw Exception("En elemento no existe");
+  }
+
+  void removeWhere(bool test(dynamic element)) {
+    Node n = _head;
+    while (n == _head && test(n.value)) {
+      popFront();
+      n = _head;
+    }
+    while (n.nextValue != null) {
+      if (test(n.nextValue.value))
+        n.nextValue = n.nextValue.nextValue;
+      else
+        n = n.nextValue;
+    }
   }
 
   @override

@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final freelaProv = Provider.of<FreelancerProvider>(context).getFreelancers;
+    final profileProv = Provider.of<ProfileProvider>(context, listen: false);
     return Scaffold(
       body: Column(
         children: [
@@ -71,8 +72,12 @@ class HomePage extends StatelessWidget {
                       isExternal: true,
                       imageUrl: freelaProv[i].services[0].imageUrl,
                       name: freelaProv[i].services[0].serviceName,
-                      onTap: () =>
-                          Navigator.of(context).pushNamed(TaskPage.route),
+                      onTap: () {
+                        profileProv.setSelectedFreelancer(freelaProv[i]);
+                        profileProv
+                            .setSelectedService(freelaProv[i].services[0]);
+                        Navigator.of(context).pushNamed(TaskPage.route);
+                      },
                     ),
                   ),
                 ),

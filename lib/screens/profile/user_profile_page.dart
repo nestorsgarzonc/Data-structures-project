@@ -69,7 +69,7 @@ class UserProfilePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 25),
-          const _ListItemsUserProfileWidget()
+          _ListItemsUserProfileWidget()
         ],
       ),
     );
@@ -119,7 +119,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
           child: ListTile(
             title: Text('${_listItems[i]['title']}'),
             leading: Icon(_listItems[i]['icon'] as IconData),
-            onTap: () => _listItems[i]['onTap'],
+            onTap: _listItems[i]['onTap'],
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 10,
