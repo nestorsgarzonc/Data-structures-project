@@ -65,11 +65,11 @@ class __LoginBodyWodgetState extends State<_LoginBodyWodget> {
   @override
   Widget build(BuildContext context) {
     void handleSubmit() {
-      final bool res = Provider.of<ProfileProvider>(context, listen: false)
-          .login(_email, _password);
+      final bool res =
+          Provider.of<ProfileProvider>(context, listen: false).login(_email, _password);
       if (!res) {
-        Scaffold.of(context).showSnackBar(
-            const SnackBar(content: Text('Credenciales incorrectas')));
+        Scaffold.of(context)
+            .showSnackBar(const SnackBar(content: Text('Credenciales incorrectas')));
       } else {
         Navigator.of(context).pushReplacementNamed(MainPage.route);
       }
@@ -143,8 +143,7 @@ class _SocialNetworksIcons extends StatelessWidget {
         ),
         FlatButton(
           onPressed: () {},
-          child:
-              const FaIcon(FontAwesomeIcons.twitter, color: Colors.lightBlue),
+          child: const FaIcon(FontAwesomeIcons.twitter, color: Colors.lightBlue),
         ),
       ],
     );
