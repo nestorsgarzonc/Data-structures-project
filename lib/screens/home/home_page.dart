@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/freelancer_provider.dart';
 import '../../providers/profile_provider.dart';
-import '../freelancers/freelancer_profile_page.dart';
+import '../freelancer/freelancer_profile_page.dart';
 import '../../screens/categories/categories_list.dart';
 import '../../screens/tasks/task_description.dart';
 import '../../screens/tasks/tasks_list.dart';

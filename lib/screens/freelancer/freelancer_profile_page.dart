@@ -7,7 +7,7 @@ class FreelancerProfilePage extends StatelessWidget {
   static const String route = 'FreelancerProfilePage';
   @override
   Widget build(BuildContext context) {
-    final FreelancerModel freel = ModalRoute.of(context).settings.arguments;
+    final FreelancerModel freel = ModalRoute.of(context).settings.arguments as FreelancerModel;
 
     return Scaffold(
       body: Column(
@@ -65,7 +65,6 @@ class _HeaderCardProfile extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _ButtonHeaderCard(
@@ -103,7 +102,7 @@ class _ButtonHeaderCard extends StatelessWidget {
     return InkWell(
       onTap: () => onTap(),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -112,11 +111,9 @@ class _ButtonHeaderCard extends StatelessWidget {
           children: [
             Icon(icon, color: Colors.blue[700]),
             const SizedBox(width: 10),
-            Container(
-              child: Text(
-                text,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-              ),
+            Text(
+              text,
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
             ),
           ],
         ),

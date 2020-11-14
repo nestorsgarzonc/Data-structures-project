@@ -6,7 +6,7 @@ import './../models/profile_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
   LinkedList profilesData = LinkedList();
-  ProfileModel _user = null;
+  ProfileModel _user;
 
   ProfileModel get getUser => _user;
   freelancer.Service _selectedService;
@@ -25,7 +25,7 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addNewService(fName, serviceName, categoria, price) {
+  void addNewService(String fName, String serviceName, String categoria, int price) {
     _user.lastTransactions.add(LastTransaction(
       category: categoria,
       date: DateTime.now(),

@@ -114,7 +114,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       icon: Icons.photo_filter,
                       label: 'Link foto perfil',
                       initialValue: userP.avatarUrl,
-                      valueCallback: (value) => user.avatarUrl = value,
+                      valueCallback: (String value) => user.avatarUrl = value,
                     ),
                   ],
                 ),

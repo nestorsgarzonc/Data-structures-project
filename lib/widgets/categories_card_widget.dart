@@ -34,21 +34,21 @@ class CategoriesWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              isExternal
-                  ? Image.network(
-                      imageUrl,
-                      fit: BoxFit.cover,
-                      alignment: Alignment.center,
-                      height: 160,
-                      width: 300,
-                    )
-                  : Image.asset(
-                      imageUrl,
-                      fit: BoxFit.cover,
-                      alignment: Alignment.topCenter,
-                      height: 160,
-                      width: 300,
-                    ),
+              if (isExternal)
+                Image.network(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  height: 160,
+                  width: 300,
+                )
+              else
+                Image.asset(
+                  imageUrl,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                  height: 160,
+                  width: 300,
+                ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 alignment: Alignment.centerLeft,

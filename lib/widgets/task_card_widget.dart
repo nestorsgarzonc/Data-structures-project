@@ -1,14 +1,14 @@
-import '../models/freelancer_model.dart';
-import '../screens/tasks/task_description.dart';
-import '../providers/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../models/freelancer_model.dart';
+import '../providers/profile_provider.dart';
+import '../screens/tasks/task_description.dart';
 
 class TaskCard extends StatelessWidget {
   final FreelancerModel freelancer;
   final Service service;
 
-  TaskCard({
+  const TaskCard({
     Key key,
     @required this.freelancer,
     @required this.service,
@@ -76,7 +76,7 @@ class TaskCard extends StatelessWidget {
 
 class _LocationWIdget extends StatelessWidget {
   final String location;
-  _LocationWIdget({Key key, this.location}) : super(key: key);
+  const _LocationWIdget({Key key, this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _LocationWIdget extends StatelessWidget {
         boxShadow: const [BoxShadow(blurRadius: 2, color: Colors.grey)],
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Row(children: [Icon(Icons.location_on), Text(location)]),
+      child: Row(children: [const Icon(Icons.location_on), Text(location)]),
     );
   }
 }
@@ -124,7 +124,8 @@ class __HeartIconState extends State<_HeartIcon> {
 class _BottomContentTaskCard extends StatelessWidget {
   final FreelancerModel freelancerInfo;
   final Service service;
-  _BottomContentTaskCard({
+
+  const _BottomContentTaskCard({
     Key key,
     @required this.freelancerInfo,
     @required this.service,
@@ -146,7 +147,7 @@ class _BottomContentTaskCard extends StatelessWidget {
             children: [
               Text(
                 service.serviceName,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
+                style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
               ),
               Row(
                 children: [
@@ -155,7 +156,7 @@ class _BottomContentTaskCard extends StatelessWidget {
                   ),
                   Text(
                     '  ${freelancerInfo.name}',
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ],
               ),
@@ -172,7 +173,7 @@ class _BottomContentTaskCard extends StatelessWidget {
             ]),
         Text(
           '\$${service.price}',
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 22,
             color: Colors.black87,

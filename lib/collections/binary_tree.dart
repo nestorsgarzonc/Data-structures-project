@@ -1,7 +1,6 @@
 import 'dart:math';
-import 'linked_list.dart';
-
 import 'bt_node.dart';
+import 'linked_list.dart';
 
 class BinaryTree {
   BT_Node root;
@@ -12,11 +11,11 @@ class BinaryTree {
     height = 0;
   }
 
-  BT_Node find(dynamic key, {BT_Node n = null}) {
-    if (n == null) n = root;
-    if (n.value == key)
+  BT_Node find(dynamic key, {BT_Node n}) {
+    n ??= root;
+    if (n.value == key) {
       return n;
-    else if (n.value > key) {
+    } else if (n.value > key) {
       if (n.leftChild == null) return n;
       return find(key, n: n.leftChild);
     } else {
@@ -31,9 +30,9 @@ class BinaryTree {
       return;
     }
     BT_Node n = find(key);
-    if (n.value == key)
+    if (n.value == key) {
       return;
-    else if (n.value > key) {
+    } else if (n.value > key) {
       n.leftChild = BT_Node(key, par: n);
       n = n.leftChild;
     } else {
