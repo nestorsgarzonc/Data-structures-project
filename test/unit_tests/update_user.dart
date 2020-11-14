@@ -1,5 +1,5 @@
-import 'package:ed_project/models/profile_model.dart';
-import 'package:ed_project/providers/profile_provider.dart';
+import '../../lib/models/profile_model.dart';
+import '../../lib/providers/profile_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

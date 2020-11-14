@@ -1,5 +1,5 @@
-import 'package:ed_project/collections/linked_list.dart';
-import 'package:ed_project/models/freelancer_model.dart' as freelancer;
+import '../collections/linked_list.dart';
+import '../models/freelancer_model.dart' as freelancer;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
 import './../models/profile_model.dart';

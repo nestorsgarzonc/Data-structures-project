@@ -1,4 +1,4 @@
-import 'package:ed_project/providers/profile_provider.dart';
+import '../../lib/providers/profile_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

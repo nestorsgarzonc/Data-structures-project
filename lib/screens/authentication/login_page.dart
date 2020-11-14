@@ -1,4 +1,3 @@
-import 'package:ed_project/providers/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +6,7 @@ import '../../screens/home/main_page.dart';
 import '../../widgets/background_image_widget.dart';
 import '../../widgets/buttons_login_widget.dart';
 import '../../widgets/icon_button_widget.dart';
+import '../../providers/profile_provider.dart';
 
 class LoginPage extends StatelessWidget {
   static const String route = 'loginPage';

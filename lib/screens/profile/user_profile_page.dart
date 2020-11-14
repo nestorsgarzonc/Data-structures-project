@@ -1,7 +1,7 @@
-import 'package:ed_project/screens/initial_page.dart';
-import 'package:ed_project/screens/profile/edit_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../initial_page.dart';
+import '../profile/edit_profile_page.dart';
 import '../../providers/profile_provider.dart';
 import '../../widgets/background_image_rounded.dart';
 
@@ -104,8 +104,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
       },
       {
         'title': 'Cerrar sesion',
-        'onTap': () =>
-            Navigator.of(context).pushReplacementNamed(InitialPage.route),
+        'onTap': () => Navigator.of(context).pushReplacementNamed(InitialPage.route),
         'icon': Icons.outlined_flag,
       },
     ];

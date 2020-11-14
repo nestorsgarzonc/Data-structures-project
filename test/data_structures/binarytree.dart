@@ -1,8 +1,7 @@
 import 'dart:math';
-
-import 'package:ed_project/collections/binary_tree.dart';
-import 'package:ed_project/collections/linked_list.dart';
 import 'package:test/test.dart';
+import '../../lib/collections/binary_tree.dart';
+import '../../lib/collections/linked_list.dart';
 
 void main() {
   BinaryTree bt = BinaryTree();

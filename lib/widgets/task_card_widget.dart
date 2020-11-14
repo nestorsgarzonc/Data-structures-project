@@ -1,6 +1,6 @@
-import 'package:ed_project/models/freelancer_model.dart';
-import 'package:ed_project/providers/profile_provider.dart';
-import 'package:ed_project/screens/tasks/task_description.dart';
+import '../models/freelancer_model.dart';
+import '../screens/tasks/task_description.dart';
+import '../providers/profile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -132,8 +132,8 @@ class _BottomContentTaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final filledStars = List.generate(service.numberStars,
-        (_) => Icon(Icons.star, color: Theme.of(context).primaryColor));
+    final filledStars = List.generate(
+        service.numberStars, (_) => Icon(Icons.star, color: Theme.of(context).primaryColor));
     final outlineStars = List.generate((5 - service.numberStars).abs(),
         (_) => Icon(Icons.star_border, color: Theme.of(context).primaryColor));
 

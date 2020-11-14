@@ -4,8 +4,8 @@
 
 import 'dart:convert';
 
-List<ProfileModel> profileModelFromJson(String str) => List<ProfileModel>.from(
-    json.decode(str).map((x) => ProfileModel.fromJson(x)));
+List<ProfileModel> profileModelFromJson(String str) =>
+    List<ProfileModel>.from(json.decode(str).map((x) => ProfileModel.fromJson(x)));
 
 String profileModelToJson(List<ProfileModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -19,7 +19,9 @@ class ProfileModel {
     this.password,
     this.location,
     this.gender,
+    this.isFreelancer,
     this.avatarUrl,
+    this.freelancerId,
     this.lastTransactions,
   });
 
@@ -30,7 +32,9 @@ class ProfileModel {
   String password;
   String location;
   Gender gender;
+  bool isFreelancer;
   String avatarUrl;
+  int freelancerId;
   List<LastTransaction> lastTransactions;
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
@@ -41,7 +45,9 @@ class ProfileModel {
         password: json["password"],
         location: json["location"],
         gender: genderValues.map[json["gender"]],
+        isFreelancer: json["is_freelancer"] == null ? null : json["is_freelancer"],
         avatarUrl: json["avatar_url"],
+        freelancerId: json["freelancer_id"] == null ? null : json["freelancer_id"],
         lastTransactions: List<LastTransaction>.from(
             json["last_transactions"].map((x) => LastTransaction.fromJson(x))),
       );
@@ -54,9 +60,10 @@ class ProfileModel {
         "password": password,
         "location": location,
         "gender": genderValues.reverse[gender],
+        "is_freelancer": isFreelancer == null ? null : isFreelancer,
         "avatar_url": avatarUrl,
-        "last_transactions":
-            List<dynamic>.from(lastTransactions.map((x) => x.toJson())),
+        "freelancer_id": freelancerId == null ? null : freelancerId,
+        "last_transactions": List<dynamic>.from(lastTransactions.map((x) => x.toJson())),
       };
 }
 
@@ -81,8 +88,7 @@ class LastTransaction {
   String category;
   int price;
 
-  factory LastTransaction.fromJson(Map<String, dynamic> json) =>
-      LastTransaction(
+  factory LastTransaction.fromJson(Map<String, dynamic> json) => LastTransaction(
         freelancer: json["freelancer"],
         serviceName: json["service_name"],
         description: json["description"],

@@ -1,6 +1,6 @@
-import 'package:ed_project/models/freelancer_model.dart';
-import 'package:ed_project/widgets/background_image_rounded.dart';
-import 'package:ed_project/widgets/task_card_widget.dart';
+import '../../models/freelancer_model.dart';
+import '../../widgets/background_image_rounded.dart';
+import '../../widgets/task_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class FreelancerProfilePage extends StatelessWidget {
