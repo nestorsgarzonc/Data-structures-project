@@ -3,6 +3,13 @@ import '../../widgets/appbar_with_backbutton_widget.dart';
 
 class BeAFreelancerPage extends StatelessWidget {
   static const String route = 'BeAFreelancerPage';
+  final List<String> _recomendationsList = [
+    'Se puntual',
+    'Seguir las medidas de covid-19',
+    'Al comenzar y al terminar el servicio marcalo en la app',
+    'Recuerda comunicarte con el cliente antes de realizar el servicio',
+    'Cualquier problema con el pago contactarse con servicio al usuario',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +36,7 @@ class BeAFreelancerPage extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text('Sigue las siguientes recomendaciones antes de comenzar:'),
                   SizedBox(height: 8),
-                  _ListRecomendations(title: 'Ser puntual'),
-                  _ListRecomendations(title: 'Ser puntual'),
+                  ..._recomendationsList.map((e) => _ListRecomendations(title: e)).toList()
                 ],
               ),
             ),
@@ -72,7 +78,7 @@ class _ListRecomendations extends StatelessWidget {
             ),
           ),
           SizedBox(width: 10),
-          Text(title)
+          Flexible(child: Text(title))
         ],
       ),
     );
