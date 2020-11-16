@@ -13,6 +13,8 @@ void main() {
     x = r.nextInt(100);
     bt.insert(x);
     ll.pushBack(x);
+    bt.level();
+    print('\n');
   }
   bt.inOrder();
   print('\n');

@@ -1,5 +1,7 @@
 import 'dart:math';
-import 'linked_list.dart';
+import 'package:ed_project/collections/queue.dart';
+import 'package:ed_project/collections/stack.dart';
+import 'package:ed_project/collections/linked_list.dart';
 
 import 'bt_node.dart';
 
@@ -40,17 +42,95 @@ class BinaryTree {
       n.rightChild = BT_Node(key, par: n);
       n = n.rightChild;
     }
-    if (n.parent.height == 1) heightDef(root);
+    if (n.parent.height == 1) heightDef(n.parent);
     balance(n);
   }
 
-  int heightDef(BT_Node n) {
-    if (n == null) return 0;
-    n.height = 1 + max(heightDef(n.leftChild), heightDef(n.rightChild));
-    return n.height;
+  void heightDef(BT_Node n) {
+    if (n == null) return;
+    if (n.leftChild != null && n.rightChild != null)
+      n.height = max(n.leftChild.height, n.rightChild.height) + 1;
+    else if (n.leftChild != null)
+      n.height = n.leftChild.height + 1;
+    else if (n.rightChild != null)
+      n.height = n.rightChild.height + 1;
+    else
+      n.height = 1;
+    heightDef(n.parent);
   }
 
-  void balance(BT_Node n) {}
+  /*int heightBalance(BT_Node n) {
+    if (n == null) return 0;
+    n.height = 1 + max(heightBalance(n.leftChild), heightBalance(n.rightChild));
+    return n.height;
+  }*/
+
+  void balance(BT_Node n) {
+    if ((n.leftChild != null) && (n.rightChild != null)) {
+      if (n.leftChild.height > (n.rightChild.height + 1))
+        rebalanceRight(n);
+      else if (n.rightChild.height > (n.leftChild.height + 1)) rebalanceLeft(n);
+    } else if (n.leftChild != null) if (n.leftChild.height > 1)
+      rebalanceRight(n);
+    else if (n.rightChild != null) if (n.rightChild.height > 1)
+      rebalanceLeft(n);
+    heightDef(n);
+    if (n.parent != null) balance(n.parent);
+  }
+
+  void rebalanceRight(BT_Node n) {
+    BT_Node m = n.leftChild;
+    if (m.leftChild != null && m.rightChild != null) if (m.rightChild.height >
+        m.leftChild.height)
+      rotateLeft(m);
+    else if (m.rightChild != null) rotateLeft(m);
+    rotateRight(n);
+  }
+
+  void rebalanceLeft(BT_Node n) {
+    BT_Node m = n.rightChild;
+    if (m.leftChild != null && m.rightChild != null) if (m.leftChild.height >
+        m.rightChild.height)
+      rotateRight(m);
+    else if (m.leftChild != null) rotateRight(m);
+    rotateLeft(n);
+  }
+
+  void rotateRight(BT_Node n) {
+    BT_Node aux = n.leftChild;
+    n.leftChild = aux.rightChild;
+    if (aux.rightChild != null) n.leftChild.parent = n;
+    aux.rightChild = n;
+    aux.parent = n.parent;
+    if (n.parent == null)
+      root = aux;
+    else {
+      if (n.parent.leftChild == n)
+        n.parent.leftChild = aux;
+      else
+        n.parent.rightChild = aux;
+    }
+    n.parent = aux;
+    heightDef(n);
+  }
+
+  void rotateLeft(BT_Node n) {
+    BT_Node aux = n.rightChild;
+    n.rightChild = aux.leftChild;
+    if (aux.leftChild != null) n.rightChild.parent = n;
+    aux.leftChild = n;
+    aux.parent = n.parent;
+    if (n.parent == null)
+      root = aux;
+    else {
+      if (n.parent.leftChild == n)
+        n.parent.leftChild = aux;
+      else
+        n.parent.rightChild = aux;
+    }
+    n.parent = aux;
+    heightDef(n);
+  }
 
   void delete(dynamic value) {
     BT_Node n = find(value);
@@ -62,6 +142,9 @@ class BinaryTree {
         s.leftChild = n.leftChild;
       else
         s.rightChild = n.leftChild;
+      if (n.leftChild != null) n.leftChild.parent = s;
+      heightDef(s);
+      balance(s);
     } else {
       s = next(value);
       n.value = s.value;
@@ -70,9 +153,10 @@ class BinaryTree {
         x.leftChild = s.rightChild;
       else
         x.rightChild = s.rightChild;
+      if (s.rightChild != null) s.rightChild.parent = x;
+      heightDef(x);
+      balance(x);
     }
-    heightDef(root);
-    balance(root);
   }
 
   BT_Node next(dynamic value) {
@@ -121,5 +205,17 @@ class BinaryTree {
     if (n.leftChild != null) inOrder(n: n.leftChild);
     print('${n.value}\t${n.height}');
     if (n.rightChild != null) inOrder(n: n.rightChild);
+  }
+
+  void level() {
+    Queue s = Queue();
+    BT_Node n = root;
+    s.enqueue(n);
+    while (!s.isEmpty()) {
+      n = s.dequeue();
+      print('${n.value}\t${n.height}');
+      if (n.leftChild != null) s.enqueue(n.leftChild);
+      if (n.rightChild != null) s.enqueue(n.rightChild);
+    }
   }
 }
