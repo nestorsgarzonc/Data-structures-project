@@ -17,14 +17,13 @@ class FreelancerMiniPhotoWidget extends StatelessWidget {
       onTap: () => onTap(),
       child: Container(
         decoration: BoxDecoration(
-          boxShadow: [BoxShadow(blurRadius: 2, color: Colors.grey)],
+          boxShadow: const [BoxShadow(blurRadius: 2, color: Colors.grey)],
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
         ),
-        margin: EdgeInsets.symmetric(horizontal: 8, vertical: 7),
-        padding: EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 7),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -42,7 +41,7 @@ class FreelancerMiniPhotoWidget extends StatelessWidget {
             ),
             Text(
               freelancerName.split(' ')[0],
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
             )
           ],
         ),

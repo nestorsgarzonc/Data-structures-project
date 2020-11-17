@@ -6,7 +6,7 @@ class CreateServicePage extends StatelessWidget {
   //TODO: finish form
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text('Hola Mundo'),
       ),

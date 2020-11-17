@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import '../../models/freelancer_model.dart';
 import '../../widgets/background_image_rounded.dart';
 import '../../widgets/task_card_widget.dart';
-import 'package:flutter/material.dart';
 
 class FreelancerProfilePage extends StatelessWidget {
   static const String route = 'FreelancerProfilePage';

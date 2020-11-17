@@ -40,19 +40,22 @@ class _CustomFloatingActionButtonWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(80),
-          boxShadow: [BoxShadow(blurRadius: 2, spreadRadius: 1, color: Colors.grey)]),
+          boxShadow: const [BoxShadow(blurRadius: 2, spreadRadius: 1, color: Colors.grey)]),
       height: 50,
       width: 140,
       child: RaisedButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: Theme.of(context).primaryColor,
         onPressed: () => Navigator.of(context).pushNamed(CreateServicePage.route),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('Crea un\nservicio', style: TextStyle(color: Colors.white)),
-            SizedBox(width: 10),
-            Icon(Icons.create, color: Colors.white),
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(Icons.add, color: Theme.of(context).primaryColor),
+            ),
+            const SizedBox(width: 10),
+            const Text('Crea un\nservicio', style: TextStyle(color: Colors.white)),
           ],
         ),
       ),
@@ -68,7 +71,7 @@ class _CustomNavigationBarWidget extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: Provider.of<IndexHomePageProvider>(context).index,
       onTap: (value) => Provider.of<IndexHomePageProvider>(context, listen: false).index = value,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Inicio',

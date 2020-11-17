@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:test/test.dart';
 import 'package:waffly/collections/avl.dart';
-import '../../lib/collections/linked_list.dart';
+import 'package:waffly/collections/linked_list.dart';
 
 void main() {
-  AVLTree bt = AVLTree();
-  LinkedList ll = LinkedList();
-  Random r = Random();
+  final AVLTree bt = AVLTree();
+  final LinkedList ll = LinkedList();
+  final Random r = Random();
   int x;
   for (int i = 1; i <= 10; i++) {
     x = r.nextInt(100);

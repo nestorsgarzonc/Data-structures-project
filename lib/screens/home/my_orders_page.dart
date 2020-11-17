@@ -35,8 +35,7 @@ class MyOrdersPage extends StatelessWidget {
 
 class _CustomCardItem extends StatefulWidget {
   final LastTransaction transaction;
-  const _CustomCardItem({Key key, @required this.transaction})
-      : super(key: key);
+  const _CustomCardItem({Key key, @required this.transaction}) : super(key: key);
 
   @override
   __CustomCardItemState createState() => __CustomCardItemState();
@@ -57,14 +56,14 @@ class __CustomCardItemState extends State<_CustomCardItem> {
         contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
         leading: const CircleAvatar(radius: 25, child: Text('LG')),
         title: Text(
-          '${widget.transaction.serviceName}',
+          widget.transaction.serviceName,
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
         ),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 8),
-            Text('$date'),
+            Text(date),
             if (isTouched)
               SizedBox(
                 height: 60,
@@ -90,9 +89,7 @@ class __CustomCardItemState extends State<_CustomCardItem> {
           ],
         ),
         onTap: () => setState(() => isTouched = !isTouched),
-        trailing: Icon(!isTouched
-            ? Icons.arrow_downward_outlined
-            : Icons.arrow_upward_outlined),
+        trailing: Icon(!isTouched ? Icons.arrow_downward_outlined : Icons.arrow_upward_outlined),
       ),
     );
   }
@@ -101,25 +98,19 @@ class __CustomCardItemState extends State<_CustomCardItem> {
     return showDialog(
       context: context,
       builder: (ctx) {
-        final titleTextStyle = TextStyle(
+        const titleTextStyle = TextStyle(
           fontWeight: FontWeight.bold,
         );
         final items = [
-          {
-            'title': 'Nombre del servicio',
-            'content': widget.transaction.serviceName
-          },
+          {'title': 'Nombre del servicio', 'content': widget.transaction.serviceName},
           {'title': 'Categoria', 'content': widget.transaction.category},
-          {
-            'title': 'Descripcion del servicio',
-            'content': widget.transaction.description
-          },
+          {'title': 'Descripcion del servicio', 'content': widget.transaction.description},
           {'title': 'Freelancer', 'content': widget.transaction.freelancer},
           {'title': 'Fecha', 'content': date},
           {'title': 'Precio', 'content': widget.transaction.price},
         ];
         return AlertDialog(
-          title: Text('Descripcion de la orden:'),
+          title: const Text('Descripcion de la orden:'),
           content: SizedBox(
             height: 200,
             width: size.width * 0.8,
@@ -141,7 +132,7 @@ class __CustomCardItemState extends State<_CustomCardItem> {
           actions: [
             RaisedButton(
               onPressed: () => Navigator.of(context).pop(),
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               color: Theme.of(context).primaryColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),

@@ -75,7 +75,7 @@ class TaskPage extends StatelessWidget {
                               width: size.width * 0.5,
                               child: Text(
                                 service.serviceName,
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                               ),
                             ),
                             const SizedBox(height: 5),

@@ -153,19 +153,19 @@ void main() {
 
     expect(bst.height, 1);
 
-    final bst = BinaryTree();
-    bst.insert(5);
-    bst.insert(3);
-    bst.insert(2);
-    bst.insert(4);
-    bst.insert(7);
+    final bst_1 = BinaryTree();
+    bst_1.insert(5);
+    bst_1.insert(3);
+    bst_1.insert(2);
+    bst_1.insert(4);
+    bst_1.insert(7);
 
     //     5
     //   /    \
     //   3     7
     //  / \
     // 2  4
-    expect(bst.height, 3);
+    expect(bst_1.height, 3);
 
     //TODO: La altura que se le asigna a cada nodo parece incorrecta, infiero que opera al revés
     bst.inOrder();

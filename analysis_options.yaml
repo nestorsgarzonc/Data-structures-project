@@ -1,9 +1,4 @@
-include: package:lint/analysis_options.yaml
-
-analyzer:
-  exclude:
-    - 'lib/models/freelancer_model.dart'
-    - 'lib/models/profile_model.dart.dart'
+#include: package:lint/analysis_options.yaml
 
 linter:
   rules:

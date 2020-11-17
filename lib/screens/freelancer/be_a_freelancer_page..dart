@@ -37,8 +37,8 @@ class BeAFreelancerPage extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                   const SizedBox(height: 10),
-                  Text('Sigue las siguientes recomendaciones antes de comenzar:'),
-                  SizedBox(height: 8),
+                  const Text('Sigue las siguientes recomendaciones antes de comenzar:'),
+                  const SizedBox(height: 8),
                   ..._recomendationsList.map((e) => _ListRecomendations(title: e)).toList()
                 ],
               ),
@@ -51,9 +51,9 @@ class BeAFreelancerPage extends StatelessWidget {
                   Provider.of<ProfileProvider>(context, listen: false).setUserToFreelancer();
                   Navigator.of(context).pushReplacementNamed(MainPage.route);
                 },
-                child: const Text('Confirmar', style: TextStyle(color: Colors.white)),
                 color: Theme.of(context).primaryColor,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                child: const Text('Confirmar', style: TextStyle(color: Colors.white)),
               ),
             )
           ],
@@ -82,7 +82,7 @@ class _ListRecomendations extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Flexible(child: Text(title))
         ],
       ),
