@@ -1,9 +1,8 @@
 import 'dart:math';
-import 'package:ed_project/collections/avlnode.dart';
-import 'package:ed_project/collections/bt_node.dart';
-import 'package:ed_project/collections/linked_list.dart';
-import 'package:ed_project/collections/queue.dart';
-import 'package:ed_project/collections/stack.dart';
+import './avlnode.dart';
+import './linked_list.dart';
+import './queue.dart';
+import './stack.dart';
 
 class AVLTree {
   int variable = 0;
@@ -139,14 +138,12 @@ class AVLTree {
     }
     node.height = 1 + max(heightNode(node.leftSon), heightNode(node.rightSon));
     int balance = getBalance(node);
-    if (balance > 1 && getBalance(node.leftSon) >= 0)
-      return SingleRotationR(node);
+    if (balance > 1 && getBalance(node.leftSon) >= 0) return SingleRotationR(node);
     if (balance > 1 && getBalance(node.leftSon) < 0) {
       node.leftSon = SingleRotationL(node.leftSon);
       return SingleRotationR(node);
     }
-    if (balance < -1 && getBalance(node.rightSon) <= 0)
-      return SingleRotationL(node);
+    if (balance < -1 && getBalance(node.rightSon) <= 0) return SingleRotationL(node);
     if (balance < -1 && getBalance(node.rightSon) > 0) {
       node.rightSon = SingleRotationR(node.rightSon);
       return SingleRotationL(node);

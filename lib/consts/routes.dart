@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/freelancer/create_service_page.dart';
 import '../screens/authentication/login_page.dart';
 import '../screens/authentication/register_page.dart';
 import '../screens/categories/categories_list.dart';
@@ -27,4 +28,5 @@ final Map<String, Widget Function(BuildContext)> constRoutes = {
   EditProfilePage.route: (ctx) => EditProfilePage(),
   FreelancerProfilePage.route: (ctx) => FreelancerProfilePage(),
   BeAFreelancerPage.route: (ctx) => BeAFreelancerPage(),
+  CreateServicePage.route: (ctx) => CreateServicePage(),
 };

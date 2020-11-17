@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../providers/profile_provider.dart';
 import '../../widgets/appbar_with_backbutton_widget.dart';
+import '../home/main_page.dart';
 
 class BeAFreelancerPage extends StatelessWidget {
   static const String route = 'BeAFreelancerPage';
@@ -44,8 +47,10 @@ class BeAFreelancerPage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               child: RaisedButton(
-                //TODO: implemnt on pressed
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<ProfileProvider>(context, listen: false).setUserToFreelancer();
+                  Navigator.of(context).pushReplacementNamed(MainPage.route);
+                },
                 child: const Text('Confirmar', style: TextStyle(color: Colors.white)),
                 color: Theme.of(context).primaryColor,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

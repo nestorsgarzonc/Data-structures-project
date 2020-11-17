@@ -25,6 +25,13 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setUserToFreelancer() {
+    _user.isFreelancer = true;
+    notifyListeners();
+  }
+
+  bool isFreelancer() => _user.isFreelancer;
+
   void addNewService(String fName, String serviceName, String categoria, int price) {
     _user.lastTransactions.add(LastTransaction(
       category: categoria,

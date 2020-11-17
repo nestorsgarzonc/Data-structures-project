@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:test/test.dart';
-import '../../lib/collections/binary_tree.dart';
+import 'package:waffly/collections/avl.dart';
 import '../../lib/collections/linked_list.dart';
 
 void main() {
