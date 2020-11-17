@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:ed_project/collections/avl.dart';
+import '../../lib/collections/avl.dart';
 
 void main() {
   group("Grupo de pruebas finales BST", () {

@@ -1,4 +1,4 @@
-import 'package:ed_project/collections/avl.dart';
+import '../../lib/collections/avl.dart';
 import 'package:test/test.dart';
 
 void main() {

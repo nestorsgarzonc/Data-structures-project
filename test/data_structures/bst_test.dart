@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:ed_project/collections/binary_tree.dart';
+import '../../lib/collections/binary_tree.dart';
 
 void main() {
   group("Grupo de pruebas finales BST", () {

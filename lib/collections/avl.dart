@@ -1,8 +1,8 @@
 import 'dart:math';
-import 'package:ed_project/collections/avlnode.dart';
-import 'package:ed_project/collections/linked_list.dart';
-import 'package:ed_project/collections/queue.dart';
-import 'package:ed_project/collections/stack.dart';
+import '../collections/avlnode.dart';
+import '../collections/linked_list.dart';
+import '../collections/queue.dart';
+import '../collections/stack.dart';
 
 class AVLTree {
   int variable = 0;
