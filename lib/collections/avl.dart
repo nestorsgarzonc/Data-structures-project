@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import './avlnode.dart';
 import './linked_list.dart';
 import './queue.dart';
@@ -259,11 +260,13 @@ class AVLTree {
     return root == null;
   }
 
-  void inOrder({AVLNode n = null}) {
+  String inOrder({AVLNode n = null}) {
     if (n == null) n = root;
-    if (n.leftSon != null) inOrder(n: n.leftSon);
-    print('${n.value}\t${n.height}');
-    if (n.rightSon != null) inOrder(n: n.rightSon);
+    String ans = '';
+    if (n.leftSon != null) ans += inOrder(n: n.leftSon);
+    ans += ('${n.value}\n');
+    if (n.rightSon != null) ans += inOrder(n: n.rightSon);
+    return ans;
   }
 
   LinkedList search(dynamic x, dynamic y) {

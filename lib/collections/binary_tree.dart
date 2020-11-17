@@ -47,14 +47,15 @@ class BinaryTree {
   }
 
   void heightDef(BT_Node n) {
-    if (n.leftChild != null && n.rightChild != null)
+    if (n.leftChild != null && n.rightChild != null) {
       n.height = max(n.leftChild.height, n.rightChild.height) + 1;
-    else if (n.leftChild != null)
+    } else if (n.leftChild != null) {
       n.height = n.leftChild.height + 1;
-    else if (n.rightChild != null)
+    } else if (n.rightChild != null) {
       n.height = n.rightChild.height + 1;
-    else
+    } else {
       n.height = 1;
+    }
     if (n.parent == null) {
       height = n.height;
       return;
@@ -70,23 +71,29 @@ class BinaryTree {
 
   void balance(BT_Node n) {
     if ((n.leftChild != null) && (n.rightChild != null)) {
-      if (n.leftChild.height > (n.rightChild.height + 1))
+      if (n.leftChild.height > (n.rightChild.height + 1)) {
         rebalanceRight(n);
-      else if (n.rightChild.height > (n.leftChild.height + 1)) rebalanceLeft(n);
-    } else if (n.leftChild != null) if (n.leftChild.height > 1)
+      } else if (n.rightChild.height > (n.leftChild.height + 1)) {
+        rebalanceLeft(n);
+      }
+    } else if (n.leftChild != null && n.leftChild.height > 1) {
       rebalanceRight(n);
-    else if (n.rightChild != null) if (n.rightChild.height > 1)
-      rebalanceLeft(n);
+    } else {
+      if (n.rightChild != null && n.rightChild.height > 1) {
+        rebalanceLeft(n);
+      }
+    }
     heightDef(n);
     if (n.parent != null) balance(n.parent);
   }
 
   void rebalanceRight(BT_Node n) {
-    BT_Node m = n.leftChild;
-    if (m.leftChild != null && m.rightChild != null) if (m.rightChild.height >
-        m.leftChild.height)
+    final BT_Node m = n.leftChild;
+    if (m.leftChild != null &&
+        m.rightChild != null &&
+        m.rightChild.height > m.leftChild.height) {
       rotateLeft(m);
-    else if (m.rightChild != null) rotateLeft(m);
+    } else if (m.rightChild != null) rotateLeft(m);
     rotateRight(n);
   }
 
@@ -203,11 +210,17 @@ class BinaryTree {
     return ans;
   }
 
-  void inOrder({BT_Node n = null}) {
-    if (n == null) n = root;
-    if (n.leftChild != null) inOrder(n: n.leftChild);
-    print('${n.value}\t${n.height}');
-    if (n.rightChild != null) inOrder(n: n.rightChild);
+  String inOrder({BT_Node n = null}) {
+    n ??= root;
+    String ans = "";
+    if (n.leftChild != null) {
+      ans += inOrder(n: n.leftChild);
+    }
+    ans += '${n.value}\n';
+    if (n.rightChild != null) {
+      ans += inOrder(n: n.rightChild);
+    }
+    return ans;
   }
 
   void level() {
