@@ -146,14 +146,14 @@ void main() {
   test("Altura del árbol y sus nodos ", () {
     //TODO("La altura del árbol siempre es cero, NO se actualiza");
 
-    final AVLTree bst = AVLTree();
+    AVLTree bst = AVLTree();
     bst.insert(2);
     bst.insert(1);
     bst.insert(3);
 
     expect(bst.height, 1);
 
-    final bst = AVLTree();
+    bst = AVLTree();
     bst.insert(5);
     bst.insert(3);
     bst.insert(2);
