@@ -144,8 +144,6 @@ void main() {
     expect(true, true);
   });
   test("Altura del árbol y sus nodos ", () {
-    //TODO("La altura del árbol siempre es cero, NO se actualiza");
-
     AVLTree bst = new AVLTree();
     bst.insert(2);
     bst.insert(1);
@@ -167,12 +165,9 @@ void main() {
     // 2  4
     expect(bst.height, 2);
 
-    //TODO: La altura que se le asigna a cada nodo parece incorrecta, infiero que opera al revés
     bst.inOrder();
   });
   test("Balanceo simple", () {
-    //TODO: El balanceo es extraño, como que funciona solo en algunos casos.
-
     AVLTree bst = new AVLTree();
     bst.insert(1);
     bst.insert(2);
