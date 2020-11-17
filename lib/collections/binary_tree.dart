@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:ed_project/collections/queue.dart';
-import 'package:ed_project/collections/stack.dart';
 import 'package:ed_project/collections/linked_list.dart';
 
 import 'bt_node.dart';
@@ -30,6 +29,7 @@ class BinaryTree {
   void insert(dynamic key) {
     if (root == null) {
       root = BT_Node(key);
+      height = 0;
       return;
     }
     BT_Node n = find(key);
@@ -47,7 +47,6 @@ class BinaryTree {
   }
 
   void heightDef(BT_Node n) {
-    if (n == null) return;
     if (n.leftChild != null && n.rightChild != null)
       n.height = max(n.leftChild.height, n.rightChild.height) + 1;
     else if (n.leftChild != null)
@@ -56,6 +55,10 @@ class BinaryTree {
       n.height = n.rightChild.height + 1;
     else
       n.height = 1;
+    if (n.parent == null) {
+      height = n.height;
+      return;
+    }
     heightDef(n.parent);
   }
 
