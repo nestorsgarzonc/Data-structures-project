@@ -1,10 +1,11 @@
 import 'dart:math';
+
 import 'package:test/test.dart';
 import '../../lib/collections/binary_tree.dart';
 import '../../lib/collections/linked_list.dart';
 
 void main() {
-  BinaryTree bt = BinaryTree();
+  AVLTree bt = AVLTree();
   LinkedList ll = LinkedList();
   Random r = Random();
   int x;
@@ -12,6 +13,8 @@ void main() {
     x = r.nextInt(100);
     bt.insert(x);
     ll.pushBack(x);
+    bt.levelOrder();
+    print('\n');
   }
   bt.inOrder();
   print('\n');

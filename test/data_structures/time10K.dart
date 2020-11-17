@@ -6,10 +6,11 @@ void main() {
   group("Tomas de tiempo para 10K de datos", () {
     test("PushBack10K", () {
       Stopwatch stopwatch = new Stopwatch()..start();
-      for (int i = 0; i < 10000; i++) {
+      for (int i = 0; i < 8191; i++) {
         lista.pushBack(i);
       }
-      print('PushBack para 10K de datos en ${stopwatch.elapsedMilliseconds} milisegundos');
+      print(
+          'PushBack para 10K de datos en ${stopwatch.elapsedMicroseconds} milisegundos');
       expect(true, true);
     });
     test("PopBack", () {
