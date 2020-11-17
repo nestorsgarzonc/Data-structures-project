@@ -1,18 +1,18 @@
-import 'package:ed_project/providers/profile_provider.dart';
+import '../../lib/providers/profile_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   group('Test for delete user', () {
     test('Delete an existing user', () async {
-      final  uProv = ProfileProvider();
+      final uProv = ProfileProvider();
       await uProv.loadData();
       uProv.login('gabymartinez@gmail.com', 'sdfdsg');
       final bool response = uProv.deleteUser();
       expect(response, true);
     });
 
-    test('Delete a no valid user', ()  async{
+    test('Delete a no valid user', () async {
       final uProv = ProfileProvider();
       await uProv.loadData();
       //NOTE: If the user doesnt exist the user is null

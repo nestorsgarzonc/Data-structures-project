@@ -5,11 +5,7 @@ class BT_Node {
   BT_Node parent;
   int height;
 
-  BT_Node(dynamic val,
-      {BT_Node left = null,
-      BT_Node right = null,
-      BT_Node par = null,
-      int h = 1}) {
+  BT_Node(dynamic val, {BT_Node left, BT_Node right, BT_Node par, int h = 1}) {
     value = val;
     leftChild = left;
     rightChild = right;

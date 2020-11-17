@@ -5,8 +5,7 @@
 import 'dart:convert';
 
 List<FreelancerModel> freelancerModelFromJson(String str) =>
-    List<FreelancerModel>.from(
-        json.decode(str).map((x) => FreelancerModel.fromJson(x)));
+    List<FreelancerModel>.from(json.decode(str).map((x) => FreelancerModel.fromJson(x)));
 
 String freelancerModelToJson(List<FreelancerModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -30,16 +29,14 @@ class FreelancerModel {
   String avatarUrl;
   List<Service> services;
 
-  factory FreelancerModel.fromJson(Map<String, dynamic> json) =>
-      FreelancerModel(
-        name: json["name"],
-        lastName: json["last_name"],
-        username: json["username"],
-        location: json["location"],
+  factory FreelancerModel.fromJson(Map<String, dynamic> json) => FreelancerModel(
+        name: json["name"] as String,
+        lastName: json["last_name"] as String,
+        username: json["username"] as String,
+        location: json["location"] as String,
         gender: genderValues.map[json["gender"]],
-        avatarUrl: json["avatar_url"],
-        services: List<Service>.from(
-            json["services"].map((x) => Service.fromJson(x))),
+        avatarUrl: json["avatar_url"] as String,
+        services: List<Service>.from(json["services"].map((x) => Service.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -100,9 +97,7 @@ class EnumValues<T> {
   EnumValues(this.map);
 
   Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
+    reverseMap ??= map.map((k, v) => MapEntry(v, k));
     return reverseMap;
   }
 }

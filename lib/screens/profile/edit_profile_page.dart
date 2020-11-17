@@ -1,10 +1,9 @@
-import 'package:ed_project/models/profile_model.dart';
-import 'package:ed_project/providers/profile_provider.dart';
-import 'package:ed_project/screens/initial_page.dart';
 import 'package:provider/provider.dart';
-
-import '../../widgets/appbar_with_backbutton_widget.dart';
 import 'package:flutter/material.dart';
+import '../../models/profile_model.dart';
+import '../../providers/profile_provider.dart';
+import '../../screens/initial_page.dart';
+import '../../widgets/appbar_with_backbutton_widget.dart';
 
 class EditProfilePage extends StatefulWidget {
   static const route = 'EditProfilePage';
@@ -115,7 +114,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       icon: Icons.photo_filter,
                       label: 'Link foto perfil',
                       initialValue: userP.avatarUrl,
-                      valueCallback: (value) => user.avatarUrl = value,
+                      valueCallback: (String value) => user.avatarUrl = value,
                     ),
                   ],
                 ),

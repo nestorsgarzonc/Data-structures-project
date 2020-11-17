@@ -1,9 +1,8 @@
-import 'package:ed_project/providers/profile_provider.dart';
-import 'package:ed_project/screens/initial_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-
+import '../../providers/profile_provider.dart';
+import '../initial_page.dart';
 import '../../widgets/background_image_widget.dart';
 import '../../widgets/buttons_login_widget.dart';
 import '../../widgets/icon_button_widget.dart';
@@ -69,14 +68,12 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
     Future<void> handleSubmit() async {
       final userProvider = Provider.of<ProfileProvider>(context, listen: false);
       if (_formKey.currentState.validate()) {
-        final bool canSingUp =
-            userProvider.singUp(_email, _username, _password);
+        final bool canSingUp = userProvider.singUp(_email, _username, _password);
         if (canSingUp) {
           Navigator.of(context).pushNamed(InitialPage.route);
         } else {
           Scaffold.of(context).showSnackBar(const SnackBar(
-            content:
-                Text('Opps, este correo esta asociado a una cuenta existente'),
+            content: Text('Opps, este correo esta asociado a una cuenta existente'),
           ));
         }
       } else {
@@ -117,9 +114,8 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 cursorColor: Theme.of(context).primaryColor,
                 keyboardType: TextInputType.name,
                 onChanged: (value) => _username = value,
-                validator: (value) => value.length > 6
-                    ? null
-                    : 'El nombre de usuario debe tener mas de 6 caracteres',
+                validator: (value) =>
+                    value.length > 6 ? null : 'El nombre de usuario debe tener mas de 6 caracteres',
                 decoration: const InputDecoration(
                   labelText: 'Usuario',
                   prefixIcon: Icon(Icons.account_circle),
@@ -130,9 +126,8 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 onChanged: (value) => _password = value,
-                validator: (value) => value.length > 8
-                    ? null
-                    : 'La contraseña debe tener mas de 8 caracteres',
+                validator: (value) =>
+                    value.length > 8 ? null : 'La contraseña debe tener mas de 8 caracteres',
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: const InputDecoration(
                   labelText: 'Contraseña',
@@ -174,8 +169,7 @@ class _SocialNetworksIcons extends StatelessWidget {
         ),
         FlatButton(
           onPressed: () {},
-          child:
-              const FaIcon(FontAwesomeIcons.twitter, color: Colors.lightBlue),
+          child: const FaIcon(FontAwesomeIcons.twitter, color: Colors.lightBlue),
         ),
       ],
     );

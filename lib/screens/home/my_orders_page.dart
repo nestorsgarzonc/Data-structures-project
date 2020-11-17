@@ -141,7 +141,6 @@ class __CustomCardItemState extends State<_CustomCardItem> {
           actions: [
             RaisedButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('Salir', style: TextStyle(color: Colors.white)),
               padding: EdgeInsets.symmetric(horizontal: 20),
               color: Theme.of(context).primaryColor,
               shape: RoundedRectangleBorder(

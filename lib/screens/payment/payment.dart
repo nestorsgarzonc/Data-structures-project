@@ -1,7 +1,7 @@
-import 'package:ed_project/providers/profile_provider.dart';
-import 'package:ed_project/screens/home/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../providers/profile_provider.dart';
+import '../home/main_page.dart';
 
 class PaymentPage extends StatelessWidget {
   static const String route = 'paymentPage';
@@ -22,8 +22,7 @@ class PaymentPage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
           'Confirmar orden',
-          style: TextStyle(
-              fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
       body: SafeArea(
@@ -80,8 +79,7 @@ class PaymentPage extends StatelessWidget {
                   builder: (_) => AlertDialog(
                     actions: [
                       RaisedButton(
-                        onPressed: () =>
-                            Navigator.of(context).pushNamed(MainPage.route),
+                        onPressed: () => Navigator.of(context).pushNamed(MainPage.route),
                         child: Text(
                           'OK',
                           style: TextStyle(color: Colors.white),

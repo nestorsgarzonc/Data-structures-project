@@ -1,8 +1,8 @@
 import 'dart:math';
-import 'package:ed_project/collections/queue.dart';
-import 'package:ed_project/collections/linked_list.dart';
 
+import 'queue.dart';
 import 'bt_node.dart';
+import 'linked_list.dart';
 
 class BinaryTree {
   BT_Node root;
@@ -13,7 +13,7 @@ class BinaryTree {
     height = 0;
   }
 
-  BT_Node find(dynamic key, {BT_Node n = null}) {
+  BT_Node find(dynamic key, {BT_Node n}) {
     n ??= root;
     if (n.value == key) {
       return n;

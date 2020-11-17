@@ -1,4 +1,4 @@
-import 'package:ed_project/collections/linked_list.dart';
+import '../../lib/collections/linked_list.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -9,8 +9,7 @@ void main() {
       for (int i = 0; i < 100000000; i++) {
         lista.pushBack(i);
       }
-      print(
-          'PushBack para 100M de datos en ${stopwatch.elapsedMilliseconds} milisegundos');
+      print('PushBack para 100M de datos en ${stopwatch.elapsedMilliseconds} milisegundos');
       expect(true, true);
     });
     test("PopBack", () {

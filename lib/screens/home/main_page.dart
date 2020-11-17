@@ -12,7 +12,7 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: const _CustomNavigationBarWidget(),
       floatingActionButton: const _CustomFloatingActionButtonWidget(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -34,9 +34,30 @@ class _CustomFloatingActionButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () => Navigator.of(context).pushNamed(SearchPage.route),
-      child: const Icon(Icons.search),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(80),
+        boxShadow: [
+          BoxShadow(blurRadius: 2, spreadRadius:1, color: Colors.grey)
+        ]
+      ),
+      height: 50,
+      width: 140,
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        color: Theme.of(context).primaryColor,
+        //TODO: replace onpress to service creation
+        //TODO: add condition to render when the usser is freelancer
+        onPressed: () => Navigator.of(context).pushNamed(SearchPage.route),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Text('Crea un\nservicio', style: TextStyle(color: Colors.white)),
+            SizedBox(width: 10),
+            Icon(Icons.create, color: Colors.white),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -48,9 +69,7 @@ class _CustomNavigationBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: Provider.of<IndexHomePageProvider>(context).index,
-      onTap: (value) =>
-          Provider.of<IndexHomePageProvider>(context, listen: false).index =
-              value,
+      onTap: (value) => Provider.of<IndexHomePageProvider>(context, listen: false).index = value,
       items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),

@@ -1,8 +1,8 @@
-import 'package:ed_project/providers/profile_provider.dart';
-import 'package:ed_project/screens/payment/payment.dart';
-import 'package:ed_project/widgets/back_button_appbar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../payment/payment.dart';
+import '../../providers/profile_provider.dart';
+import '../../widgets/back_button_appbar_widget.dart';
 
 class TaskPage extends StatelessWidget {
   static const String route = 'taskPage';
@@ -72,11 +72,10 @@ class TaskPage extends StatelessWidget {
                         Column(
                           children: [
                             SizedBox(
-                              width: size.width*0.5,
+                              width: size.width * 0.5,
                               child: Text(
                                 service.serviceName,
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 25),
+                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                               ),
                             ),
                             const SizedBox(height: 5),
@@ -120,9 +119,7 @@ class TaskPage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
-                  boxShadow: const [
-                    BoxShadow(blurRadius: 2, color: Colors.grey)
-                  ],
+                  boxShadow: const [BoxShadow(blurRadius: 2, color: Colors.grey)],
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -139,8 +136,7 @@ class TaskPage extends StatelessWidget {
                         horizontal: 35,
                         vertical: 15,
                       ),
-                      onPressed: () =>
-                          Navigator.of(context).pushNamed(PaymentPage.route),
+                      onPressed: () => Navigator.of(context).pushNamed(PaymentPage.route),
                       color: Theme.of(context).primaryColor,
                       elevation: 2,
                       shape: RoundedRectangleBorder(

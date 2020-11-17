@@ -1,9 +1,10 @@
-import 'package:ed_project/screens/initial_page.dart';
-import 'package:ed_project/screens/profile/edit_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/profile_provider.dart';
 import '../../widgets/background_image_rounded.dart';
+import '../initial_page.dart';
+import '../freelancer/be_a_freelancer_page..dart';
+import '../profile/edit_profile_page.dart';
 
 class UserProfilePage extends StatelessWidget {
   static const String route = 'profilePage';
@@ -38,7 +39,7 @@ class UserProfilePage extends StatelessWidget {
                     const SizedBox(height: 25),
                     Text(
                       '${userProviderView.name.split(" ")[0]} ${userProviderView.lastName.split(" ")[0]}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 32,
@@ -69,7 +70,7 @@ class UserProfilePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 25),
-          _ListItemsUserProfileWidget()
+          const _ListItemsUserProfileWidget()
         ],
       ),
     );
@@ -88,6 +89,11 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
         'icon': Icons.person,
       },
       {
+        'title': 'Ser freelancer',
+        'onTap': () => Navigator.of(context).pushNamed(BeAFreelancerPage.route),
+        'icon': Icons.work,
+      },
+      {
         'title': 'Medios de pago',
         'onTap': () {},
         'icon': Icons.credit_card,
@@ -104,8 +110,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
       },
       {
         'title': 'Cerrar sesion',
-        'onTap': () =>
-            Navigator.of(context).pushReplacementNamed(InitialPage.route),
+        'onTap': () => Navigator.of(context).pushReplacementNamed(InitialPage.route),
         'icon': Icons.outlined_flag,
       },
     ];
@@ -119,7 +124,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
           child: ListTile(
             title: Text('${_listItems[i]['title']}'),
             leading: Icon(_listItems[i]['icon'] as IconData),
-            onTap: _listItems[i]['onTap'],
+            onTap: _listItems[i]['onTap'] as Function(),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 10,

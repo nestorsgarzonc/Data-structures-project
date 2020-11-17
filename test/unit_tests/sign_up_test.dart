@@ -1,4 +1,4 @@
-import 'package:ed_project/providers/profile_provider.dart';
+import '../../lib/providers/profile_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -13,36 +13,35 @@ void main() {
     test('sign up with existent email', () async {
       final profileProv = ProfileProvider();
       await profileProv.loadData();
-      final res =
-          profileProv.singUp('gabymartinez@gmail.com', 'username', 'password');
+      final res = profileProv.singUp('gabymartinez@gmail.com', 'username', 'password');
       expect(res, false);
     });
     test('test regex with valid email', () async {
       const email = "tony@starkindustries.com";
-      final bool emailValid = RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(email);
+      final bool emailValid =
+          RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              .hasMatch(email);
       expect(emailValid, true);
     });
     test('test regex with invalid email', () async {
       const email = "tony@starkindustriem";
-      final bool emailValid = RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(email);
+      final bool emailValid =
+          RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              .hasMatch(email);
       expect(emailValid, false);
     });
     test('test regex with invalid email', () async {
       const email = "tonystarkindustriem";
-      final bool emailValid = RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(email);
+      final bool emailValid =
+          RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              .hasMatch(email);
       expect(emailValid, false);
     });
     test('test regex with invalid email', () async {
       const email = "tony@starkindustriem";
-      final bool emailValid = RegExp(
-              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-          .hasMatch(email);
+      final bool emailValid =
+          RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+              .hasMatch(email);
       expect(emailValid, false);
     });
   });

@@ -1,8 +1,8 @@
-import 'package:ed_project/providers/freelancer_provider.dart';
-import 'package:ed_project/widgets/appbar_with_backbutton_widget.dart';
-import 'package:ed_project/widgets/task_card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../widgets/appbar_with_backbutton_widget.dart';
+import '../../providers/freelancer_provider.dart';
+import '../../widgets/task_card_widget.dart';
 
 class TasksListPage extends StatelessWidget {
   static const route = 'tasks_list_page';

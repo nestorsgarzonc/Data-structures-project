@@ -1,4 +1,4 @@
-import 'package:ed_project/collections/linked_list.dart';
+import '../../lib/collections/linked_list.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
