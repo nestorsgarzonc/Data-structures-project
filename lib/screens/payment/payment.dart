@@ -80,17 +80,17 @@ class PaymentPage extends StatelessWidget {
                     actions: [
                       RaisedButton(
                         onPressed: () => Navigator.of(context).pushNamed(MainPage.route),
-                        child: Text(
-                          'OK',
-                          style: TextStyle(color: Colors.white),
-                        ),
                         color: Theme.of(context).primaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
+                        child: const Text(
+                          'OK',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       )
                     ],
-                    content: Text('Transferencia creada correctamente'),
+                    content: const Text('Transferencia creada correctamente'),
                   ),
                   barrierDismissible: false,
                 );

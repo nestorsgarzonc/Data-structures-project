@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import '../../lib/collections/avl.dart';
+import 'package:waffly/collections/avl.dart';
 
 void main() {
   group("Grupo de pruebas finales BST", () {
     test("Creación del árbol y verificación de sus atributos", () {
-      AVLTree bst = new AVLTree();
+      final AVLTree bst = AVLTree();
       expect(bst.height, 0);
       expect(bst.root, null);
     });
     test("Inserción de un dato", () {
-      AVLTree bst = new AVLTree();
+      final AVLTree bst = AVLTree();
       bst.insert(1);
       expect(bst.root.value, 1);
     });
     test("Inserción de tres datos", () {
-      AVLTree bst = new AVLTree();
+      final AVLTree bst = AVLTree();
       bst.insert(3);
       bst.insert(2);
       bst.insert(1);
@@ -24,7 +24,7 @@ void main() {
       expect(bst.root.rightSon.value, 3);
     });
     test("Verificación impresión InOrder", () {
-      AVLTree bst = new AVLTree();
+      final AVLTree bst = AVLTree();
       //    50
       //  /     \
       // 30     70
@@ -42,7 +42,7 @@ void main() {
       expect(true, true);
     });
     test("Verificación de la función de borrado (borrando la raíz)", () {
-      AVLTree bst = new AVLTree();
+      final AVLTree bst = AVLTree();
       //    50
       //  /     \
       // 30     70
@@ -62,7 +62,7 @@ void main() {
       expect(true, true);
     });
     test("Eliminación completa (prueba dura)", () {
-      AVLTree bst = new AVLTree();
+      final AVLTree bst = AVLTree();
 
       bst.insert(50);
       bst.insert(30);
@@ -114,7 +114,7 @@ void main() {
     });
   });
   test("Uso de la función search ", () {
-    AVLTree bst = new AVLTree();
+    final AVLTree bst = AVLTree();
     bst.insert(5);
     bst.insert(3);
     bst.insert(2);
@@ -144,14 +144,16 @@ void main() {
     expect(true, true);
   });
   test("Altura del árbol y sus nodos ", () {
-    AVLTree bst = new AVLTree();
+    //TODO("La altura del árbol siempre es cero, NO se actualiza");
+
+    AVLTree bst = AVLTree()
     bst.insert(2);
     bst.insert(1);
     bst.insert(3);
 
     expect(bst.height, 1);
 
-    bst = new AVLTree();
+    bst = AVLTree();
     bst.insert(5);
     bst.insert(3);
     bst.insert(2);
@@ -168,7 +170,9 @@ void main() {
     bst.inOrder();
   });
   test("Balanceo simple", () {
-    AVLTree bst = new AVLTree();
+    //TODO: El balanceo es extraño, como que funciona solo en algunos casos.
+
+    final AVLTree bst = AVLTree();
     bst.insert(1);
     bst.insert(2);
     bst.insert(3);

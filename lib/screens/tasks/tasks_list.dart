@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../widgets/appbar_with_backbutton_widget.dart';
 import '../../providers/freelancer_provider.dart';
+import '../../widgets/appbar_with_backbutton_widget.dart';
 import '../../widgets/task_card_widget.dart';
 
 class TasksListPage extends StatelessWidget {

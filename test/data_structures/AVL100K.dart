@@ -1,4 +1,5 @@
-import '../../lib/collections/avl.dart';
+
+import 'package:waffly/collections/avl.dart';
 import 'package:test/test.dart';
 
 void main() {

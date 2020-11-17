@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../screens/authentication/login_page.dart';
 import '../screens/authentication/register_page.dart';
 import '../screens/categories/categories_list.dart';
-import '../screens/freelancer/freelancer_profile_page.dart';
 import '../screens/freelancer/be_a_freelancer_page..dart';
+import '../screens/freelancer/create_service_page.dart';
+import '../screens/freelancer/freelancer_profile_page.dart';
 import '../screens/home/main_page.dart';
 import '../screens/home/search_page.dart';
 import '../screens/initial_page.dart';
@@ -27,4 +28,5 @@ final Map<String, Widget Function(BuildContext)> constRoutes = {
   EditProfilePage.route: (ctx) => EditProfilePage(),
   FreelancerProfilePage.route: (ctx) => FreelancerProfilePage(),
   BeAFreelancerPage.route: (ctx) => BeAFreelancerPage(),
+  CreateServicePage.route: (ctx) => CreateServicePage(),
 };

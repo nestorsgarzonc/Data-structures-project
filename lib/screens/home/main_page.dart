@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/index_homepage_provider.dart';
+import '../../providers/profile_provider.dart';
+import '../freelancer/create_service_page.dart';
 import '../home/home_page.dart';
 import '../home/my_orders_page.dart';
-import '../home/search_page.dart';
 
 class MainPage extends StatelessWidget {
   static const String route = 'mainPage';
   @override
   Widget build(BuildContext context) {
+    final bool isFree =
+        Provider.of<ProfileProvider>(context, listen: false).isFreelancer() ?? false;
     return Scaffold(
       bottomNavigationBar: const _CustomNavigationBarWidget(),
-      floatingActionButton: const _CustomFloatingActionButtonWidget(),
+      floatingActionButton: isFree ? const _CustomFloatingActionButtonWidget() : Container(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: SafeArea(
         child: Padding(
@@ -36,25 +39,23 @@ class _CustomFloatingActionButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(80),
-        boxShadow: [
-          BoxShadow(blurRadius: 2, spreadRadius:1, color: Colors.grey)
-        ]
-      ),
+          borderRadius: BorderRadius.circular(80),
+          boxShadow: const [BoxShadow(blurRadius: 2, spreadRadius: 1, color: Colors.grey)]),
       height: 50,
       width: 140,
       child: RaisedButton(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         color: Theme.of(context).primaryColor,
-        //TODO: replace onpress to service creation
-        //TODO: add condition to render when the usser is freelancer
-        onPressed: () => Navigator.of(context).pushNamed(SearchPage.route),
+        onPressed: () => Navigator.of(context).pushNamed(CreateServicePage.route),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('Crea un\nservicio', style: TextStyle(color: Colors.white)),
-            SizedBox(width: 10),
-            Icon(Icons.create, color: Colors.white),
+            CircleAvatar(
+              backgroundColor: Colors.white,
+              child: Icon(Icons.add, color: Theme.of(context).primaryColor),
+            ),
+            const SizedBox(width: 10),
+            const Text('Crea un\nservicio', style: TextStyle(color: Colors.white)),
           ],
         ),
       ),
@@ -70,7 +71,7 @@ class _CustomNavigationBarWidget extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: Provider.of<IndexHomePageProvider>(context).index,
       onTap: (value) => Provider.of<IndexHomePageProvider>(context, listen: false).index = value,
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
           label: 'Inicio',

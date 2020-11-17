@@ -224,7 +224,7 @@ class BinaryTree {
   }
 
   void level() {
-    Queue s = Queue();
+    final Queue s = Queue();
     BT_Node n = root;
     s.enqueue(n);
     while (!s.isEmpty()) {

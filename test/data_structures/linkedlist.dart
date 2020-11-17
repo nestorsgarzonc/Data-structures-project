@@ -1,5 +1,5 @@
-import '../../lib/collections/linked_list.dart';
 import 'package:test/test.dart';
+import 'package:waffly/collections/linked_list.dart';
 
 void main() {
   final LinkedList lista = LinkedList();

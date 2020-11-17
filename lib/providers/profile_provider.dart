@@ -1,7 +1,7 @@
-import '../collections/linked_list.dart';
-import '../models/freelancer_model.dart' as freelancer;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter/material.dart';
+import '../collections/linked_list.dart';
+import '../models/freelancer_model.dart' as freelancer;
 import './../models/profile_model.dart';
 
 class ProfileProvider extends ChangeNotifier {
@@ -15,15 +15,22 @@ class ProfileProvider extends ChangeNotifier {
   freelancer.Service get getSelectedService => _selectedService;
   freelancer.FreelancerModel get getSelectedFreelancer => _selectedFreelancer;
 
-  void setSelectedService(selectedService) {
+  void setSelectedService(freelancer.Service selectedService) {
     _selectedService = selectedService;
     notifyListeners();
   }
 
-  void setSelectedFreelancer(selectedFreelancer) {
+  void setSelectedFreelancer(freelancer.FreelancerModel selectedFreelancer) {
     _selectedFreelancer = selectedFreelancer;
     notifyListeners();
   }
+
+  void setUserToFreelancer() {
+    _user.isFreelancer = true;
+    notifyListeners();
+  }
+
+  bool isFreelancer() => _user.isFreelancer;
 
   void addNewService(String fName, String serviceName, String categoria, int price) {
     _user.lastTransactions.add(LastTransaction(
@@ -47,7 +54,7 @@ class ProfileProvider extends ChangeNotifier {
     try {
       _user = profilesData.firstWhere(
         (e) => e.email == email && e.password == password,
-      );
+      ) as ProfileModel;
       return true;
     } catch (e) {
       _user = null;

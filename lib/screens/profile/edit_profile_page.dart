@@ -17,13 +17,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) {
     final userProv = Provider.of<ProfileProvider>(context, listen: false);
     final userP = userProv.getUser;
-    ProfileModel user = userP;
+    final ProfileModel user = userP;
     var gender = Gender.FEMALE;
 
     void handleDelete() {
       final res = userProv.deleteUser();
       if (!res) {
-        Scaffold.of(context).showSnackBar(SnackBar(
+        Scaffold.of(context).showSnackBar(const SnackBar(
           content: Text('Opps hubo un problema al eliminar el perfil'),
         ));
       } else {
@@ -35,7 +35,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
       if (userProv.updateUser(user)) {
         Navigator.of(context).pop();
       } else {
-        Scaffold.of(context).showSnackBar(SnackBar(
+        Scaffold.of(context).showSnackBar(const SnackBar(
           content: Text('Opps hubo un problema al actualizar el perfil'),
         ));
       }
@@ -158,7 +158,7 @@ class _CustomInputText extends StatelessWidget {
           initialValue: initialValue,
           obscureText: !showText,
           decoration: InputDecoration(
-            labelText: '$label',
+            labelText: label,
             prefixIcon: Icon(icon),
           ),
         ),
@@ -180,18 +180,17 @@ class _ButtonsEditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         RaisedButton(
           onPressed: () => handleDelete(),
-          child: Text('Eliminar perfil', style: TextStyle(fontSize: 16)),
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           color: Colors.redAccent,
           textColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
+          child: const Text('Eliminar perfil', style: TextStyle(fontSize: 16)),
         ),
         const SizedBox(width: 10),
         RaisedButton(

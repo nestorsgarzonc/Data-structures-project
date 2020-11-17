@@ -1,5 +1,5 @@
-import '../../lib/collections/node.dart';
 import 'package:test/test.dart';
+import 'package:waffly/collections/node.dart';
 
 void main() {
   group('description', () {

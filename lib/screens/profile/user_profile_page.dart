@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/profile_provider.dart';
 import '../../widgets/background_image_rounded.dart';
-import '../initial_page.dart';
 import '../freelancer/be_a_freelancer_page..dart';
+import '../initial_page.dart';
 import '../profile/edit_profile_page.dart';
 
 class UserProfilePage extends StatelessWidget {

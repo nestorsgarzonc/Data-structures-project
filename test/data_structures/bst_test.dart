@@ -1,20 +1,20 @@
 import 'package:test/test.dart';
-import '../../lib/collections/binary_tree.dart';
+import 'package:waffly/collections/binary_tree.dart';
 
 void main() {
   group("Grupo de pruebas finales BST", () {
     test("Creación del árbol y verificación de sus atributos", () {
-      BinaryTree bst = new BinaryTree();
+      final BinaryTree bst = BinaryTree();
       expect(bst.height, 0);
       expect(bst.root, null);
     });
     test("Inserción de un dato", () {
-      BinaryTree bst = new BinaryTree();
+      final BinaryTree bst = BinaryTree();
       bst.insert(1);
       expect(bst.root.value, 1);
     });
     test("Inserción de tres datos", () {
-      BinaryTree bst = new BinaryTree();
+      final BinaryTree bst = BinaryTree();
       bst.insert(3);
       bst.insert(2);
       bst.insert(1);
@@ -24,7 +24,7 @@ void main() {
       expect(bst.root.rightChild.value, 3);
     });
     test("Verificación impresión InOrder", () {
-      BinaryTree bst = new BinaryTree();
+      final BinaryTree bst = BinaryTree();
       //    50
       //  /     \
       // 30     70
@@ -42,7 +42,7 @@ void main() {
       expect(true, true);
     });
     test("Verificación de la función de borrado (borrando la raíz)", () {
-      BinaryTree bst = new BinaryTree();
+      final BinaryTree bst = BinaryTree();
       //    50
       //  /     \
       // 30     70
@@ -62,7 +62,7 @@ void main() {
       expect(true, true);
     });
     test("Eliminación completa (prueba dura)", () {
-      BinaryTree bst = new BinaryTree();
+      final BinaryTree bst = BinaryTree();
 
       bst.insert(50);
       bst.insert(30);
@@ -114,7 +114,7 @@ void main() {
     });
   });
   test("Uso de la función search ", () {
-    BinaryTree bst = new BinaryTree();
+    final BinaryTree bst = BinaryTree();
     bst.insert(5);
     bst.insert(3);
     bst.insert(2);
@@ -146,26 +146,26 @@ void main() {
   test("Altura del árbol y sus nodos ", () {
     //TODO("La altura del árbol siempre es cero, NO se actualiza");
 
-    BinaryTree bst = new BinaryTree();
+    final BinaryTree bst = BinaryTree();
     bst.insert(2);
     bst.insert(1);
     bst.insert(3);
 
     expect(bst.height, 1);
 
-    bst = new BinaryTree();
-    bst.insert(5);
-    bst.insert(3);
-    bst.insert(2);
-    bst.insert(4);
-    bst.insert(7);
+    final bst_1 = BinaryTree();
+    bst_1.insert(5);
+    bst_1.insert(3);
+    bst_1.insert(2);
+    bst_1.insert(4);
+    bst_1.insert(7);
 
     //     5
     //   /    \
     //   3     7
     //  / \
     // 2  4
-    expect(bst.height, 3);
+    expect(bst_1.height, 3);
 
     //TODO: La altura que se le asigna a cada nodo parece incorrecta, infiero que opera al revés
     bst.inOrder();
@@ -173,7 +173,7 @@ void main() {
   test("Balanceo simple", () {
     //TODO: El balanceo es extraño, como que funciona solo en algunos casos.
 
-    BinaryTree bst = new BinaryTree();
+    final BinaryTree bst = BinaryTree();
     bst.insert(1);
     bst.insert(2);
     bst.insert(3);
