@@ -4,17 +4,22 @@ class AVLNode {
   AVLNode rightSon;
   int height;
 
-  AVLNode(dynamic v) {
-    this.value = v;
-    this.height = 0;
+  AVLNode(dynamic value) {
+    this.value = value;
+    height = 0;
   }
 
   int compareTo(AVLNode n) {
-    if (value < n.value)
-      return 1;
-    else if (value > n.value)
+    if (n == null) {
       return -1;
-    else
-      return 0;
+    } else {
+      if (value < n.value) {
+        return 1;
+      } else if (value > n.value) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
   }
 }
