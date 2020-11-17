@@ -1,4 +1,4 @@
-import 'package:ed_project/collections/node.dart';
+import '../collections/node.dart';
 
 class LinkedList {
   Node _head;

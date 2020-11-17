@@ -5,7 +5,8 @@
 import 'dart:convert';
 
 List<ProfileModel> profileModelFromJson(String str) => List<ProfileModel>.from(
-    json.decode(str).map((x) => ProfileModel.fromJson(x)));
+      json.decode(str).map((x) => ProfileModel.fromJson(x)),
+    );
 
 String profileModelToJson(List<ProfileModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -19,7 +20,9 @@ class ProfileModel {
     this.password,
     this.location,
     this.gender,
+    this.isFreelancer,
     this.avatarUrl,
+    this.freelancerId,
     this.lastTransactions,
   });
 
@@ -30,18 +33,22 @@ class ProfileModel {
   String password;
   String location;
   Gender gender;
+  bool isFreelancer;
   String avatarUrl;
+  int freelancerId;
   List<LastTransaction> lastTransactions;
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
-        name: json["name"],
-        lastName: json["last_name"],
-        username: json["username"],
-        email: json["email"],
-        password: json["password"],
-        location: json["location"],
+        name: json["name"] as String,
+        lastName: json["last_name"] as String,
+        username: json["username"] as String,
+        email: json["email"] as String,
+        password: json["password"] as String,
+        location: json["location"] as String,
         gender: genderValues.map[json["gender"]],
-        avatarUrl: json["avatar_url"],
+        isFreelancer: json["is_freelancer"] == null ? null : json["is_freelancer"] as bool,
+        avatarUrl: json["avatar_url"] as String,
+        freelancerId: json["freelancer_id"] == null ? null : json["freelancer_id"] as int,
         lastTransactions: List<LastTransaction>.from(
             json["last_transactions"].map((x) => LastTransaction.fromJson(x))),
       );
@@ -54,9 +61,10 @@ class ProfileModel {
         "password": password,
         "location": location,
         "gender": genderValues.reverse[gender],
+        "is_freelancer": isFreelancer,
         "avatar_url": avatarUrl,
-        "last_transactions":
-            List<dynamic>.from(lastTransactions.map((x) => x.toJson())),
+        "freelancer_id": freelancerId,
+        "last_transactions": List<dynamic>.from(lastTransactions.map((x) => x.toJson())),
       };
 }
 
@@ -81,14 +89,13 @@ class LastTransaction {
   String category;
   int price;
 
-  factory LastTransaction.fromJson(Map<String, dynamic> json) =>
-      LastTransaction(
-        freelancer: json["freelancer"],
-        serviceName: json["service_name"],
-        description: json["description"],
-        date: DateTime.parse(json["date"]),
-        category: json["category"],
-        price: json["price"],
+  factory LastTransaction.fromJson(Map<String, dynamic> json) => LastTransaction(
+        freelancer: json["freelancer"] as String,
+        serviceName: json["service_name"] as String,
+        description: json["description"] as String,
+        date: DateTime.parse(json["date"] as String),
+        category: json["category"] as String,
+        price: json["price"] as int,
       );
 
   Map<String, dynamic> toJson() => {
@@ -108,9 +115,7 @@ class EnumValues<T> {
   EnumValues(this.map);
 
   Map<T, String> get reverse {
-    if (reverseMap == null) {
-      reverseMap = map.map((k, v) => new MapEntry(v, k));
-    }
+    reverseMap ??= map.map((k, v) => MapEntry(v, k));
     return reverseMap;
   }
 }

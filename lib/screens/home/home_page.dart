@@ -1,9 +1,9 @@
 import 'dart:math';
-import 'package:ed_project/providers/freelancer_provider.dart';
-import 'package:ed_project/providers/profile_provider.dart';
-import 'package:ed_project/screens/freelancers/freelancer_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../providers/freelancer_provider.dart';
+import '../../providers/profile_provider.dart';
+import '../freelancer/freelancer_profile_page.dart';
 import '../../screens/categories/categories_list.dart';
 import '../../screens/tasks/task_description.dart';
 import '../../screens/tasks/tasks_list.dart';
@@ -33,8 +33,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
                 TitleCategoriesWidget(
                   title: 'Categorias',
-                  onPress: () =>
-                      Navigator.of(context).pushNamed(CategoriesListPage.route),
+                  onPress: () => Navigator.of(context).pushNamed(CategoriesListPage.route),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 20),
@@ -57,8 +56,7 @@ class HomePage extends StatelessWidget {
                 ),
                 TitleCategoriesWidget(
                   title: 'Tareas populares',
-                  onPress: () =>
-                      Navigator.of(context).pushNamed(TasksListPage.route),
+                  onPress: () => Navigator.of(context).pushNamed(TasksListPage.route),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 20),
@@ -74,8 +72,7 @@ class HomePage extends StatelessWidget {
                       name: freelaProv[i].services[0].serviceName,
                       onTap: () {
                         profileProv.setSelectedFreelancer(freelaProv[i]);
-                        profileProv
-                            .setSelectedService(freelaProv[i].services[0]);
+                        profileProv.setSelectedService(freelaProv[i].services[0]);
                         Navigator.of(context).pushNamed(TaskPage.route);
                       },
                     ),
@@ -92,9 +89,8 @@ class HomePage extends StatelessWidget {
                     itemBuilder: (context, i) => FreelancerMiniPhotoWidget(
                       freelancerName: freelaProv[i].name,
                       freelancerUrlImage: freelaProv[i].avatarUrl,
-                      onTap: () => Navigator.of(context).pushNamed(
-                          FreelancerProfilePage.route,
-                          arguments: freelaProv[i]),
+                      onTap: () => Navigator.of(context)
+                          .pushNamed(FreelancerProfilePage.route, arguments: freelaProv[i]),
                     ),
                   ),
                 ),
@@ -152,9 +148,8 @@ class _CustomAppBar extends StatelessWidget {
         ),
         InkWell(
           onTap: () => Navigator.of(context).pushNamed(UserProfilePage.route),
-          child: CircleAvatar(
-              radius: 28,
-              backgroundImage: NetworkImage(userProviderView.avatarUrl)),
+          child:
+              CircleAvatar(radius: 28, backgroundImage: NetworkImage(userProviderView.avatarUrl)),
         ),
       ],
     );

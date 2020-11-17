@@ -1,1 +1,10 @@
 #include: package:lint/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - 'lib/models/freelancer_model.dart'
+    - 'lib/models/profile_model.dart.dart'
+
+linter:
+  rules:
+    avoid_print: false

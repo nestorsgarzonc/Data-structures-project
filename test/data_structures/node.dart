@@ -1,4 +1,4 @@
-import 'package:ed_project/collections/node.dart';
+import '../../lib/collections/node.dart';
 import 'package:test/test.dart';
 
 void main() {
