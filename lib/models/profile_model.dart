@@ -4,6 +4,9 @@
 
 import 'dart:convert';
 
+import 'gender_model.dart';
+export 'gender_model.dart';
+
 List<ProfileModel> profileModelFromJson(String str) => List<ProfileModel>.from(
       json.decode(str).map((x) => ProfileModel.fromJson(x)),
     );
@@ -45,7 +48,7 @@ class ProfileModel {
         email: json["email"] as String,
         password: json["password"] as String,
         location: json["location"] as String,
-        gender: genderValues.map[json["gender"]],
+        gender: genderValues.map[json["gender"]] as Gender,
         isFreelancer: json["is_freelancer"] == null ? null : json["is_freelancer"] as bool,
         avatarUrl: json["avatar_url"] as String,
         freelancerId: json["freelancer_id"] == null ? null : json["freelancer_id"] as int,
@@ -67,10 +70,6 @@ class ProfileModel {
         "last_transactions": List<dynamic>.from(lastTransactions.map((x) => x.toJson())),
       };
 }
-
-enum Gender { FEMALE, MALE }
-
-final genderValues = EnumValues({"female": Gender.FEMALE, "male": Gender.MALE});
 
 class LastTransaction {
   LastTransaction({
@@ -106,16 +105,4 @@ class LastTransaction {
         "category": category,
         "price": price,
       };
-}
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap ??= map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

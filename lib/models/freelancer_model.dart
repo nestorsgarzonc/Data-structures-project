@@ -4,6 +4,9 @@
 
 import 'dart:convert';
 
+import 'gender_model.dart';
+export 'gender_model.dart';
+
 List<FreelancerModel> freelancerModelFromJson(String str) =>
     List<FreelancerModel>.from(json.decode(str).map((x) => FreelancerModel.fromJson(x)));
 
@@ -34,7 +37,7 @@ class FreelancerModel {
         lastName: json["last_name"] as String,
         username: json["username"] as String,
         location: json["location"] as String,
-        gender: genderValues.map[json["gender"]],
+        gender: genderValues.map[json["gender"]] as Gender,
         avatarUrl: json["avatar_url"] as String,
         services: List<Service>.from(json["services"].map((x) => Service.fromJson(x))),
       );
@@ -49,10 +52,6 @@ class FreelancerModel {
         "services": List<dynamic>.from(services.map((x) => x.toJson())),
       };
 }
-
-enum Gender { FEMALE, MALE }
-
-final genderValues = EnumValues({"female": Gender.FEMALE, "male": Gender.MALE});
 
 class Service {
   Service({
@@ -72,12 +71,12 @@ class Service {
   int price;
 
   factory Service.fromJson(Map<String, dynamic> json) => Service(
-        serviceName: json["service_name"],
-        date: DateTime.parse(json["date"]),
-        category: json["category"],
-        imageUrl: json["image_url"],
-        numberStars: json["numberStars"],
-        price: json["price"],
+        serviceName: json["service_name"] as String,
+        date: DateTime.parse(json["date"] as String),
+        category: json["category"] as String,
+        imageUrl: json["image_url"] as String,
+        numberStars: json["numberStars"] as int,
+        price: json["price"] as int,
       );
 
   Map<String, dynamic> toJson() => {
@@ -88,16 +87,4 @@ class Service {
         "numberStars": numberStars,
         "price": price,
       };
-}
-
-class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
-
-  EnumValues(this.map);
-
-  Map<T, String> get reverse {
-    reverseMap ??= map.map((k, v) => MapEntry(v, k));
-    return reverseMap;
-  }
 }

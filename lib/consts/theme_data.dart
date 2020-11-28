@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
+const _mainColor = const Color(0xFFE94832);
+
 final ThemeData lightTheme = ThemeData.light().copyWith(
-  primaryColor: const Color(0xFFE94832),
-  buttonColor: const Color(0xFFE94832),
+  primaryColor: _mainColor,
+  buttonTheme: const ButtonThemeData(
+    buttonColor: _mainColor,
+  ),
+  buttonColor: _mainColor,
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
-    backgroundColor: Color(0xFFE94832),
+    backgroundColor: _mainColor,
     elevation: 5,
   ),
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(

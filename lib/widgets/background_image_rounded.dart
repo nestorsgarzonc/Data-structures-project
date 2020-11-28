@@ -29,8 +29,7 @@ class BackgroundImageRoundedWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: _borderRadius,
         image: DecorationImage(
-          image:
-              isExternalImage ? NetworkImage(imgRoute) : AssetImage(imgRoute),
+          image: isExternalImage ? NetworkImage(imgRoute) : AssetImage(imgRoute) as ImageProvider,
           fit: BoxFit.cover,
         ),
       ),

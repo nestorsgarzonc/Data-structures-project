@@ -18,7 +18,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
     final userProv = Provider.of<ProfileProvider>(context, listen: false);
     final userP = userProv.getUser;
     final ProfileModel user = userP;
-    var gender = Gender.FEMALE;
 
     void handleDelete() {
       final res = userProv.deleteUser();
@@ -89,27 +88,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       initialValue: userP.location,
                       valueCallback: (String value) => user.location = value,
                     ),
-                    Row(
-                      children: [
-                        Radio(
-                          //TODO: FIX BUTTON
-                          value: Gender.MALE,
-                          groupValue: gender,
-                          onChanged: (v) => setState(() {
-                            print(v);
-                            gender = v;
-                          }),
-                        ),
-                        Radio(
-                          value: Gender.FEMALE,
-                          groupValue: gender,
-                          onChanged: (v) => setState(() {
-                            print(v);
-                            gender = v;
-                          }),
-                        ),
-                      ],
-                    ),
+                    //TODO: Añadir boton genero
                     _CustomInputText(
                       icon: Icons.photo_filter,
                       label: 'Link foto perfil',
