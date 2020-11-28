@@ -31,7 +31,7 @@ class FreelancerModel {
   Gender gender;
   String avatarUrl;
   List<Service> services;
-
+//TODO: Añadir descripcion
   factory FreelancerModel.fromJson(Map<String, dynamic> json) => FreelancerModel(
         name: json["name"] as String,
         lastName: json["last_name"] as String,

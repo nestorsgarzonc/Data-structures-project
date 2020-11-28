@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../../providers/profile_provider.dart';
 import '../../widgets/appbar_with_backbutton_widget.dart';
 import '../home/main_page.dart';
+import './../../models/freelancer_model.dart';
+import './../../providers/freelancer_provider.dart';
 
 class BeAFreelancerPage extends StatelessWidget {
   static const String route = 'BeAFreelancerPage';
@@ -47,10 +49,7 @@ class BeAFreelancerPage extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               child: RaisedButton(
-                onPressed: () {
-                  Provider.of<ProfileProvider>(context, listen: false).setUserToFreelancer();
-                  Navigator.of(context).pushReplacementNamed(MainPage.route);
-                },
+                onPressed: () => _handleBeFreelancerButton(context),
                 color: Theme.of(context).primaryColor,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: const Text('Confirmar', style: TextStyle(color: Colors.white)),
@@ -60,6 +59,22 @@ class BeAFreelancerPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _handleBeFreelancerButton(BuildContext context) {
+    final _currentUser = Provider.of<ProfileProvider>(context, listen: false).getUser;
+    final _freelancer = FreelancerModel(
+      name: _currentUser.name,
+      lastName: _currentUser.lastName,
+      username: _currentUser.username,
+      location: _currentUser.location,
+      gender: _currentUser.gender,
+      avatarUrl: _currentUser.avatarUrl,
+      services: [],
+    );
+    Provider.of<FreelancerProvider>(context, listen: false).userToFreelancer(_freelancer);
+    Provider.of<ProfileProvider>(context, listen: false).setUserToFreelancer();
+    Navigator.of(context).pushReplacementNamed(MainPage.route);
   }
 }
 

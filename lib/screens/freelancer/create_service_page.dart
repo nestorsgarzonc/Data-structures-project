@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:waffly/models/freelancer_model.dart';
 import 'package:waffly/models/profile_model.dart';
+import 'package:waffly/providers/freelancer_provider.dart';
 import 'package:waffly/providers/profile_provider.dart';
 import '../../widgets/appbar_with_backbutton_widget.dart';
 
@@ -151,6 +153,7 @@ class __FormCreateServiceState extends State<_FormCreateService> {
 
   void _handleSubmit(BuildContext context) {
     if (!_formKey.currentState.validate()) {
+      //TODO: refactor dialog
       showDialog(
         context: context,
         builder: (BuildContext context) => AlertDialog(
@@ -166,8 +169,16 @@ class __FormCreateServiceState extends State<_FormCreateService> {
       );
       return;
     }
-    print(user.name);
-    print(_serviceNameController.text);
+    final newService = Service(
+      category: _categoryController.text,
+      date: DateTime.now(),
+      imageUrl: _urlImgController.text,
+      numberStars: 0,
+      price: int.parse(_priceController.text),
+      serviceName: _serviceNameController.text,
+    );
+    final res = Provider.of<FreelancerProvider>(context, listen: false).createService(newService);
+    
   }
 
   InputDecoration _buildInputDecoration(String text) {

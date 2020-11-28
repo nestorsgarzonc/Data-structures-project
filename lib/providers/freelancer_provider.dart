@@ -29,8 +29,9 @@ class FreelancerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool createService() {
-    //TODO: finishFreelancerModel freelancer
+  bool createService(Service service) {
+    _freelancerUser.services.add(service);
+    notifyListeners();
     return true;
   }
 }
