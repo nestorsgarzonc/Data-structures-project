@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waffly/models/profile_model.dart';
 import 'package:waffly/providers/profile_provider.dart';
-import 'package:waffly/screens/profile/user_profile_page.dart';
-import 'package:waffly/widgets/buttons_login_widget.dart';
 import '../../widgets/appbar_with_backbutton_widget.dart';
 
 class CreateServicePage extends StatelessWidget {
@@ -161,7 +159,7 @@ class __FormCreateServiceState extends State<_FormCreateService> {
           actions: [
             ElevatedButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Exit'),
+              child: const Text('Salir'),
             )
           ],
         ),

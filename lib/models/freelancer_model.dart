@@ -7,8 +7,8 @@ import 'dart:convert';
 import 'gender_model.dart';
 export 'gender_model.dart';
 
-List<FreelancerModel> freelancerModelFromJson(String str) =>
-    List<FreelancerModel>.from(json.decode(str).map((x) => FreelancerModel.fromJson(x)));
+List<FreelancerModel> freelancerModelFromJson(String str) => List<FreelancerModel>.from(
+    json.decode(str).map((x) => FreelancerModel.fromJson(x)) as Iterable);
 
 String freelancerModelToJson(List<FreelancerModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -37,9 +37,9 @@ class FreelancerModel {
         lastName: json["last_name"] as String,
         username: json["username"] as String,
         location: json["location"] as String,
-        gender: genderValues.map[json["gender"]] as Gender,
+        gender: genderValues.map[json["gender"]],
         avatarUrl: json["avatar_url"] as String,
-        services: List<Service>.from(json["services"].map((x) => Service.fromJson(x))),
+        services: List<Service>.from(json["services"].map((x) => Service.fromJson(x)) as Iterable),
       );
 
   Map<String, dynamic> toJson() => {

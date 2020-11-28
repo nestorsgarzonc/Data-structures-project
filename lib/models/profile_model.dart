@@ -8,7 +8,7 @@ import 'gender_model.dart';
 export 'gender_model.dart';
 
 List<ProfileModel> profileModelFromJson(String str) => List<ProfileModel>.from(
-      json.decode(str).map((x) => ProfileModel.fromJson(x)),
+      json.decode(str).map((x) => ProfileModel.fromJson(x)) as Iterable,
     );
 
 String profileModelToJson(List<ProfileModel> data) =>
@@ -48,12 +48,12 @@ class ProfileModel {
         email: json["email"] as String,
         password: json["password"] as String,
         location: json["location"] as String,
-        gender: genderValues.map[json["gender"]] as Gender,
+        gender: genderValues.map[json["gender"]],
         isFreelancer: json["is_freelancer"] == null ? null : json["is_freelancer"] as bool,
         avatarUrl: json["avatar_url"] as String,
         freelancerId: json["freelancer_id"] == null ? null : json["freelancer_id"] as int,
         lastTransactions: List<LastTransaction>.from(
-            json["last_transactions"].map((x) => LastTransaction.fromJson(x))),
+            json["last_transactions"].map((x) => LastTransaction.fromJson(x)) as Iterable),
       );
 
   Map<String, dynamic> toJson() => {

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/freelancer_provider.dart';
 import '../../providers/profile_provider.dart';
-import '../freelancer/freelancer_profile_page.dart';
 import '../../screens/categories/categories_list.dart';
 import '../../screens/tasks/task_description.dart';
 import '../../screens/tasks/tasks_list.dart';
@@ -11,6 +10,7 @@ import '../../widgets/categories_card_widget.dart';
 import '../../widgets/freelancer_miniphoto_widget.dart';
 import '../../widgets/popular_task_card_widget.dart';
 import '../../widgets/title_categories_widget.dart';
+import '../freelancer/freelancer_profile_page.dart';
 import '../home/search_page.dart';
 import '../profile/user_profile_page.dart';
 

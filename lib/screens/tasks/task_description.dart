@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../payment/payment.dart';
 import '../../providers/profile_provider.dart';
 import '../../widgets/back_button_appbar_widget.dart';
+import '../payment/payment.dart';
 
 class TaskPage extends StatelessWidget {
   static const String route = 'taskPage';
@@ -126,7 +126,7 @@ class TaskPage extends StatelessWidget {
                   children: [
                     Text(
                       '\$${service.price}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w500,
                       ),
