@@ -19,13 +19,23 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   //final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   @override
-  Widget build(BuildContext context) {
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void didChangeDependencies() {
     Provider.of<ProfileProvider>(context).loadData();
     Provider.of<FreelancerProvider>(context).loadData();
+    super.didChangeDependencies();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Waffly',
       debugShowCheckedModeBanner: false,
@@ -35,4 +45,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-//TODO: Al volverse freelancer tiene que volver a iniciar sesion

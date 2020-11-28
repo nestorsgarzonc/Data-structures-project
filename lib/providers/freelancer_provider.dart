@@ -18,6 +18,9 @@ class FreelancerProvider extends ChangeNotifier {
   List<FreelancerModel> get getFreelancers => _freelancerData;
 
   Future<void> loadData() async {
+    if (_freelancerData.isNotEmpty) {
+      return;
+    }
     final data = await rootBundle.loadString('assets/data/freelancer.json');
     _freelancerData = freelancerModelFromJson(data);
     print('Frelancer data loaded');
@@ -25,7 +28,7 @@ class FreelancerProvider extends ChangeNotifier {
 
   void userToFreelancer(FreelancerModel freelancer) {
     _freelancerUser = freelancer;
-    _freelancerData.add(freelancer);
+    _freelancerData.insert(0, freelancer);
     notifyListeners();
   }
 

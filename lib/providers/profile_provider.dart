@@ -45,6 +45,9 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   Future<void> loadData() async {
+    if (!profilesData.isEmpty()) {
+      return;
+    }
     final data = await rootBundle.loadString('assets/data/profile.json');
     profilesData = LinkedList.fromList(profileModelFromJson(data));
     print('Profile data loaded');

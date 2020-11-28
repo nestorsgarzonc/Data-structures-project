@@ -82,6 +82,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProviderView = Provider.of<ProfileProvider>(context).getUser;
     final List<Map<String, Object>> _listItems = [
       {
         'title': 'Editar perfil',
@@ -114,6 +115,9 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
         'icon': Icons.outlined_flag,
       },
     ];
+    if (userProviderView.isFreelancer) {
+      _listItems.removeAt(1);
+    }
     return Expanded(
       child: ListView.builder(
         padding: const EdgeInsets.symmetric(horizontal: 10),

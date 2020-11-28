@@ -65,17 +65,22 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     itemCount: freelaProv.length,
-                    itemBuilder: (context, i) => CategoriesWidget(
-                      frelancersCounter: 20,
-                      isExternal: true,
-                      imageUrl: freelaProv[i].services[0].imageUrl,
-                      name: freelaProv[i].services[0].serviceName,
-                      onTap: () {
-                        profileProv.setSelectedFreelancer(freelaProv[i]);
-                        profileProv.setSelectedService(freelaProv[i].services[0]);
-                        Navigator.of(context).pushNamed(TaskPage.route);
-                      },
-                    ),
+                    itemBuilder: (context, i) {
+                      if (freelaProv[i].services.isEmpty) {
+                        return Container();
+                      }
+                      return CategoriesWidget(
+                        frelancersCounter: 20,
+                        isExternal: true,
+                        imageUrl: freelaProv[i].services[0].imageUrl,
+                        name: freelaProv[i].services[0].serviceName,
+                        onTap: () {
+                          profileProv.setSelectedFreelancer(freelaProv[i]);
+                          profileProv.setSelectedService(freelaProv[i].services[0]);
+                          Navigator.of(context).pushNamed(TaskPage.route);
+                        },
+                      );
+                    },
                   ),
                 ),
                 TitleCategoriesWidget(title: 'Freelancers', onPress: () {}),

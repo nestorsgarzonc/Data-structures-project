@@ -49,7 +49,7 @@ class ProfileModel {
         password: json["password"] as String,
         location: json["location"] as String,
         gender: genderValues.map[json["gender"]],
-        isFreelancer: json["is_freelancer"] == null ? null : json["is_freelancer"] as bool,
+        isFreelancer: json["is_freelancer"] == null ? false : json["is_freelancer"] as bool,
         avatarUrl: json["avatar_url"] as String,
         freelancerId: json["freelancer_id"] == null ? null : json["freelancer_id"] as int,
         lastTransactions: List<LastTransaction>.from(

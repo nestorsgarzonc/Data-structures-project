@@ -4,6 +4,7 @@ import 'package:waffly/models/freelancer_model.dart';
 import 'package:waffly/models/profile_model.dart';
 import 'package:waffly/providers/freelancer_provider.dart';
 import 'package:waffly/providers/profile_provider.dart';
+import 'package:waffly/widgets/dialogs/dialog_widget.dart';
 import '../../widgets/appbar_with_backbutton_widget.dart';
 
 class CreateServicePage extends StatelessWidget {
@@ -62,8 +63,6 @@ class __FormCreateServiceState extends State<_FormCreateService> {
   final _descriptionController = TextEditingController();
   final _priceController = TextEditingController();
   final _categoryController = TextEditingController();
-  //TODO: finish form
-  //TODO: add user img, user name
 
   @override
   void didChangeDependencies() {
@@ -129,7 +128,7 @@ class __FormCreateServiceState extends State<_FormCreateService> {
             validator: (String value) {
               if (value.isEmpty) {
                 return 'Oops Verifica el precio';
-              } else if (int.tryParse(value) <= 0) {
+              } else if (double.tryParse(value).ceil() <= 0) {
                 return 'El precio tiene que ser mayor que cero';
               } else {
                 return null;
@@ -151,34 +150,40 @@ class __FormCreateServiceState extends State<_FormCreateService> {
     );
   }
 
-  void _handleSubmit(BuildContext context) {
+  Future<void> _handleSubmit(BuildContext context) async {
     if (!_formKey.currentState.validate()) {
-      //TODO: refactor dialog
-      showDialog(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Error'),
-          content: const Text('Verifica tus datos y vuelve a intentarlo 😁'),
-          actions: [
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Salir'),
-            )
-          ],
-        ),
+      CustomDialogs.showDialogAlert(
+        context,
+        'Error',
+        'Verifica tus datos y vuelve a intentarlo 😁',
       );
       return;
     }
+    //TODO: Add description
     final newService = Service(
       category: _categoryController.text,
       date: DateTime.now(),
       imageUrl: _urlImgController.text,
       numberStars: 0,
-      price: int.parse(_priceController.text),
+      price: int.parse(_priceController.text).round(),
       serviceName: _serviceNameController.text,
     );
-    final res = Provider.of<FreelancerProvider>(context, listen: false).createService(newService);
-    
+    final bool res =
+        Provider.of<FreelancerProvider>(context, listen: false).createService(newService);
+    if (res) {
+      await CustomDialogs.showDialogAlert(
+        context,
+        'Servicio creado',
+        'Felicitaciones servicio creado exitosamente 😁',
+      );
+      Navigator.of(context).pop();
+    } else {
+      CustomDialogs.showDialogAlert(
+        context,
+        'Error',
+        'Ha ocurrido un error, vuelve a intentarlo',
+      );
+    }
   }
 
   InputDecoration _buildInputDecoration(String text) {
