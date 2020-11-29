@@ -77,7 +77,7 @@ class ProfileProvider extends ChangeNotifier {
           password: password,
           lastTransactions: [],
           avatarUrl:
-              'https://images.unsplash.com/photo-1602696221981-75511960e2b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',
+              'https://images.unsplash.com/photo-1529665253569-6d01c0eaf7b6?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1276&q=80',
           gender: Gender.MALE,
           lastName: '',
           location: '',

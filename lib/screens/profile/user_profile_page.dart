@@ -115,7 +115,7 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
         'icon': Icons.outlined_flag,
       },
     ];
-    if (userProviderView.isFreelancer) {
+    if (userProviderView.isFreelancer ?? false) {
       _listItems.removeAt(1);
     }
     return Expanded(
