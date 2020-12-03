@@ -83,12 +83,12 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
 
   Map items(String t, IconData i, {dynamic Function() bc: null}) {
     Map mapa = Map();
-    mapa.insert('title', 'Editar perfil');
+    mapa.insert('title', t);
     if (bc != null)
       mapa.insert('onTap', bc);
     else
       mapa.insert('onTap', () {});
-    mapa.insert('icon', Icons.person);
+    mapa.insert('icon', i);
     return mapa;
   }
 
