@@ -11,6 +11,8 @@ class LinkedList {
     _tail = null;
   }
 
+  Node getFirst() => _head;
+
   LinkedList.fromList(List lista) {
     makeEmpty();
     for (dynamic i in lista) {
@@ -208,10 +210,12 @@ class LinkedList {
   }
 
   void removeWhere(bool test(dynamic element)) {
+    if (_head == null) return;
     Node n = _head;
     while (n == _head && test(n.value)) {
       popFront();
       n = _head;
+      if (_head == null) return;
     }
     while (n.nextValue != null) {
       if (test(n.nextValue.value))
