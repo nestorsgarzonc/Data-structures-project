@@ -5,6 +5,7 @@ import '../../widgets/background_image_rounded.dart';
 import '../freelancer/be_a_freelancer_page..dart';
 import '../initial_page.dart';
 import '../profile/edit_profile_page.dart';
+import 'package:waffly/collections/map.dart';
 
 class UserProfilePage extends StatelessWidget {
   static const String route = 'profilePage';
@@ -80,40 +81,31 @@ class UserProfilePage extends StatelessWidget {
 class _ListItemsUserProfileWidget extends StatelessWidget {
   const _ListItemsUserProfileWidget({Key key}) : super(key: key);
 
+  Map items(String t, IconData i, {dynamic Function() bc: null}) {
+    Map mapa = Map();
+    mapa.insert('title', 'Editar perfil');
+    if (bc != null)
+      mapa.insert('onTap', bc);
+    else
+      mapa.insert('onTap', () {});
+    mapa.insert('icon', Icons.person);
+    return mapa;
+  }
+
   @override
   Widget build(BuildContext context) {
     final userProviderView = Provider.of<ProfileProvider>(context).getUser;
-    final List<Map<String, Object>> _listItems = [
-      {
-        'title': 'Editar perfil',
-        'onTap': () => Navigator.of(context).pushNamed(EditProfilePage.route),
-        'icon': Icons.person,
-      },
-      {
-        'title': 'Ser freelancer',
-        'onTap': () => Navigator.of(context).pushNamed(BeAFreelancerPage.route),
-        'icon': Icons.work,
-      },
-      {
-        'title': 'Medios de pago',
-        'onTap': () {},
-        'icon': Icons.credit_card,
-      },
-      {
-        'title': 'Cupones',
-        'onTap': () {},
-        'icon': Icons.attach_money,
-      },
-      {
-        'title': 'Ayuda',
-        'onTap': () {},
-        'icon': Icons.help_outline,
-      },
-      {
-        'title': 'Cerrar sesion',
-        'onTap': () => Navigator.of(context).pushReplacementNamed(InitialPage.route),
-        'icon': Icons.outlined_flag,
-      },
+    final List<Map> _listItems = [
+      items('Editar perfil', Icons.person,
+          bc: () => Navigator.of(context).pushNamed(EditProfilePage.route)),
+      items('Ser freelancer', Icons.work,
+          bc: () => Navigator.of(context).pushNamed(BeAFreelancerPage.route)),
+      items('Medios de pago', Icons.credit_card),
+      items('Cupones', Icons.attach_money),
+      items('Ayuda', Icons.help_outline),
+      items('Cerrar sesion', Icons.outlined_flag,
+          bc: () =>
+              Navigator.of(context).pushReplacementNamed(InitialPage.route)),
     ];
     if (userProviderView.isFreelancer ?? false) {
       _listItems.removeAt(1);
@@ -126,9 +118,9 @@ class _ListItemsUserProfileWidget extends StatelessWidget {
           elevation: 3,
           margin: const EdgeInsets.symmetric(vertical: 8),
           child: ListTile(
-            title: Text('${_listItems[i]['title']}'),
-            leading: Icon(_listItems[i]['icon'] as IconData),
-            onTap: _listItems[i]['onTap'] as Function(),
+            title: Text('${_listItems[i].getValue('title')}'),
+            leading: Icon(_listItems[i].getValue('icon') as IconData),
+            onTap: _listItems[i].getValue('onTap') as Function(),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 20,
               vertical: 10,

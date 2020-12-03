@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:waffly/collections/linked_list.dart';
 import 'package:waffly/collections/node.dart';
 import 'package:waffly/collections/pair.dart';
@@ -5,19 +7,17 @@ import 'package:waffly/collections/pair.dart';
 class Map {
   List<LinkedList> hashTable;
   int cardinality;
+  int i = 0;
 
   Map() {
-    cardinality = 1009;
+    cardinality = 10000007;
     hashTable = new List(cardinality);
-    for (int i = 0; i < cardinality; i++) {
-      hashTable[i] = new LinkedList();
-    }
   }
 
   int size() {
     int ans = 0;
     for (LinkedList i in hashTable) {
-      ans += i.size();
+      if (i != null) ans += i.size();
     }
     return ans;
   }
@@ -25,33 +25,16 @@ class Map {
   int hashing(dynamic key) {
     final a = 23;
     final b = 67;
-    final p = 104729;
+    final p = 100000019;
     int ans = (key.hashCode * a) % p;
     ans = ((ans + b) % p) % cardinality;
     return ans;
   }
 
-  void rehash() {
-    double carga = size() / cardinality;
-    if (carga > 0.9) {
-      cardinality *= 2;
-      List<LinkedList> aux = hashTable;
-      hashTable = new List(cardinality);
-      for (int i = 0; i < cardinality; i++) {
-        hashTable[i] = new LinkedList();
-      }
-      for (LinkedList i in aux) {
-        Node n = i.getFirst();
-        while (n != null) {
-          insert(n.value.first, n.value.second);
-          n = n.nextValue;
-        }
-      }
-    }
-  }
-
   void insert(dynamic key, dynamic value) {
-    LinkedList l = hashTable[hashing(key)];
+    int h = hashing(key);
+    LinkedList l =
+        (hashTable[h] == null) ? hashTable[h] = LinkedList() : hashTable[h];
     Node n = l.getFirst();
     while (n != null) {
       if (n.value.first == key) {
@@ -60,11 +43,14 @@ class Map {
       n = n.nextValue;
     }
     l.pushBack(Pair(key, value));
-    rehash();
+    i++;
+    if (i % 10000000 == 0) print(i);
   }
 
   bool hasKey(dynamic key) {
-    LinkedList l = hashTable[hashing(key)];
+    int h = hashing(key);
+    LinkedList l =
+        (hashTable[h] == null) ? hashTable[h] = LinkedList() : hashTable[h];
     Node n = l.getFirst();
     while (n != null) {
       if (n.value.first == key) {
@@ -76,7 +62,9 @@ class Map {
   }
 
   dynamic getValue(dynamic key) {
-    LinkedList l = hashTable[hashing(key)];
+    int h = hashing(key);
+    LinkedList l =
+        (hashTable[h] == null) ? hashTable[h] = LinkedList() : hashTable[h];
     Node n = l.getFirst();
     while (n != null) {
       if (n.value.first == key) {
@@ -88,7 +76,9 @@ class Map {
   }
 
   void setValue(dynamic key, dynamic value) {
-    LinkedList l = hashTable[hashing(key)];
+    int h = hashing(key);
+    LinkedList l =
+        (hashTable[h] == null) ? hashTable[h] = LinkedList() : hashTable[h];
     Node n = l.getFirst();
     while (n != null) {
       if (n.value.first == key) {
@@ -101,7 +91,12 @@ class Map {
   }
 
   void remove(dynamic key) {
-    LinkedList l = hashTable[hashing(key)];
+    int h = hashing(key);
+    LinkedList l = hashTable[h];
+    if (hashTable[h] == null) {
+      hashTable[h] = LinkedList();
+      l = hashTable[h];
+    }
     l.removeWhere((x) => x.first == key);
   }
 
@@ -109,7 +104,7 @@ class Map {
   String toString() {
     String ans = "";
     for (LinkedList i in hashTable) {
-      Node n = i.getFirst();
+      Node n = (i == null) ? null : i.getFirst();
       while (n != null) {
         ans += "${n.value.first}: ${n.value.second}\n";
         n = n.nextValue;

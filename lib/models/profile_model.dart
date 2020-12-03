@@ -41,6 +41,23 @@ class ProfileModel {
   int freelancerId;
   List<LastTransaction> lastTransactions;
 
+  int get hashCode {
+    int ans = 0;
+    ans += name.hashCode % 100000007;
+    ans += lastName.hashCode % 100000007;
+    ans += username.hashCode % 100000007;
+    ans += email.hashCode % 100000007;
+    ans += password.hashCode % 100000007;
+    ans += location.hashCode % 100000007;
+    ans += gender.hashCode % 100000007;
+    ans += isFreelancer.hashCode % 100000007;
+    ans += avatarUrl.hashCode % 100000007;
+    ans += freelancerId;
+    ans += lastTransactions.hashCode % 100000007;
+    ans = ((ans * 31) % 100000007) + 33554467;
+    return ans % 100000007;
+  }
+
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
         name: json["name"] as String,
         lastName: json["last_name"] as String,
@@ -49,11 +66,14 @@ class ProfileModel {
         password: json["password"] as String,
         location: json["location"] as String,
         gender: genderValues.map[json["gender"]],
-        isFreelancer: json["is_freelancer"] == null ? false : json["is_freelancer"] as bool,
+        isFreelancer: json["is_freelancer"] == null
+            ? false
+            : json["is_freelancer"] as bool,
         avatarUrl: json["avatar_url"] as String,
-        freelancerId: json["freelancer_id"] == null ? null : json["freelancer_id"] as int,
-        lastTransactions: List<LastTransaction>.from(
-            json["last_transactions"].map((x) => LastTransaction.fromJson(x)) as Iterable),
+        freelancerId:
+            json["freelancer_id"] == null ? null : json["freelancer_id"] as int,
+        lastTransactions: List<LastTransaction>.from(json["last_transactions"]
+            .map((x) => LastTransaction.fromJson(x)) as Iterable),
       );
 
   Map<String, dynamic> toJson() => {
@@ -67,7 +87,8 @@ class ProfileModel {
         "is_freelancer": isFreelancer,
         "avatar_url": avatarUrl,
         "freelancer_id": freelancerId,
-        "last_transactions": List<dynamic>.from(lastTransactions.map((x) => x.toJson())),
+        "last_transactions":
+            List<dynamic>.from(lastTransactions.map((x) => x.toJson())),
       };
 }
 
@@ -88,7 +109,20 @@ class LastTransaction {
   String category;
   int price;
 
-  factory LastTransaction.fromJson(Map<String, dynamic> json) => LastTransaction(
+  int get hashCode {
+    int ans = 0;
+    ans += freelancer.hashCode % 100000007;
+    ans += serviceName.hashCode % 100000007;
+    ans += description.hashCode % 100000007;
+    ans += date.hashCode % 100000007;
+    ans += category.hashCode % 100000007;
+    ans += price;
+    ans = ((ans * 31) % 100000007) + 33554467;
+    return ans % 100000007;
+  }
+
+  factory LastTransaction.fromJson(Map<String, dynamic> json) =>
+      LastTransaction(
         freelancer: json["freelancer"] as String,
         serviceName: json["service_name"] as String,
         description: json["description"] as String,

@@ -7,8 +7,9 @@ import 'dart:convert';
 import 'gender_model.dart';
 export 'gender_model.dart';
 
-List<FreelancerModel> freelancerModelFromJson(String str) => List<FreelancerModel>.from(
-    json.decode(str).map((x) => FreelancerModel.fromJson(x)) as Iterable);
+List<FreelancerModel> freelancerModelFromJson(String str) =>
+    List<FreelancerModel>.from(
+        json.decode(str).map((x) => FreelancerModel.fromJson(x)) as Iterable);
 
 String freelancerModelToJson(List<FreelancerModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -32,14 +33,30 @@ class FreelancerModel {
   String avatarUrl;
   List<Service> services;
 //TODO: Añadir descripcion
-  factory FreelancerModel.fromJson(Map<String, dynamic> json) => FreelancerModel(
+
+  int get hashCode {
+    int ans = 0;
+    ans += name.hashCode % 100000007;
+    ans += lastName.hashCode % 100000007;
+    ans += username.hashCode % 100000007;
+    ans += location.hashCode % 100000007;
+    ans += gender.hashCode % 100000007;
+    ans += avatarUrl.hashCode % 100000007;
+    ans += services.hashCode % 100000007;
+    ans = ((ans * 31) % 100000007) + 33554467;
+    return ans % 100000007;
+  }
+
+  factory FreelancerModel.fromJson(Map<String, dynamic> json) =>
+      FreelancerModel(
         name: json["name"] as String,
         lastName: json["last_name"] as String,
         username: json["username"] as String,
         location: json["location"] as String,
         gender: genderValues.map[json["gender"]],
         avatarUrl: json["avatar_url"] as String,
-        services: List<Service>.from(json["services"].map((x) => Service.fromJson(x)) as Iterable),
+        services: List<Service>.from(
+            json["services"].map((x) => Service.fromJson(x)) as Iterable),
       );
 
   Map<String, dynamic> toJson() => {
@@ -69,6 +86,18 @@ class Service {
   String imageUrl;
   int numberStars;
   int price;
+
+  int get hashCode {
+    int ans = 0;
+    ans += serviceName.hashCode % 100000007;
+    ans += date.hashCode % 100000007;
+    ans += category.hashCode % 100000007;
+    ans += imageUrl.hashCode % 100000007;
+    ans += numberStars % 100000007;
+    ans += price % 100000007;
+    ans = ((ans * 31) % 100000007) + 33554467;
+    return ans % 100000007;
+  }
 
   factory Service.fromJson(Map<String, dynamic> json) => Service(
         serviceName: json["service_name"] as String,

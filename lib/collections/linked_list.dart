@@ -218,9 +218,10 @@ class LinkedList {
       if (_head == null) return;
     }
     while (n.nextValue != null) {
-      if (test(n.nextValue.value))
+      if (test(n.nextValue.value)) {
         n.nextValue = n.nextValue.nextValue;
-      else
+        _size--;
+      } else
         n = n.nextValue;
     }
   }
