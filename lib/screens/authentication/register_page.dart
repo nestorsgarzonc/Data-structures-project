@@ -28,7 +28,7 @@ class RegisterPage extends StatelessWidget {
             Positioned(
               bottom: 0,
               width: size.width,
-              height: size.height * 0.6,
+              height: size.height * 0.63,
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 40,
@@ -68,12 +68,14 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
     Future<void> handleSubmit() async {
       final userProvider = Provider.of<ProfileProvider>(context, listen: false);
       if (_formKey.currentState.validate()) {
-        final bool canSingUp = userProvider.singUp(_email, _username, _password);
+        final bool canSingUp =
+            userProvider.singUp(_email, _username, _password);
         if (canSingUp) {
           Navigator.of(context).pushNamed(InitialPage.route);
         } else {
           Scaffold.of(context).showSnackBar(const SnackBar(
-            content: Text('Opps, este correo esta asociado a una cuenta existente'),
+            content:
+                Text('Opps, este correo esta asociado a una cuenta existente'),
           ));
         }
       } else {
@@ -114,8 +116,9 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 cursorColor: Theme.of(context).primaryColor,
                 keyboardType: TextInputType.name,
                 onChanged: (value) => _username = value,
-                validator: (value) =>
-                    value.length > 6 ? null : 'El nombre de usuario debe tener mas de 6 caracteres',
+                validator: (value) => value.length > 6
+                    ? null
+                    : 'El nombre de usuario debe tener mas de 6 caracteres',
                 decoration: const InputDecoration(
                   labelText: 'Usuario',
                   prefixIcon: Icon(Icons.account_circle),
@@ -126,11 +129,24 @@ class __RegisterBodyWidgetState extends State<_RegisterBodyWidget> {
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
                 onChanged: (value) => _password = value,
-                validator: (value) =>
-                    value.length > 8 ? null : 'La contraseña debe tener mas de 8 caracteres',
+                validator: (value) => value.length > 8
+                    ? null
+                    : 'La contraseña debe tener mas de 8 caracteres',
                 cursorColor: Theme.of(context).primaryColor,
                 decoration: const InputDecoration(
                   labelText: 'Contraseña',
+                  prefixIcon: Icon(Icons.vpn_key),
+                ),
+              ),
+              const SizedBox(height: 5),
+              TextFormField(
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: true,
+                validator: (value) =>
+                    value == _password ? null : 'Las contraseñas no coinciden',
+                cursorColor: Theme.of(context).primaryColor,
+                decoration: const InputDecoration(
+                  labelText: 'Confirma la contraseña',
                   prefixIcon: Icon(Icons.vpn_key),
                 ),
               ),
@@ -169,7 +185,8 @@ class _SocialNetworksIcons extends StatelessWidget {
         ),
         FlatButton(
           onPressed: () {},
-          child: const FaIcon(FontAwesomeIcons.twitter, color: Colors.lightBlue),
+          child:
+              const FaIcon(FontAwesomeIcons.twitter, color: Colors.lightBlue),
         ),
       ],
     );

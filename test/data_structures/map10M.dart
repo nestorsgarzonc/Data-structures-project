@@ -7,7 +7,7 @@ void main() {
     test("Insercion de 10M pares", () {
       Stopwatch stopwatch = new Stopwatch()..start();
       for (int i = 0; i < 10000000; i++) {
-        mapa.insert('Numero ${i}', i);
+        mapa.insert(i, 'Numero ${i}');
       }
       print(
           'Insert para 10M de pares en ${stopwatch.elapsedMicroseconds} microsegundos');
@@ -15,52 +15,52 @@ void main() {
     });
     test("Busqueda de un key", () {
       Stopwatch stopwatch = new Stopwatch()..start();
-      mapa.hasKey('Numero 0');
+      mapa.hasKey(0);
       print('Find para un key: ${stopwatch.elapsedMicroseconds} microsegundos');
       expect(true, true);
     });
     test("Busqueda de otro key", () {
       Stopwatch stopwatch = new Stopwatch()..start();
-      mapa.hasKey('Numero 5000000');
+      mapa.hasKey(5000000);
       print(
           'Find para otro key: ${stopwatch.elapsedMicroseconds} microsegundos');
       expect(true, true);
     });
     test("Busqueda de otro key", () {
       Stopwatch stopwatch = new Stopwatch()..start();
-      mapa.hasKey('Numero 9999999');
+      mapa.hasKey(9999999);
       print(
           'Find para otro key: ${stopwatch.elapsedMicroseconds} microsegundos');
       expect(true, true);
     });
     test("Cambio del valor de un key", () {
       Stopwatch stopwatch = new Stopwatch()..start();
-      mapa.setValue('Numero 4000000', 25860000);
+      mapa.setValue(4000000, 'Numero 25860000');
       print(
           'Cambio de un valor: ${stopwatch.elapsedMicroseconds} microsegundos');
       expect(true, true);
     });
     test("Obtener el valor de un key", () {
       Stopwatch stopwatch = new Stopwatch()..start();
-      mapa.getValue('Numero 4000000');
+      mapa.getValue(4000000);
       print(
           'Obtener de un valor: ${stopwatch.elapsedMicroseconds} microsegundos');
       expect(true, true);
     });
     test("Borrado de 1 valor", () {
-      print(mapa.getValue('Numero 5000000'));
+      print(mapa.getValue(5000000));
       Stopwatch stopwatch = new Stopwatch()..start();
-      mapa.remove('Numero 5000000');
+      mapa.remove(5000000);
       print(
           'Delete para 1 valor: ${stopwatch.elapsedMicroseconds} microsegundos');
       expect(true, true);
     });
     test("has", () {
-      expect(mapa.hasKey('Numero 5000000'), false);
+      expect(mapa.hasKey(5000000), false);
     });
     test("get", () {
-      print(mapa.getValue('Numero 4000000'));
-      expect(mapa.getValue('Numero 4000000'), 25860000);
+      print(mapa.getValue(4000000));
+      expect(mapa.getValue(4000000), 'Numero 25860000');
     });
     test("size", () {
       print(mapa.size());
